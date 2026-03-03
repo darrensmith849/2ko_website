@@ -49,7 +49,7 @@ const processSteps = [
 ];
 
 const clientSectors = [
-  "Tier-1 Bank",
+  "Large Commercial Bank",
   "Global Insurer",
   "National Logistics Carrier",
   "Industrial Manufacturer",

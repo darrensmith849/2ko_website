@@ -22,6 +22,10 @@ function escapeHtml(value: string) {
     .replace(/'/g, "&#39;");
 }
 
+function sanitizeHeaderValue(value: string) {
+  return value.replace(/[\r\n]+/g, " ").trim();
+}
+
 const RATE_WINDOW_MS = 15 * 60 * 1000;
 const MAX_REQUESTS_PER_WINDOW = 5;
 const requestLog = new Map<string, number[]>();
@@ -41,6 +45,16 @@ function isRateLimited(ip: string) {
   const windowStart = now - RATE_WINDOW_MS;
   const attempts = requestLog.get(ip) ?? [];
   const recentAttempts = attempts.filter((ts) => ts > windowStart);
+
+  // Opportunistic cleanup to avoid unbounded memory growth.
+  for (const [key, timestamps] of requestLog.entries()) {
+    const active = timestamps.filter((ts) => ts > windowStart);
+    if (active.length === 0) {
+      requestLog.delete(key);
+    } else if (active.length !== timestamps.length) {
+      requestLog.set(key, active);
+    }
+  }
 
   if (recentAttempts.length >= MAX_REQUESTS_PER_WINDOW) {
     requestLog.set(ip, recentAttempts);
@@ -92,6 +106,8 @@ export async function POST(req: NextRequest) {
   const normalizedEmail = email.trim();
   const normalizedOrganisation = organisation?.trim() ?? "";
   const normalizedChallenge = challenge.trim();
+  const headerSafeName = sanitizeHeaderValue(normalizedName);
+  const headerSafeOrg = sanitizeHeaderValue(normalizedOrganisation);
 
   const safeName = escapeHtml(normalizedName);
   const safeEmail = escapeHtml(normalizedEmail);
@@ -121,7 +137,7 @@ export async function POST(req: NextRequest) {
     from: fromAddress,
     to: toAddress,
     replyTo: normalizedEmail,
-    subject: `New enquiry from ${normalizedName}${normalizedOrganisation ? ` (${normalizedOrganisation})` : ""}`,
+    subject: `New enquiry from ${headerSafeName}${headerSafeOrg ? ` (${headerSafeOrg})` : ""}`,
     text: [
       "New contact enquiry",
       `Name: ${normalizedName}`,

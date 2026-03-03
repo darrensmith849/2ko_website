@@ -12,12 +12,12 @@ export const faqs: FAQ[] = [
   {
     question: "Do we need to be a large organisation to work with you?",
     answer:
-      "No. We work with organisations of all sizes — from 80-person manufacturers to multi-divisional listed groups. The methodology scales to the problem. What we look for is leadership commitment and a willingness to address root causes rather than symptoms.",
+      "No. We work with organisations of different sizes, from smaller specialised operators to multi-divisional listed groups. The methodology scales to the problem. What we look for is leadership commitment and a willingness to address root causes rather than symptoms.",
   },
   {
     question: "How long does a typical engagement take?",
     answer:
-      "It depends on the scope. A single Yellow Belt programme with a live project typically runs 6–8 weeks. A full Green Belt cohort with management-system embedding usually spans 4–6 months. AI system implementation varies from 6 weeks to 4 months depending on data complexity. We can give you a precise estimate after an initial diagnostic call.",
+      "It depends on the scope. We provide indicative timelines during scoping, covering belt delivery, management-system embedding, and any AI implementation phases. Once we review your baseline and data complexity, we provide a project-specific schedule.",
   },
   {
     question: "What ROI can we expect?",
