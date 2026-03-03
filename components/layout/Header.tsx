@@ -30,11 +30,11 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-background/95 backdrop-blur-md border-b border-border"
-          : "bg-transparent"
+          ? "bg-background/90 backdrop-blur-xl border-b border-border"
+          : "bg-background/35 backdrop-blur-sm"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-6 h-[68px] flex items-center justify-between">
         <Link
           href="/"
           className="text-text font-semibold text-lg tracking-tight hover:text-accent transition-colors"
@@ -48,9 +48,9 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className={`text-sm transition-colors ${
+              className={`text-sm px-2 py-1 rounded-md transition-colors ${
                 pathname === link.href || pathname.startsWith(link.href + "/")
-                  ? "text-accent font-medium"
+                  ? "text-accent font-medium bg-accent/10"
                   : "text-muted hover:text-text"
               }`}
             >

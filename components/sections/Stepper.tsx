@@ -12,23 +12,23 @@ interface StepperProps {
 
 export default function Stepper({ headline, subheadline, steps }: StepperProps) {
   return (
-    <section className="max-w-6xl mx-auto px-6 py-16">
-      <div className="text-center mb-16">
+    <section className="max-w-6xl mx-auto px-6 py-20">
+      <div className="text-center mb-14">
         <h2 className="text-3xl md:text-4xl font-semibold text-text tracking-tight">
           {headline}
         </h2>
         {subheadline && (
-          <p className="mt-4 text-muted text-lg max-w-2xl mx-auto">{subheadline}</p>
+          <p className="mt-4 text-muted text-base md:text-lg max-w-2xl mx-auto">{subheadline}</p>
         )}
       </div>
       <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
         {steps.map((step, i) => (
-          <li key={i} className="relative">
+          <li key={i} className="relative rounded-2xl border border-border/70 bg-surface/80 p-5">
             {/* Connector line (desktop) */}
             {i < steps.length - 1 && (
               <div
                 aria-hidden="true"
-                className="hidden lg:block absolute top-5 left-[calc(50%+1.5rem)] right-0 h-px bg-border"
+                className="hidden lg:block absolute top-10 left-[calc(50%+1.5rem)] right-0 h-px bg-border"
               />
             )}
             <div className="flex flex-col gap-4">

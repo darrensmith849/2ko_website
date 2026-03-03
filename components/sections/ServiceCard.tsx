@@ -21,20 +21,20 @@ export default function ServiceCard({
 }: ServiceCardProps) {
   return (
     <div
-      className={`rounded-2xl border p-8 flex flex-col gap-6 transition-colors group ${
+      className={`rounded-3xl border p-7 md:p-8 flex flex-col gap-6 transition-all duration-300 group ${
         accent
-          ? "bg-accent/5 border-accent/20 hover:border-accent/40"
-          : "bg-surface border-border hover:border-border/60"
+          ? "bg-accent/5 border-accent/25 hover:border-accent/45 hover:-translate-y-0.5"
+          : "bg-surface/92 border-border hover:border-border/60 hover:-translate-y-0.5"
       }`}
     >
       <div>
         <div className="text-3xl mb-4" aria-hidden="true">
           {icon}
         </div>
-        <p className="text-xs font-semibold uppercase tracking-widest text-muted2 mb-2">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted2 mb-2">
           {tagline}
         </p>
-        <h3 className="text-xl font-semibold text-text">{title}</h3>
+        <h3 className="text-xl font-semibold text-text tracking-tight">{title}</h3>
         <p className="mt-3 text-muted text-sm leading-relaxed">{description}</p>
       </div>
       <ul className="flex flex-col gap-2 flex-1">

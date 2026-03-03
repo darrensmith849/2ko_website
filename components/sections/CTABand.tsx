@@ -14,13 +14,13 @@ export default function CTABand({
   secondaryCTA,
 }: CTABandProps) {
   return (
-    <section className="max-w-6xl mx-auto px-6 py-20">
-      <div className="rounded-2xl bg-surface border border-border p-10 md:p-16 text-center">
-        <h2 className="text-3xl md:text-4xl font-semibold text-text tracking-tight max-w-2xl mx-auto">
+    <section className="max-w-6xl mx-auto px-6 py-24">
+      <div className="rounded-3xl border border-border/80 p-10 md:p-16 text-center bg-[linear-gradient(180deg,rgba(17,17,19,0.96),rgba(13,13,15,0.94))] shadow-[0_24px_64px_-40px_rgba(0,0,0,0.8)]">
+        <h2 className="text-3xl md:text-4xl font-semibold text-text tracking-tight leading-tight max-w-3xl mx-auto">
           {headline}
         </h2>
         {subheadline && (
-          <p className="mt-4 text-lg text-muted max-w-xl mx-auto leading-relaxed">
+          <p className="mt-5 text-base md:text-lg text-muted max-w-xl mx-auto leading-relaxed">
             {subheadline}
           </p>
         )}

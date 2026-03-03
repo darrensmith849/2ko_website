@@ -24,30 +24,39 @@ export default function Hero({
   children,
 }: HeroProps) {
   return (
-    <section className="relative overflow-hidden">
-      {/* Subtle gradient glow */}
+    <section className="relative overflow-hidden border-b border-border/60">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 80% 50% at 50% -10%, rgba(22,163,74,0.12) 0%, transparent 70%)",
+            "radial-gradient(ellipse 84% 52% at 50% -10%, rgba(22,163,74,0.16) 0%, transparent 72%)",
         }}
       />
-      <div className="relative max-w-6xl mx-auto px-6 pt-24 pb-20 text-center">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-accent/10 blur-3xl"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent"
+      />
+      <div className="relative max-w-6xl mx-auto px-6 pt-28 pb-24 text-center">
         {badge && (
           <div className="mb-6 flex justify-center">
-            <Badge variant="accent">{badge}</Badge>
+            <Badge variant="accent" className="px-4 py-1.5 text-[11px] uppercase tracking-widest">
+              {badge}
+            </Badge>
           </div>
         )}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-text leading-tight max-w-3xl mx-auto">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-text leading-[1.05] max-w-4xl mx-auto">
           {headline}
         </h1>
-        <p className="mt-6 text-lg sm:text-xl text-muted leading-relaxed max-w-2xl mx-auto">
+        <p className="mt-6 text-base sm:text-lg md:text-xl text-muted leading-relaxed max-w-2xl mx-auto">
           {subheadline}
         </p>
         {ctas.length > 0 && (
-          <div className="mt-10 flex flex-wrap gap-3 justify-center">
+          <div className="mt-11 flex flex-wrap gap-3 justify-center">
             {ctas.map((cta) => (
               <Button key={cta.href} href={cta.href} variant={cta.variant ?? "primary"} size="lg">
                 {cta.label}
