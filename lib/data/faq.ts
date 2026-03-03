@@ -1,0 +1,67 @@
+export interface FAQ {
+  question: string;
+  answer: string;
+}
+
+export const faqs: FAQ[] = [
+  {
+    question: "What makes 2KO different from a standard training provider?",
+    answer:
+      "Most training providers deliver the curriculum and leave. We treat training as the beginning, not the end. We run live improvement projects alongside the belt programmes, embed new standards into your management system, and then add an AI monitoring layer to keep the gains from slipping. You get capability, results, and a system that sustains both.",
+  },
+  {
+    question: "Do we need to be a large organisation to work with you?",
+    answer:
+      "No. We work with organisations of all sizes — from 80-person manufacturers to multi-divisional listed groups. The methodology scales to the problem. What we look for is leadership commitment and a willingness to address root causes rather than symptoms.",
+  },
+  {
+    question: "How long does a typical engagement take?",
+    answer:
+      "It depends on the scope. A single Yellow Belt programme with a live project typically runs 6–8 weeks. A full Green Belt cohort with management-system embedding usually spans 4–6 months. AI system implementation varies from 6 weeks to 4 months depending on data complexity. We can give you a precise estimate after an initial diagnostic call.",
+  },
+  {
+    question: "What ROI can we expect?",
+    answer:
+      "Our completed projects typically return 5–15× the programme investment within 12 months. We track this formally — every project closes with a validated financial impact report signed off by your finance team. We don't claim results that your own numbers don't confirm.",
+  },
+  {
+    question: "Are your certifications internationally recognised?",
+    answer:
+      "Yes. Our Lean Six Sigma programmes are accredited and aligned with the American Society for Quality (ASQ) and international SSSA standards. Certificates are recognised by employers globally.",
+  },
+  {
+    question: "What if our data is messy or incomplete?",
+    answer:
+      "It nearly always is. Part of our diagnostic phase is identifying what data you have, what you need, and where the gaps are. We design AI systems around the data reality you have today, with a roadmap to improve data quality as the system matures. We've never turned down a project because of data quality.",
+  },
+  {
+    question: "Do you work in industries outside manufacturing?",
+    answer:
+      "Extensively. Financial services, healthcare, logistics, government, agriculture, telecoms, energy — we've run projects across all of these. Lean Six Sigma applies wherever there are repeatable processes. The sector changes; the methodology doesn't.",
+  },
+  {
+    question: "Can we just do the training without the AI systems component?",
+    answer:
+      "Absolutely. The training and improvement projects stand entirely on their own. Many of our long-term clients start with belt programmes and add the AI layer later once they've seen what's possible. There's no obligation to bundle services.",
+  },
+  {
+    question: "What happens if our trained belts leave the organisation?",
+    answer:
+      "This is exactly why we focus on management-system embedding, not just individual certification. When the standards are written into how the organisation operates — SOPs, KPIs, management routines, AI monitoring — the capability isn't locked inside one person. It's institutional. Belt turnover hurts less when the system is the carrier.",
+  },
+  {
+    question: "How do your AI systems handle sensitive operational data?",
+    answer:
+      "We design for data minimisation and security from the start. We can deploy entirely within your existing infrastructure (on-premise or private cloud) so your data never leaves your environment. All systems are built to comply with POPIA and, where relevant, GDPR. Data governance is part of the architecture specification, not an afterthought.",
+  },
+  {
+    question: "Do you offer ongoing support after the engagement ends?",
+    answer:
+      "Yes. We offer retainer-based support for both the operational excellence work (coaching, project reviews, champion development) and the AI systems (monitoring, model updates, new KPI configuration). Most clients take a lighter-touch retainer once the system is embedded. Some engage us on new problem areas as they arise.",
+  },
+  {
+    question: "How do we get started?",
+    answer:
+      "The first step is a 30-minute diagnostic conversation with one of our consultants. We'll ask about your key operational challenges, what you've already tried, and where you want to be. From there, we put together a scope proposal with indicative investment and expected outcomes. There's no charge for the initial conversation.",
+  },
+];
