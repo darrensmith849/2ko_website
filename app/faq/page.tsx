@@ -3,12 +3,13 @@ import Hero from "@/components/sections/Hero";
 import Accordion from "@/components/ui/Accordion";
 import CTABand from "@/components/sections/CTABand";
 import { faqs } from "@/lib/data/faq";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "FAQ",
-  description:
-    "Straight answers to the questions organisations ask before working with 2KO — on methodology, timelines, ROI, certifications, and more.",
-};
+export const metadata: Metadata = pageMetadata(
+  "FAQ",
+  "Straight answers to the questions organisations ask before working with 2KO — on methodology, timelines, ROI, certifications, and more.",
+  "/faq"
+);
 
 export default function FAQPage() {
   return (

@@ -6,12 +6,13 @@ import ProofBlock from "@/components/sections/ProofBlock";
 import Stepper from "@/components/sections/Stepper";
 import CTABand from "@/components/sections/CTABand";
 import { services } from "@/lib/data/services";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "2KO — Operational Excellence & AI Systems",
-  description:
-    "2KO makes operational improvement permanent through Lean Six Sigma mastery and AI-powered management systems. 200+ blue-chip clients. Since 1998.",
-};
+export const metadata: Metadata = pageMetadata(
+  "2KO — Operational Excellence & AI Systems",
+  "2KO makes operational improvement permanent through Lean Six Sigma mastery and AI-powered management systems. 200+ blue-chip clients. Since 1998.",
+  "/"
+);
 
 const proofMetrics = [
   { value: "200+", label: "Blue-chip clients", sublabel: "across Africa and beyond" },

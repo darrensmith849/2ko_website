@@ -38,13 +38,19 @@ export function pageMetadata(
   description: string,
   path = ""
 ): Metadata {
+  const canonicalPath = path || "/";
+  const pageUrl = canonicalPath === "/" ? siteUrl : `${siteUrl}${canonicalPath}`;
+
   return {
     title,
     description,
+    alternates: {
+      canonical: canonicalPath,
+    },
     openGraph: {
       title,
       description,
-      url: `${siteUrl}${path}`,
+      url: pageUrl,
     },
   };
 }

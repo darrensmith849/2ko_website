@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import Hero from "@/components/sections/Hero";
 import CTABand from "@/components/sections/CTABand";
 import Badge from "@/components/ui/Badge";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "About",
-  description:
-    "2KO has been making operational improvement permanent since 1998. Learn about our story, our methodology, and the entities that make up the 2KO group.",
-};
+export const metadata: Metadata = pageMetadata(
+  "About",
+  "2KO has been making operational improvement permanent since 1998. Learn about our story, our methodology, and the entities that make up the 2KO group.",
+  "/about"
+);
 
 const entities = [
   {

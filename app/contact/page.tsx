@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Hero from "@/components/sections/Hero";
 import ContactForm from "./ContactForm";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description:
-    "Start a conversation with 2KO. Tell us your operational challenge and we'll come back within one business day.",
-};
+export const metadata: Metadata = pageMetadata(
+  "Contact",
+  "Start a conversation with 2KO. Tell us your operational challenge and we'll come back within one business day.",
+  "/contact"
+);
 
 export default function ContactPage() {
   return (

@@ -4,12 +4,13 @@ import Stepper from "@/components/sections/Stepper";
 import CTABand from "@/components/sections/CTABand";
 import Badge from "@/components/ui/Badge";
 import { getService } from "@/lib/data/services";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Operational Excellence",
-  description:
-    "Lean Six Sigma training and live improvement projects that build real capability — and management systems that keep the gains from slipping back.",
-};
+export const metadata: Metadata = pageMetadata(
+  "Operational Excellence",
+  "Lean Six Sigma training and live improvement projects that build real capability — and management systems that keep the gains from slipping back.",
+  "/services/operational-excellence"
+);
 
 const beltLevels = [
   {

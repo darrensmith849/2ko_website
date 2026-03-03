@@ -3,12 +3,13 @@ import Hero from "@/components/sections/Hero";
 import Stepper from "@/components/sections/Stepper";
 import CTABand from "@/components/sections/CTABand";
 import { getService } from "@/lib/data/services";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "AI Systems",
-  description:
-    "Custom AI-powered management systems that monitor your operational standards, surface deviations in real time, and make it harder to slip backwards.",
-};
+export const metadata: Metadata = pageMetadata(
+  "AI Systems",
+  "Custom AI-powered management systems that monitor your operational standards, surface deviations in real time, and make it harder to slip backwards.",
+  "/services/ai-systems"
+);
 
 const capabilities = [
   {

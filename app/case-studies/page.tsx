@@ -3,12 +3,13 @@ import Hero from "@/components/sections/Hero";
 import CaseStudyCard from "@/components/sections/CaseStudyCard";
 import CTABand from "@/components/sections/CTABand";
 import { caseStudies } from "@/lib/data/caseStudies";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Case Studies",
-  description:
-    "Real results from 2KO engagements across banking, manufacturing, logistics, healthcare, and more. Structured by problem, approach, and outcome.",
-};
+export const metadata: Metadata = pageMetadata(
+  "Case Studies",
+  "Real results from 2KO engagements across banking, manufacturing, logistics, healthcare, and more. Structured by problem, approach, and outcome.",
+  "/case-studies"
+);
 
 export default function CaseStudiesPage() {
   return (

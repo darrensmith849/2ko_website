@@ -3,12 +3,13 @@ import Hero from "@/components/sections/Hero";
 import ServiceCard from "@/components/sections/ServiceCard";
 import CTABand from "@/components/sections/CTABand";
 import { services } from "@/lib/data/services";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Services",
-  description:
-    "2KO delivers Lean Six Sigma training and AI-powered management systems — two disciplines that work together to make operational improvement permanent.",
-};
+export const metadata: Metadata = pageMetadata(
+  "Services",
+  "2KO delivers Lean Six Sigma training and AI-powered management systems — two disciplines that work together to make operational improvement permanent.",
+  "/services"
+);
 
 export default function ServicesPage() {
   return (

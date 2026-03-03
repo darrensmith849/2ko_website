@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { siteUrl } from "@/lib/metadata";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
   },
   description:
     "2KO makes operational improvement permanent through Six Sigma mastery and AI-powered management systems. 200+ blue-chip clients. Since 1998.",
-  metadataBase: new URL("https://2ko.co.za"),
+  metadataBase: new URL(siteUrl),
   openGraph: {
     siteName: "2KO",
     type: "website",
