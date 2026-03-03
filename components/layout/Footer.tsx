@@ -23,7 +23,7 @@ export default function Footer() {
             2KO
           </Link>
           <p className="text-muted text-sm max-w-xs leading-relaxed">
-            Making operational improvement permanent — through Six Sigma mastery and AI-powered management systems. Since 1998.
+            Making operational improvement permanent through Six Sigma mastery and AI-powered management systems.
           </p>
         </div>
         {Object.entries(footerLinks).map(([section, links]) => (

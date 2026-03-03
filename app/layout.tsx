@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s | 2KO",
   },
   description:
-    "2KO makes operational improvement permanent through Six Sigma mastery and AI-powered management systems. 200+ blue-chip clients. Since 1998.",
+    "2KO makes operational improvement permanent through Six Sigma mastery and AI-powered management systems for complex organisations.",
   metadataBase: new URL(siteUrl),
   openGraph: {
     siteName: "2KO",

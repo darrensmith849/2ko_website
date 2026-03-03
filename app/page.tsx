@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Hero from "@/components/sections/Hero";
 import ServiceCard from "@/components/sections/ServiceCard";
 import ProofBlock from "@/components/sections/ProofBlock";
@@ -10,15 +9,15 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata(
   "2KO — Operational Excellence & AI Systems",
-  "2KO makes operational improvement permanent through Lean Six Sigma mastery and AI-powered management systems. 200+ blue-chip clients. Since 1998.",
+  "2KO makes operational improvement permanent through Lean Six Sigma mastery and AI-powered management systems for complex organisations.",
   "/"
 );
 
 const proofMetrics = [
-  { value: "200+", label: "Blue-chip clients", sublabel: "across Africa and beyond" },
-  { value: "1998", label: "Founded", sublabel: "25+ years in practice" },
-  { value: "30k+", label: "Professionals trained", sublabel: "Yellow to Black Belt" },
-  { value: "9.6", label: "Avg satisfaction score", sublabel: "out of 10" },
+  { value: "Cross-Sector", label: "Enterprise programmes", sublabel: "banking, industry, logistics, and public services" },
+  { value: "Practitioner-Led", label: "Delivery model", sublabel: "consultants who have run live improvement programmes" },
+  { value: "System-Embedded", label: "How change sticks", sublabel: "standards embedded in routines, not only training" },
+  { value: "Outcome-Focused", label: "How we measure", sublabel: "operational outcomes over presentation metrics" },
 ];
 
 const processSteps = [
@@ -49,24 +48,24 @@ const processSteps = [
   },
 ];
 
-const clientLogos = [
-  { name: "Standard Bank", file: "standard-bank.svg" },
-  { name: "Sappi", file: "sappi.svg" },
-  { name: "DHL", file: "dhl.svg" },
-  { name: "Toyota", file: "toyota.svg" },
-  { name: "SARS", file: "sars.svg" },
-  { name: "Transnet", file: "transnet.svg" },
-  { name: "Nedbank", file: "nedbank.svg" },
-  { name: "Anglo American", file: "anglo-american.svg" },
-  { name: "John Deere", file: "john-deere.svg" },
-  { name: "Chevron", file: "chevron.svg" },
+const clientSectors = [
+  "Tier-1 Bank",
+  "Global Insurer",
+  "National Logistics Carrier",
+  "Industrial Manufacturer",
+  "Public Infrastructure Operator",
+  "Energy Producer",
+  "Healthcare Network",
+  "Large-Scale Retailer",
+  "Telecommunications Provider",
+  "Government Department",
 ];
 
 export default function HomePage() {
   return (
     <main>
       <Hero
-        badge="Since 1998"
+        badge="Operational Excellence + AI"
         headline="We make operational improvement permanent."
         subheadline="2KO trains your people in Lean Six Sigma and builds the AI-powered management systems that stop your gains from slipping back."
         ctas={[
@@ -78,21 +77,15 @@ export default function HomePage() {
       {/* Client logo strip */}
       <section className="max-w-6xl mx-auto px-6 py-12">
         <p className="text-center text-muted2 text-xs font-semibold uppercase tracking-widest mb-8">
-          Trusted by organisations including
+          Sectors we support
         </p>
-        <div className="flex flex-wrap justify-center gap-6">
-          {clientLogos.map((logo) => (
+        <div className="flex flex-wrap justify-center gap-3">
+          {clientSectors.map((sector) => (
             <div
-              key={logo.name}
-              className="opacity-40 hover:opacity-70 transition-opacity"
+              key={sector}
+              className="rounded-full border border-border bg-surface px-4 py-2 text-sm text-muted"
             >
-              <Image
-                src={`/logos/${logo.file}`}
-                alt={logo.name}
-                width={120}
-                height={32}
-                className="h-8 w-auto"
-              />
+              {sector}
             </div>
           ))}
         </div>

@@ -6,7 +6,7 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata(
   "About",
-  "2KO has been making operational improvement permanent since 1998. Learn about our story, our methodology, and the entities that make up the 2KO group.",
+  "Learn how 2KO approaches operational excellence, systems design, and long-term improvement sustainability.",
   "/about"
 );
 
@@ -15,7 +15,7 @@ const entities = [
     name: "2KO Africa",
     role: "Training & Improvement Delivery",
     description:
-      "The primary delivery vehicle for Lean Six Sigma belt programmes and live improvement projects across sub-Saharan Africa. Over 200 client organisations trained since 1998.",
+      "The primary delivery vehicle for Lean Six Sigma belt programmes and live improvement projects across sub-Saharan Africa.",
   },
   {
     name: "SSSA",
@@ -60,7 +60,7 @@ export default function AboutPage() {
       <Hero
         badge="About 2KO"
         headline="Built on process. Powered by systems."
-        subheadline="Since 1998, 2KO has trained more than 30,000 professionals and delivered improvement projects across 200+ organisations in South Africa and beyond."
+        subheadline="2KO helps organisations build Lean Six Sigma capability and reinforce new operating standards with practical management systems."
         ctas={[
           { label: "Work with us", href: "/contact", variant: "primary" },
           { label: "See our results", href: "/case-studies", variant: "outline" },
@@ -85,7 +85,7 @@ export default function AboutPage() {
               to maintain the new standard than to drift back to the old one.
             </p>
             <p>
-              Over 25 years, that focus has shaped everything we do: how we design
+              That focus shapes everything we do: how we design
               programmes, how we measure outcomes, and how we use AI to give our clients&apos;
               management teams the visibility they need to lead proactively rather than
               reactively.
@@ -134,10 +134,10 @@ export default function AboutPage() {
       <section className="max-w-6xl mx-auto px-6 py-16 border-t border-border">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border rounded-2xl overflow-hidden">
           {[
-            { value: "200+", label: "Client organisations" },
-            { value: "1998", label: "Year founded" },
-            { value: "30k+", label: "Professionals trained" },
-            { value: "9.6/10", label: "Average satisfaction" },
+            { value: "Cross-Industry", label: "Operational contexts served" },
+            { value: "Leadership-Aligned", label: "Executive-sponsored delivery" },
+            { value: "People + Systems", label: "Integrated transformation model" },
+            { value: "Sustainability-First", label: "Designed to prevent regression" },
           ].map((m) => (
             <div key={m.label} className="bg-surface px-8 py-10 text-center">
               <div className="text-4xl font-semibold text-accent">{m.value}</div>

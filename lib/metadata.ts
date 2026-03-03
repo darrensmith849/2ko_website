@@ -9,7 +9,7 @@ export const defaultMetadata: Metadata = {
     template: "%s | 2KO",
   },
   description:
-    "2KO makes operational improvement permanent through Lean Six Sigma mastery and AI-powered management systems. 200+ blue-chip clients. Since 1998.",
+    "2KO makes operational improvement permanent through Lean Six Sigma mastery and AI-powered management systems for complex organisations.",
   openGraph: {
     siteName: "2KO",
     type: "website",
