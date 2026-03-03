@@ -7,7 +7,7 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata(
   "Case Studies",
-  "Real results from 2KO engagements across banking, manufacturing, logistics, healthcare, and more. Structured by problem, approach, and outcome.",
+  "Illustrative anonymised outcomes from 2KO engagements across banking, manufacturing, logistics, healthcare, and more.",
   "/case-studies"
 );
 
@@ -17,7 +17,7 @@ export default function CaseStudiesPage() {
       <Hero
         badge="Case Studies"
         headline="Results on record."
-        subheadline="A selection of outcomes from 2KO engagements across industries. Every result was validated by the client's own finance or operations team."
+        subheadline="A selection of illustrative, anonymised outcomes from 2KO engagements across industries. Exact results vary by baseline, scope, and operating context."
         ctas={[
           { label: "Start your own engagement", href: "/contact", variant: "primary" },
         ]}
@@ -43,9 +43,9 @@ export default function CaseStudiesPage() {
       <section className="max-w-6xl mx-auto px-6 pb-8">
         <div className="rounded-xl bg-surface border border-border p-6 text-center">
           <p className="text-muted text-sm leading-relaxed max-w-2xl mx-auto">
-            Client identities are anonymised unless written consent to name them has been given.
-            Full case-study documentation including validated financial impact reports is available
-            on request during an engagement scoping conversation.
+            Client identities are anonymised unless written consent to name them has been provided.
+            Numeric outcomes on this page are illustrative summaries from anonymised engagements
+            and should be treated as directional examples rather than guaranteed results.
           </p>
         </div>
       </section>

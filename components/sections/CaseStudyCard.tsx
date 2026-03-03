@@ -38,9 +38,12 @@ export default function CaseStudyCard({
         </div>
         <div className="mt-auto pt-4 border-t border-border">
           <dt className="text-xs font-semibold uppercase tracking-widest mb-1 text-accent">
-            Result
+            Illustrative outcome
           </dt>
           <dd className="text-text font-medium leading-relaxed">{result}</dd>
+          <p className="mt-2 text-xs text-muted2">
+            Anonymised example. Final outcomes depend on baseline conditions and rollout quality.
+          </p>
         </div>
       </dl>
     </article>

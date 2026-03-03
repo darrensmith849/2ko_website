@@ -22,17 +22,17 @@ export const faqs: FAQ[] = [
   {
     question: "What ROI can we expect?",
     answer:
-      "Our completed projects typically return 5–15× the programme investment within 12 months. We track this formally — every project closes with a validated financial impact report signed off by your finance team. We don't claim results that your own numbers don't confirm.",
+      "ROI varies by baseline, scope, and execution discipline. During scoping, we define measurable operational and financial outcomes and agree how impact will be reviewed with your finance stakeholders.",
   },
   {
     question: "Are your certifications internationally recognised?",
     answer:
-      "Yes. Our Lean Six Sigma programmes are accredited and aligned with the American Society for Quality (ASQ) and international SSSA standards. Certificates are recognised by employers globally.",
+      "Our Lean Six Sigma programmes are aligned with recognised quality frameworks, including ASQ-aligned bodies and SSSA standards. Employer recognition depends on each organisation's own policy and requirements.",
   },
   {
     question: "What if our data is messy or incomplete?",
     answer:
-      "It nearly always is. Part of our diagnostic phase is identifying what data you have, what you need, and where the gaps are. We design AI systems around the data reality you have today, with a roadmap to improve data quality as the system matures. We've never turned down a project because of data quality.",
+      "This is common. Part of our diagnostic phase is identifying what data you have, what you need, and where the gaps are. We design AI systems around your current data reality, with a roadmap to improve data quality as the system matures.",
   },
   {
     question: "Do you work in industries outside manufacturing?",
@@ -42,7 +42,7 @@ export const faqs: FAQ[] = [
   {
     question: "Can we just do the training without the AI systems component?",
     answer:
-      "Absolutely. The training and improvement projects stand entirely on their own. Many of our long-term clients start with belt programmes and add the AI layer later once they've seen what's possible. There's no obligation to bundle services.",
+      "Yes. The training and improvement projects stand on their own. Many clients start with belt programmes and add the AI layer later once the operational standard is established. There's no obligation to bundle services.",
   },
   {
     question: "What happens if our trained belts leave the organisation?",
@@ -52,7 +52,7 @@ export const faqs: FAQ[] = [
   {
     question: "How do your AI systems handle sensitive operational data?",
     answer:
-      "We design for data minimisation and security from the start. We can deploy entirely within your existing infrastructure (on-premise or private cloud) so your data never leaves your environment. All systems are built to comply with POPIA and, where relevant, GDPR. Data governance is part of the architecture specification, not an afterthought.",
+      "We design for data minimisation and security from the start. We can deploy within your existing infrastructure (on-premise or private cloud), based on your governance requirements. Systems are designed to support POPIA and, where relevant, GDPR obligations. Data governance is part of the architecture specification, not an afterthought.",
   },
   {
     question: "Do you offer ongoing support after the engagement ends?",

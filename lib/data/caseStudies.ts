@@ -22,7 +22,7 @@ export const caseStudies: CaseStudy[] = [
     company: "Gold Mining Operation",
     problem: "Equipment downtime costing approximately R12m per month. Maintenance team responding reactively; no predictive framework in place.",
     approach: "Black Belt-led project combined FMEA analysis with IoT sensor integration to create a predictive maintenance scoring model.",
-    result: "Unplanned downtime reduced 62% in the first operating quarter. Annualised saving of R8.4m validated by finance.",
+    result: "Unplanned downtime reduced by roughly 62% in the first operating quarter. Annualised savings in the multi-million rand range were reviewed with finance stakeholders.",
   },
   {
     id: "cs-03",
@@ -76,7 +76,7 @@ export const caseStudies: CaseStudy[] = [
     id: "cs-09",
     industry: "Telecommunications",
     company: "Mobile Network Operator",
-    problem: "Network fault resolution time averaging 4.2 hours, driving NPS scores to an all-time low.",
+    problem: "Network fault resolution time averaging 4.2 hours, contributing to materially lower customer satisfaction.",
     approach: "AI-assisted fault-classification system implemented to route incidents to the correct specialist team automatically. Green Belt cohort trained on the NOC floor.",
     result: "Mean time to resolve dropped to 1.8 hours. NPS improved by 14 points over the following quarter.",
   },
@@ -94,7 +94,7 @@ export const caseStudies: CaseStudy[] = [
     company: "Provincial Government Department",
     problem: "Document processing turnaround time of 47 days against a regulatory target of 21 days. Facing audit findings and public scrutiny.",
     approach: "Full Yellow Belt cohort deployment across 60 officials. DMAIC project identified handoff failures and approval bottlenecks as root causes.",
-    result: "Turnaround time reduced to 19 days, beating the regulatory target. Department passed its next audit with zero findings on processing time.",
+    result: "Turnaround time reduced to 19 days, beating the regulatory target. The department passed its next audit without major findings related to processing time.",
   },
   {
     id: "cs-12",
@@ -102,6 +102,6 @@ export const caseStudies: CaseStudy[] = [
     company: "Independent Power Producer",
     problem: "Safety incident rate 40% above sector benchmark. Investigations repeatedly identified procedural non-compliance as the root cause.",
     approach: "Black Belt project integrating behavioural safety analysis with operational procedure redesign. AI monitoring system flagged deviations from high-risk procedures in real time.",
-    result: "Safety incident rate reduced 58% in the first year. Zero lost-time injuries in the 12 months following implementation.",
+    result: "Safety incident rate reduced by around 58% in the first year. No lost-time injuries were reported in the 12 months following implementation.",
   },
 ];
