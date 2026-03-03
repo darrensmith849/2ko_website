@@ -14,6 +14,7 @@ export default function ContactForm() {
     email: "",
     organisation: "",
     challenge: "",
+    website: "",
   });
   const [state, setState] = useState<FormState>({ status: "idle", message: "" });
 
@@ -33,11 +34,17 @@ export default function ContactForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
-      const data = await res.json();
+
+      let data: Record<string, string> = {};
+      try {
+        data = await res.json();
+      } catch {
+        data = {};
+      }
 
       if (res.ok) {
         setState({ status: "success", message: data.message ?? "Message sent." });
-        setForm({ name: "", email: "", organisation: "", challenge: "" });
+        setForm({ name: "", email: "", organisation: "", challenge: "", website: "" });
       } else {
         setState({
           status: "error",
@@ -54,7 +61,11 @@ export default function ContactForm() {
 
   if (state.status === "success") {
     return (
-      <div className="rounded-2xl bg-accent/10 border border-accent/20 p-10 text-center">
+      <div
+        className="rounded-2xl bg-accent/10 border border-accent/20 p-10 text-center"
+        role="status"
+        aria-live="polite"
+      >
         <div className="text-4xl mb-4" aria-hidden="true">✓</div>
         <h3 className="text-text font-semibold text-lg mb-2">Message received</h3>
         <p className="text-muted text-sm leading-relaxed">{state.message}</p>
@@ -89,6 +100,7 @@ export default function ContactForm() {
             autoComplete="name"
             placeholder="Jane Smith"
             className={fieldClass}
+            disabled={state.status === "submitting"}
           />
         </div>
         <div>
@@ -105,6 +117,7 @@ export default function ContactForm() {
             autoComplete="email"
             placeholder="jane@company.co.za"
             className={fieldClass}
+            disabled={state.status === "submitting"}
           />
         </div>
       </div>
@@ -122,6 +135,20 @@ export default function ContactForm() {
           autoComplete="organization"
           placeholder="Acme Corp"
           className={fieldClass}
+          disabled={state.status === "submitting"}
+        />
+      </div>
+
+      <div className="hidden" aria-hidden="true">
+        <label htmlFor="website">Website</label>
+        <input
+          id="website"
+          name="website"
+          type="text"
+          value={form.website}
+          onChange={handleChange}
+          tabIndex={-1}
+          autoComplete="off"
         />
       </div>
 
@@ -138,11 +165,16 @@ export default function ContactForm() {
           rows={5}
           placeholder="Describe the problem you're trying to solve — the more specific, the better."
           className={`${fieldClass} resize-none`}
+          disabled={state.status === "submitting"}
         />
       </div>
 
       {state.status === "error" && (
-        <div className="rounded-xl bg-red-950/30 border border-red-900/40 px-4 py-3 text-sm text-red-400">
+        <div
+          className="rounded-xl bg-red-950/30 border border-red-900/40 px-4 py-3 text-sm text-red-400"
+          role="alert"
+          aria-live="assertive"
+        >
           {state.message}
         </div>
       )}
