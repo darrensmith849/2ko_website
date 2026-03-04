@@ -20,7 +20,7 @@ export default function ContactPage() {
         subheadline="Tell us your biggest operational challenge. We'll respond within one business day with an honest view of how — or whether — we can help."
         imageKey="contactHero"
         imageAlt="Business leaders in a focused consultation meeting"
-        imagePosition="center"
+        imagePosition="center 33%"
         ctas={[]}
       />
 
@@ -40,6 +40,7 @@ export default function ContactPage() {
                 fill
                 sizes="(max-width: 1024px) 100vw, 42vw"
                 className="object-cover"
+                style={{ objectPosition: "center 32%" }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/15" />
             </div>

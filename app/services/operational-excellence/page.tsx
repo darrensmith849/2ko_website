@@ -45,7 +45,7 @@ export default function OperationalExcellencePage() {
         subheadline="We train your people to a certified standard, run live improvement projects against your real problems, and then build the management system that makes the new standard the default."
         imageKey="operationalExcellenceHero"
         imageAlt="Industrial operations team reviewing production quality performance"
-        imagePosition="center"
+        imagePosition="center 38%"
         ctas={[
           { label: "Talk to us", href: "/contact", variant: "primary" },
           { label: "See results", href: "/case-studies", variant: "outline" },

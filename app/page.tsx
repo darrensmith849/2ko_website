@@ -71,7 +71,7 @@ export default function HomePage() {
         imageKey="homeHero"
         imageAlt="Operations leaders reviewing performance in a modern workspace"
         imagePriority
-        imagePosition="center"
+        imagePosition="center 36%"
         ctas={[
           { label: "Start the conversation", href: "/contact", variant: "primary" },
           { label: "See case studies", href: "/case-studies", variant: "outline" },

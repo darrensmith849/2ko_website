@@ -36,7 +36,11 @@ export default function Hero({
   const imageUrl = imageKey ? getImage(imageKey) : null;
 
   return (
-    <section className="relative overflow-hidden border-b border-border/60">
+    <section
+      className={`relative overflow-hidden border-b border-border/60 ${
+        imageUrl ? "min-h-[56vh] sm:min-h-[60vh]" : ""
+      }`}
+    >
       {imageUrl && (
         <>
           <div className="pointer-events-none absolute inset-0">
@@ -72,7 +76,11 @@ export default function Hero({
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent"
       />
-      <div className="relative max-w-6xl mx-auto px-6 pt-28 pb-24 text-center">
+      <div
+        className={`relative max-w-6xl mx-auto px-6 text-center ${
+          imageUrl ? "pt-24 sm:pt-28 pb-20 sm:pb-24" : "pt-28 pb-24"
+        }`}
+      >
         {badge && (
           <div className="mb-6 flex justify-center">
             <Badge variant="accent" className="px-4 py-1.5 text-[11px] uppercase tracking-widest">

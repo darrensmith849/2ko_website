@@ -65,7 +65,7 @@ export default function AboutPage() {
         subheadline="2KO helps organisations build Lean Six Sigma capability and reinforce new operating standards with practical management systems."
         imageKey="aboutHero"
         imageAlt="Consulting team collaborating around operational planning"
-        imagePosition="center"
+        imagePosition="center 35%"
         ctas={[
           { label: "Work with us", href: "/contact", variant: "primary" },
           { label: "See our results", href: "/case-studies", variant: "outline" },
@@ -105,6 +105,7 @@ export default function AboutPage() {
               fill
               sizes="(max-width: 1024px) 100vw, 40vw"
               className="object-cover"
+              style={{ objectPosition: "center 34%" }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/20" />
           </div>

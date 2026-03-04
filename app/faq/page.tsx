@@ -20,7 +20,7 @@ export default function FAQPage() {
         subheadline="The questions we hear most often before an engagement starts — answered directly."
         imageKey="faqHero"
         imageAlt="Consulting discussion in a modern collaborative workspace"
-        imagePosition="center"
+        imagePosition="center 35%"
         ctas={[]}
       />
 

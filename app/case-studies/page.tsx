@@ -20,7 +20,7 @@ export default function CaseStudiesPage() {
         subheadline="A selection of illustrative, anonymised outcomes from 2KO engagements across industries. Exact results vary by baseline, scope, and operating context."
         imageKey="caseStudiesHero"
         imageAlt="Operations leadership team reviewing performance outcomes"
-        imagePosition="center"
+        imagePosition="center 34%"
         ctas={[
           { label: "Start your own engagement", href: "/contact", variant: "primary" },
         ]}

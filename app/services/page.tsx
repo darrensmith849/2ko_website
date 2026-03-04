@@ -20,7 +20,7 @@ export default function ServicesPage() {
         subheadline="Lean Six Sigma builds the capability. AI systems enforce the standard. Together, they make improvement that sticks."
         imageKey="servicesHero"
         imageAlt="Consulting team in a focused strategy session"
-        imagePosition="center"
+        imagePosition="center 34%"
         ctas={[
           { label: "Start the conversation", href: "/contact", variant: "primary" },
         ]}
