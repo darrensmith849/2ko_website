@@ -68,6 +68,10 @@ export default function HomePage() {
         badge="Operational Excellence + AI"
         headline="We make operational improvement permanent."
         subheadline="2KO trains your people in Lean Six Sigma and builds the AI-powered management systems that stop your gains from slipping back."
+        imageKey="homeHero"
+        imageAlt="Operations leaders reviewing performance in a modern workspace"
+        imagePriority
+        imagePosition="center"
         ctas={[
           { label: "Start the conversation", href: "/contact", variant: "primary" },
           { label: "See case studies", href: "/case-studies", variant: "outline" },

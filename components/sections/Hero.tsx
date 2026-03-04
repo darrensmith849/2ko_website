@@ -1,6 +1,8 @@
 import { type ReactNode } from "react";
+import Image from "next/image";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
+import { getImage } from "@/lib/imageBank";
 
 interface HeroCTA {
   label: string;
@@ -13,6 +15,10 @@ interface HeroProps {
   headline: string;
   subheadline: string;
   ctas?: HeroCTA[];
+  imageKey?: string;
+  imageAlt?: string;
+  imagePriority?: boolean;
+  imagePosition?: string;
   children?: ReactNode;
 }
 
@@ -21,10 +27,35 @@ export default function Hero({
   headline,
   subheadline,
   ctas = [],
+  imageKey,
+  imageAlt = "Business operations background",
+  imagePriority = false,
+  imagePosition = "center",
   children,
 }: HeroProps) {
+  const imageUrl = imageKey ? getImage(imageKey) : null;
+
   return (
     <section className="relative overflow-hidden border-b border-border/60">
+      {imageUrl && (
+        <>
+          <div className="pointer-events-none absolute inset-0">
+            <Image
+              src={imageUrl}
+              alt={imageAlt}
+              fill
+              sizes="100vw"
+              priority={imagePriority}
+              className="object-cover"
+              style={{ objectPosition: imagePosition }}
+            />
+          </div>
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/80 via-black/65 to-background/95"
+          />
+        </>
+      )}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
