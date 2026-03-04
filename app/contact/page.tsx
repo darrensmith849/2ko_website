@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Hero from "@/components/sections/Hero";
 import ContactForm from "./ContactForm";
+import { getImage } from "@/lib/imageBank";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata(
@@ -16,6 +18,9 @@ export default function ContactPage() {
         badge="Get in touch"
         headline="Start the conversation."
         subheadline="Tell us your biggest operational challenge. We'll respond within one business day with an honest view of how — or whether — we can help."
+        imageKey="contactHero"
+        imageAlt="Business leaders in a focused consultation meeting"
+        imagePosition="center"
         ctas={[]}
       />
 
@@ -28,6 +33,16 @@ export default function ContactPage() {
 
           {/* Info */}
           <div className="flex flex-col gap-8">
+            <div className="relative h-56 sm:h-64 rounded-3xl overflow-hidden border border-border">
+              <Image
+                src={getImage("contactSection")}
+                alt="Consulting conversation in a modern office setting"
+                fill
+                sizes="(max-width: 1024px) 100vw, 42vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/15" />
+            </div>
             <div>
               <h2 className="text-text font-semibold text-lg mb-4">What to expect</h2>
               <ul className="flex flex-col gap-4">

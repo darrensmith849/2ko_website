@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Hero from "@/components/sections/Hero";
 import CTABand from "@/components/sections/CTABand";
 import Badge from "@/components/ui/Badge";
+import { getImage } from "@/lib/imageBank";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata(
@@ -61,6 +63,9 @@ export default function AboutPage() {
         badge="About 2KO"
         headline="Built on process. Powered by systems."
         subheadline="2KO helps organisations build Lean Six Sigma capability and reinforce new operating standards with practical management systems."
+        imageKey="aboutHero"
+        imageAlt="Consulting team collaborating around operational planning"
+        imagePosition="center"
         ctas={[
           { label: "Work with us", href: "/contact", variant: "primary" },
           { label: "See our results", href: "/case-studies", variant: "outline" },
@@ -69,27 +74,39 @@ export default function AboutPage() {
 
       {/* Story */}
       <section className="max-w-6xl mx-auto px-6 py-16">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-semibold text-text tracking-tight mb-6">
-            Our story
-          </h2>
-          <div className="flex flex-col gap-5 text-muted text-lg leading-relaxed">
-            <p>
-              2KO was founded on a simple observation: organisations invest in improvement
-              programmes, get real results, and then watch those results erode as the new
-              behaviours fail to become default operating procedure.
-            </p>
-            <p>
-              We set out to solve the sustainability problem — not by training harder or
-              longer, but by designing management systems that make it structurally easier
-              to maintain the new standard than to drift back to the old one.
-            </p>
-            <p>
-              That focus shapes everything we do: how we design
-              programmes, how we measure outcomes, and how we use AI to give our clients&apos;
-              management teams the visibility they need to lead proactively rather than
-              reactively.
-            </p>
+        <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
+          <div className="max-w-3xl">
+            <h2 className="text-3xl font-semibold text-text tracking-tight mb-6">
+              Our story
+            </h2>
+            <div className="flex flex-col gap-5 text-muted text-lg leading-relaxed">
+              <p>
+                2KO was founded on a simple observation: organisations invest in improvement
+                programmes, get real results, and then watch those results erode as the new
+                behaviours fail to become default operating procedure.
+              </p>
+              <p>
+                We set out to solve the sustainability problem — not by training harder or
+                longer, but by designing management systems that make it structurally easier
+                to maintain the new standard than to drift back to the old one.
+              </p>
+              <p>
+                That focus shapes everything we do: how we design
+                programmes, how we measure outcomes, and how we use AI to give our clients&apos;
+                management teams the visibility they need to lead proactively rather than
+                reactively.
+              </p>
+            </div>
+          </div>
+          <div className="relative h-72 sm:h-80 lg:h-full min-h-[20rem] rounded-3xl overflow-hidden border border-border">
+            <Image
+              src={getImage("aboutStory")}
+              alt="Team planning sustainable operational improvements on a strategy board"
+              fill
+              sizes="(max-width: 1024px) 100vw, 40vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/20" />
           </div>
         </div>
       </section>

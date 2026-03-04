@@ -18,6 +18,9 @@ export default function FAQPage() {
         badge="FAQ"
         headline="Straight answers."
         subheadline="The questions we hear most often before an engagement starts — answered directly."
+        imageKey="faqHero"
+        imageAlt="Consulting discussion in a modern collaborative workspace"
+        imagePosition="center"
         ctas={[]}
       />
 

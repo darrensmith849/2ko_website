@@ -44,6 +44,9 @@ export default function AISystemsPage() {
         badge="AI Systems"
         headline="Systems that enforce the standard."
         subheadline="We build AI-powered management layers that monitor your operational standards, surface deviations in real time, and make it structurally harder to regress."
+        imageKey="aiSystemsHero"
+        imageAlt="Data-driven operations dashboard in a modern enterprise environment"
+        imagePosition="center"
         ctas={[
           { label: "Talk to us", href: "/contact", variant: "primary" },
           { label: "See results", href: "/case-studies", variant: "outline" },
