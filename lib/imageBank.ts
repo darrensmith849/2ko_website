@@ -4,27 +4,27 @@ const DEFAULT_FALLBACK_QUERY = "abstract technology operations";
 
 const pinnedImages: Record<string, string> = {
   homeHero:
-    "https://source.unsplash.com/1920x1200/?operations-team-collaboration,modern-office&sig=101",
+    "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80",
   servicesHero:
-    "https://source.unsplash.com/1920x1200/?strategic-workshop,business-team&sig=102",
+    "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=80",
   operationalExcellenceHero:
-    "https://source.unsplash.com/1920x1200/?manufacturing-line,industrial-operations&sig=103",
+    "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1920&q=80",
   aiSystemsHero:
-    "https://source.unsplash.com/1920x1200/?data-visualization,technology-dashboard&sig=104",
+    "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1920&q=80",
   caseStudiesHero:
-    "https://source.unsplash.com/1920x1200/?enterprise-team,meeting-room&sig=105",
+    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1920&q=80",
   faqHero:
-    "https://source.unsplash.com/1920x1200/?modern-office,collaboration-space&sig=106",
+    "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1920&q=80",
   aboutHero:
-    "https://source.unsplash.com/1920x1200/?professional-team,workspace&sig=107",
+    "https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=1920&q=80",
   contactHero:
-    "https://source.unsplash.com/1920x1200/?consulting-conversation,office-lounge&sig=108",
+    "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1920&q=80",
   aboutStory:
-    "https://source.unsplash.com/1400x1000/?operations-team,planning-board&sig=109",
+    "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80",
   caseStudiesSection:
-    "https://source.unsplash.com/1400x1000/?logistics-operations,warehouse-team&sig=110",
+    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80",
   contactSection:
-    "https://source.unsplash.com/1400x1000/?business-conversation,glass-office&sig=111",
+    "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1600&q=80",
 };
 
 const queryImages: Record<string, string> = {
@@ -59,4 +59,3 @@ export function getImage(key: string) {
   const query = queryImages[key] ?? DEFAULT_FALLBACK_QUERY;
   return queryUrl(query);
 }
-
