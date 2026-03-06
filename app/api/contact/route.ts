@@ -5,6 +5,7 @@ interface ContactBody {
   name: string;
   email: string;
   organisation?: string;
+  enquiryType?: string;
   challenge: string;
   website?: string;
 }
@@ -75,7 +76,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
   }
 
-  const { name, email, organisation, challenge, website } = body;
+  const { name, email, organisation, enquiryType, challenge, website } = body;
   const ip = getClientIp(req);
 
   if (isRateLimited(ip)) {
@@ -105,6 +106,7 @@ export async function POST(req: NextRequest) {
   const normalizedName = name.trim();
   const normalizedEmail = email.trim();
   const normalizedOrganisation = organisation?.trim() ?? "";
+  const normalizedEnquiryType = enquiryType?.trim() ?? "";
   const normalizedChallenge = challenge.trim();
   const headerSafeName = sanitizeHeaderValue(normalizedName);
   const headerSafeOrg = sanitizeHeaderValue(normalizedOrganisation);
@@ -112,6 +114,7 @@ export async function POST(req: NextRequest) {
   const safeName = escapeHtml(normalizedName);
   const safeEmail = escapeHtml(normalizedEmail);
   const safeOrganisation = normalizedOrganisation ? escapeHtml(normalizedOrganisation) : "";
+  const safeEnquiryType = normalizedEnquiryType ? escapeHtml(normalizedEnquiryType) : "";
   const safeChallenge = escapeHtml(normalizedChallenge);
 
   if (!process.env.RESEND_API_KEY) {
@@ -143,6 +146,7 @@ export async function POST(req: NextRequest) {
       `Name: ${normalizedName}`,
       `Email: ${normalizedEmail}`,
       normalizedOrganisation ? `Organisation: ${normalizedOrganisation}` : null,
+      normalizedEnquiryType ? `Enquiry type: ${normalizedEnquiryType}` : null,
       "",
       "Challenge:",
       normalizedChallenge,
@@ -166,6 +170,14 @@ export async function POST(req: NextRequest) {
               ? `<tr>
               <td style="padding: 8px 0; color: #666;"><strong>Organisation</strong></td>
               <td style="padding: 8px 0;">${safeOrganisation}</td>
+            </tr>`
+              : ""
+          }
+          ${
+            safeEnquiryType
+              ? `<tr>
+              <td style="padding: 8px 0; color: #666;"><strong>Enquiry type</strong></td>
+              <td style="padding: 8px 0;">${safeEnquiryType}</td>
             </tr>`
               : ""
           }

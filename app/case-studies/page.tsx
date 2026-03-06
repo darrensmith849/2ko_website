@@ -37,6 +37,7 @@ export default function CaseStudiesPage() {
               problem={cs.problem}
               approach={cs.approach}
               result={cs.result}
+              tags={cs.tags}
             />
           ))}
         </div>
@@ -57,7 +58,7 @@ export default function CaseStudiesPage() {
         headline="Want results like these in your organisation?"
         subheadline="Book a 30-minute diagnostic call to explore what&apos;s possible."
         primaryCTA={{ label: "Start the conversation", href: "/contact" }}
-        secondaryCTA={{ label: "Explore our services", href: "/services" }}
+        secondaryCTA={{ label: "View training programmes", href: "/training" }}
       />
     </main>
   );

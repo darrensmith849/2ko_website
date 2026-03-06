@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import Hero from "@/components/sections/Hero";
 import CTABand from "@/components/sections/CTABand";
 import Badge from "@/components/ui/Badge";
@@ -18,18 +19,21 @@ const entities = [
     role: "Training & Improvement Delivery",
     description:
       "The primary delivery vehicle for Lean Six Sigma belt programmes and live improvement projects across sub-Saharan Africa.",
+    href: "/training",
   },
   {
-    name: "SSSA",
-    role: "Standards & Accreditation",
+    name: "Six Sigma South Africa",
+    role: "Accreditation & CI Consulting",
     description:
-      "The South African Six Sigma Association — the accreditation body that ensures our programmes meet international quality and curriculum standards.",
+      "Africa's recognised authority for Six Sigma accreditation and certification, backed by international quality standards including the CSSC.",
+    href: "/accreditation",
   },
   {
     name: "Impart",
     role: "AI Systems & Technology",
     description:
-      "The technology arm of the group, building the AI-powered management monitoring systems that complement our training engagements and sustain the gains.",
+      "The technology arm of the group, building the AI-powered management systems that embed operational standards into daily workflows.",
+    href: "/services/ai-systems",
   },
 ];
 
@@ -142,7 +146,13 @@ export default function AboutPage() {
                 <h3 className="text-text font-semibold text-lg">{entity.name}</h3>
                 <Badge variant="accent" className="mt-2">{entity.role}</Badge>
               </div>
-              <p className="text-muted text-sm leading-relaxed">{entity.description}</p>
+              <p className="text-muted text-sm leading-relaxed flex-1">{entity.description}</p>
+              <Link
+                href={entity.href}
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:text-accent2 transition-colors"
+              >
+                Learn more &rarr;
+              </Link>
             </div>
           ))}
         </div>

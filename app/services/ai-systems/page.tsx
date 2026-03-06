@@ -11,6 +11,29 @@ export const metadata: Metadata = pageMetadata(
   "/services/ai-systems"
 );
 
+const systemCategories = [
+  {
+    title: "Workflow automation",
+    description:
+      "Standardised processes embedded into digital workflows that enforce compliance by design — reducing manual steps and eliminating the gaps where standards slip.",
+  },
+  {
+    title: "Dashboard & pack automation",
+    description:
+      "Management reporting generated automatically from live data. Your team focuses on the issues, not assembling the slides.",
+  },
+  {
+    title: "SOP & knowledge copilots",
+    description:
+      "AI-assisted tools that surface the right procedure, standard, or reference at the point of work — so compliance is effortless, not effortful.",
+  },
+  {
+    title: "Approvals & governance",
+    description:
+      "Automated approval routing, deviation logging, and compliance tracking that runs in the background — creating audit trails without adding admin burden.",
+  },
+];
+
 const capabilities = [
   {
     title: "Real-time monitoring",
@@ -42,8 +65,8 @@ export default function AISystemsPage() {
     <main>
       <Hero
         badge="AI Systems"
-        headline="Systems that enforce the standard."
-        subheadline="We build AI-powered management layers that monitor your operational standards, surface deviations in real time, and make it structurally harder to regress."
+        headline="We don't automate chaos."
+        subheadline="We standardise first, then build systems. AI-powered management layers that monitor your operational standards, surface deviations in real time, and make it structurally harder to regress."
         imageKey="aiSystemsHero"
         imageAlt="Data-driven operations dashboard in a modern enterprise environment"
         imagePosition="center 32%"
@@ -53,7 +76,7 @@ export default function AISystemsPage() {
         ]}
       />
 
-      {/* What it is */}
+      {/* Core philosophy */}
       <section className="max-w-6xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <div>
@@ -62,14 +85,14 @@ export default function AISystemsPage() {
             </h2>
             <p className="text-muted text-lg leading-relaxed mb-6">
               The problem with relying on people to self-enforce standards is that people
-              are busy, distracted, and optimistic about small deviations. Systems aren&apos;t.
+              are busy, distracted, and optimistic about small deviations. Systems are not.
               A well-designed AI management layer provides the consistent attention that
               no human manager can sustain.
             </p>
             <p className="text-muted text-lg leading-relaxed">
-              We build these systems around your specific operational standards — not
-              generic dashboards, but tools designed around the decisions your managers
-              actually need to make.
+              That is why we start with Six Sigma — to define and prove the improvement — then
+              build the AI system that makes the improvement permanent. Without the methodology,
+              you are automating guesswork. Without the system, you are relying on willpower.
             </p>
           </div>
           <div className="rounded-2xl bg-surface border border-border p-8">
@@ -77,7 +100,7 @@ export default function AISystemsPage() {
             <ul className="flex flex-col gap-3">
               {service.bullets.map((b, i) => (
                 <li key={i} className="flex items-start gap-3 text-sm text-muted">
-                  <span className="text-accent mt-0.5 flex-shrink-0">✓</span>
+                  <span className="text-accent mt-0.5 flex-shrink-0">&#x2713;</span>
                   {b}
                 </li>
               ))}
@@ -86,13 +109,31 @@ export default function AISystemsPage() {
         </div>
       </section>
 
-      {/* Capabilities */}
+      {/* System categories */}
       <section className="max-w-6xl mx-auto px-6 py-16 border-t border-border">
         <h2 className="text-3xl font-semibold text-text tracking-tight mb-4 text-center">
-          What the system does
+          What we build
         </h2>
         <p className="text-center text-muted mb-12 max-w-2xl mx-auto">
-          Every system is custom-built. These are the capabilities we assemble for each client.
+          Every system is custom-built for your operating context. These are the categories of capability we assemble.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {systemCategories.map((cat) => (
+            <div key={cat.title} className="rounded-2xl bg-surface border border-border p-7">
+              <h3 className="text-text font-semibold mb-3">{cat.title}</h3>
+              <p className="text-muted text-sm leading-relaxed">{cat.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Technical capabilities */}
+      <section className="max-w-6xl mx-auto px-6 py-16 border-t border-border">
+        <h2 className="text-3xl font-semibold text-text tracking-tight mb-4 text-center">
+          Core capabilities
+        </h2>
+        <p className="text-center text-muted mb-12 max-w-2xl mx-auto">
+          The technical building blocks behind every system we deploy.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {capabilities.map((cap) => (
@@ -114,15 +155,15 @@ export default function AISystemsPage() {
             {[
               {
                 title: "Data security first",
-                body: "We design for data minimisation and can deploy entirely within your infrastructure — on-premise or private cloud. Your operational data never leaves your environment unless you choose otherwise.",
+                body: "We design for data minimisation and can deploy entirely within your infrastructure — on-premise or private cloud. Your operational data stays in your environment unless you choose otherwise.",
               },
               {
                 title: "Integration, not replacement",
-                body: "We build on top of your existing systems, not instead of them. The monitoring layer integrates with what you already have — SAP, Oracle, custom MES platforms, spreadsheet exports — wherever your data lives.",
+                body: "We build on top of your existing systems, not instead of them. SAP, Oracle, custom MES platforms, spreadsheet exports — wherever your data lives, we integrate.",
               },
               {
                 title: "Built for your people",
-                body: "Every interface is designed for the person who will use it — not the data scientist who built it. If your floor managers won't look at it, it won't change anything.",
+                body: "Every interface is designed for the person who will use it — not the data scientist who built it. If your floor managers will not look at it, it will not change anything.",
               },
             ].map((item) => (
               <div key={item.title} className="rounded-xl bg-surface border border-border p-6">
@@ -143,7 +184,7 @@ export default function AISystemsPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {service.forWho.map((item, i) => (
               <div key={i} className="rounded-xl bg-surface border border-border p-5 flex items-start gap-3">
-                <span className="text-accent mt-0.5 flex-shrink-0">→</span>
+                <span className="text-accent mt-0.5 flex-shrink-0">&rarr;</span>
                 <p className="text-muted text-sm leading-relaxed">{item}</p>
               </div>
             ))}
@@ -168,7 +209,7 @@ export default function AISystemsPage() {
         headline="Ready to make your standards self-enforcing?"
         subheadline="Let&apos;s talk about what your data looks like and what the system could do."
         primaryCTA={{ label: "Book a diagnostic call", href: "/contact" }}
-        secondaryCTA={{ label: "See the training side", href: "/services/operational-excellence" }}
+        secondaryCTA={{ label: "See the training side", href: "/training" }}
       />
     </main>
   );

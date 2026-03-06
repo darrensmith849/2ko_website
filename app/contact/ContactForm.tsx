@@ -3,6 +3,15 @@
 import { useState, type FormEvent } from "react";
 import Button from "@/components/ui/Button";
 
+const enquiryTypes = [
+  { value: "", label: "Select enquiry type" },
+  { value: "training", label: "Training & Certification" },
+  { value: "consulting", label: "Consulting & Deployment" },
+  { value: "accreditation", label: "Accreditation & Standards" },
+  { value: "ai-systems", label: "AI Systems & Automation" },
+  { value: "other", label: "Other / General" },
+];
+
 interface FormState {
   status: "idle" | "submitting" | "success" | "error";
   message: string;
@@ -13,13 +22,14 @@ export default function ContactForm() {
     name: "",
     email: "",
     organisation: "",
+    enquiryType: "",
     challenge: "",
     website: "",
   });
   const [state, setState] = useState<FormState>({ status: "idle", message: "" });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -44,7 +54,7 @@ export default function ContactForm() {
 
       if (res.ok) {
         setState({ status: "success", message: data.message ?? "Message sent." });
-        setForm({ name: "", email: "", organisation: "", challenge: "", website: "" });
+        setForm({ name: "", email: "", organisation: "", enquiryType: "", challenge: "", website: "" });
       } else {
         setState({
           status: "error",
@@ -66,7 +76,7 @@ export default function ContactForm() {
         role="status"
         aria-live="polite"
       >
-        <div className="text-4xl mb-4" aria-hidden="true">✓</div>
+        <div className="text-4xl mb-4" aria-hidden="true">&#x2713;</div>
         <h3 className="text-text font-semibold text-lg mb-2">Message received</h3>
         <p className="text-muted text-sm leading-relaxed">{state.message}</p>
         <button
@@ -122,21 +132,42 @@ export default function ContactForm() {
         </div>
       </div>
 
-      <div>
-        <label htmlFor="organisation" className={labelClass}>
-          Organisation
-        </label>
-        <input
-          id="organisation"
-          name="organisation"
-          type="text"
-          value={form.organisation}
-          onChange={handleChange}
-          autoComplete="organization"
-          placeholder="Acme Corp"
-          className={fieldClass}
-          disabled={state.status === "submitting"}
-        />
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div>
+          <label htmlFor="organisation" className={labelClass}>
+            Organisation
+          </label>
+          <input
+            id="organisation"
+            name="organisation"
+            type="text"
+            value={form.organisation}
+            onChange={handleChange}
+            autoComplete="organization"
+            placeholder="Acme Corp"
+            className={fieldClass}
+            disabled={state.status === "submitting"}
+          />
+        </div>
+        <div>
+          <label htmlFor="enquiryType" className={labelClass}>
+            Enquiry type
+          </label>
+          <select
+            id="enquiryType"
+            name="enquiryType"
+            value={form.enquiryType}
+            onChange={handleChange}
+            className={`${fieldClass} appearance-none`}
+            disabled={state.status === "submitting"}
+          >
+            {enquiryTypes.map((t) => (
+              <option key={t.value} value={t.value}>
+                {t.label}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
       <div className="absolute -left-[9999px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
@@ -185,7 +216,7 @@ export default function ContactForm() {
         disabled={state.status === "submitting"}
         className="w-full sm:w-auto"
       >
-        {state.status === "submitting" ? "Sending…" : "Send message"}
+        {state.status === "submitting" ? "Sending\u2026" : "Send message"}
       </Button>
 
       <p className="text-muted2 text-xs">

@@ -138,7 +138,7 @@ export default function OperationalExcellencePage() {
         headline="Ready to build lasting capability?"
         subheadline="Start with a diagnostic conversation about your biggest operational challenge."
         primaryCTA={{ label: "Book a diagnostic call", href: "/contact" }}
-        secondaryCTA={{ label: "See the AI systems side", href: "/services/ai-systems" }}
+        secondaryCTA={{ label: "View training programmes", href: "/training" }}
       />
     </main>
   );

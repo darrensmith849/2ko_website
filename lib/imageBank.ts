@@ -25,6 +25,12 @@ const pinnedImages: Record<string, string> = {
     "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80",
   contactSection:
     "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1600&q=80",
+  trainingHero:
+    "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1920&q=80",
+  consultingHero:
+    "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1920&q=80",
+  accreditationHero:
+    "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1920&q=80",
 };
 
 const queryImages: Record<string, string> = {
@@ -39,6 +45,9 @@ const queryImages: Record<string, string> = {
   aboutStory: "operations planning whiteboard team",
   caseStudiesSection: "warehouse logistics operations team",
   contactSection: "meeting room consulting conversation",
+  trainingHero: "professional training classroom workshop",
+  consultingHero: "strategy consulting team collaboration",
+  accreditationHero: "professional certification standards documentation",
 };
 
 const imageMode: ImageMode =

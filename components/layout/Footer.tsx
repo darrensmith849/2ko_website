@@ -1,6 +1,11 @@
 import Link from "next/link";
 
 const footerLinks = {
+  Training: [
+    { href: "/training", label: "Course Catalogue" },
+    { href: "/accreditation", label: "Accreditation" },
+    { href: "/consulting", label: "CI Consulting" },
+  ],
   Services: [
     { href: "/services", label: "Overview" },
     { href: "/services/operational-excellence", label: "Operational Excellence" },
@@ -17,13 +22,13 @@ const footerLinks = {
 export default function Footer() {
   return (
     <footer className="border-t border-border bg-surface mt-24">
-      <div className="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-4 gap-10">
+      <div className="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-5 gap-10">
         <div className="md:col-span-2">
           <Link href="/" className="text-text font-semibold text-lg mb-3 block hover:text-accent transition-colors">
             2KO
           </Link>
           <p className="text-muted text-sm max-w-xs leading-relaxed">
-            Making operational improvement permanent through Six Sigma mastery and AI-powered management systems.
+            Making operational improvement permanent through Six Sigma training, CI consulting, and AI-powered management systems.
           </p>
         </div>
         {Object.entries(footerLinks).map(([section, links]) => (
@@ -49,7 +54,7 @@ export default function Footer() {
       <div className="border-t border-border">
         <div className="max-w-6xl mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3">
           <p className="text-muted2 text-sm">
-            © {new Date().getFullYear()} 2KO. All rights reserved.
+            &copy; {new Date().getFullYear()} 2KO. All rights reserved.
           </p>
           <a
             href="mailto:info@2ko.co.za"

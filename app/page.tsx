@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Hero from "@/components/sections/Hero";
-import ServiceCard from "@/components/sections/ServiceCard";
+import PartnerEngines from "@/components/sections/PartnerEngines";
 import ProofBlock from "@/components/sections/ProofBlock";
 import Stepper from "@/components/sections/Stepper";
 import CTABand from "@/components/sections/CTABand";
-import { services } from "@/lib/data/services";
+import Badge from "@/components/ui/Badge";
+import { beltCourses, deliveryModes } from "@/lib/data/training";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata(
-  "2KO — Operational Excellence & AI Systems",
-  "2KO makes operational improvement permanent through Lean Six Sigma mastery and AI-powered management systems for complex organisations.",
+  "2KO — Six Sigma Training, CI Consulting & AI Systems",
+  "2KO makes operational improvement permanent through Lean Six Sigma training, continuous improvement consulting, and AI-powered management systems.",
   "/"
 );
 
@@ -61,25 +63,47 @@ const clientSectors = [
   "Government Department",
 ];
 
+const systemCategories = [
+  {
+    title: "Workflow automation",
+    description: "Standardised processes embedded into digital workflows that enforce compliance by design.",
+  },
+  {
+    title: "Dashboard & pack automation",
+    description: "Management reporting generated automatically from live data — no more assembling slides.",
+  },
+  {
+    title: "SOP & knowledge copilots",
+    description: "AI-assisted tools that surface the right procedure, standard, or reference at the point of work.",
+  },
+  {
+    title: "Governance & audit trails",
+    description: "Automated approval routing, deviation logging, and compliance tracking that runs in the background.",
+  },
+];
+
 export default function HomePage() {
   return (
     <main>
       <Hero
-        badge="Operational Excellence + AI"
+        badge="Six Sigma Training + CI Consulting + AI Systems"
         headline="We make operational improvement permanent."
-        subheadline="2KO trains your people in Lean Six Sigma and builds the AI-powered management systems that stop your gains from slipping back."
+        subheadline="2KO trains your people in Lean Six Sigma, deploys continuous improvement programmes, and builds the AI-powered management systems that stop your gains from slipping back."
         imageKey="homeHero"
         imageAlt="Operations leaders reviewing performance in a modern workspace"
         imagePriority
         imagePosition="center 36%"
         ctas={[
           { label: "Start the conversation", href: "/contact", variant: "primary" },
-          { label: "See case studies", href: "/case-studies", variant: "outline" },
+          { label: "View courses", href: "/training", variant: "outline" },
         ]}
       />
 
-      {/* Client logo strip */}
-      <section className="max-w-6xl mx-auto px-6 py-12">
+      {/* Partner Engines — immediately below hero CTAs */}
+      <PartnerEngines />
+
+      {/* Client sectors strip */}
+      <section className="max-w-6xl mx-auto px-6 py-10 border-t border-border">
         <p className="text-center text-muted2 text-xs font-semibold uppercase tracking-widest mb-8">
           Sectors we support
         </p>
@@ -95,34 +119,85 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Dual-pillar cards */}
-      <section className="max-w-6xl mx-auto px-6 py-16">
+      {/* Why we win */}
+      <ProofBlock metrics={proofMetrics} />
+
+      {/* Training pathways teaser */}
+      <section className="max-w-6xl mx-auto px-6 py-16 border-t border-border">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-semibold text-text tracking-tight">
-            Two disciplines. One outcome.
+            Training pathways
           </h2>
           <p className="mt-4 text-muted text-lg max-w-2xl mx-auto">
-            Lean Six Sigma builds the capability. AI systems lock in the standard. Together, they make improvement that lasts.
+            From free White Belt fundamentals to advanced Black Belt leadership — delivered online, virtual, or in the classroom.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {services.map((service, i) => (
-            <ServiceCard
-              key={service.slug}
-              icon={service.icon}
-              title={service.title}
-              tagline={service.tagline}
-              description={service.description}
-              bullets={service.bullets.slice(0, 4)}
-              href={`/services/${service.slug}`}
-              accent={i === 0}
-            />
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          {beltCourses.map((course) => (
+            <Link
+              key={course.slug}
+              href="/training"
+              className="rounded-2xl bg-surface border border-border p-5 text-center hover:border-accent/30 transition-colors group"
+            >
+              <h3 className="text-text font-semibold text-sm group-hover:text-accent transition-colors">
+                {course.level}
+              </h3>
+              <p className="text-muted2 text-xs mt-1">{course.duration}</p>
+              {course.isFree && (
+                <Badge variant="accent" className="mt-3 text-[10px]">
+                  Free
+                </Badge>
+              )}
+            </Link>
           ))}
+        </div>
+        <div className="flex flex-wrap justify-center gap-4 mt-8">
+          {deliveryModes.map((dm) => (
+            <div key={dm.mode} className="flex items-center gap-2 text-sm text-muted">
+              <span className="text-accent">&#x2713;</span>
+              {dm.mode}
+            </div>
+          ))}
+        </div>
+        <div className="text-center mt-8">
+          <Link
+            href="/training"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:text-accent2 transition-colors"
+          >
+            View full course catalogue &rarr;
+          </Link>
         </div>
       </section>
 
-      <ProofBlock metrics={proofMetrics} />
+      {/* Systems that lock-in gains */}
+      <section className="max-w-6xl mx-auto px-6 py-16 border-t border-border">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-semibold text-text tracking-tight">
+            Systems that lock in gains
+          </h2>
+          <p className="mt-4 text-muted text-lg max-w-2xl mx-auto">
+            Six Sigma defines the improvement. AI systems make it permanent by embedding standards into daily workflows.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {systemCategories.map((cat) => (
+            <div key={cat.title} className="rounded-2xl bg-surface border border-border p-7">
+              <h3 className="text-text font-semibold mb-2">{cat.title}</h3>
+              <p className="text-muted text-sm leading-relaxed">{cat.description}</p>
+            </div>
+          ))}
+        </div>
+        <div className="text-center mt-8">
+          <Link
+            href="/services/ai-systems"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:text-accent2 transition-colors"
+          >
+            Learn about AI systems &rarr;
+          </Link>
+        </div>
+      </section>
 
+      {/* How we work */}
       <Stepper
         headline="How we work"
         subheadline="A five-phase engagement model designed to build capability and then protect it."
@@ -133,7 +208,7 @@ export default function HomePage() {
         headline="Ready to make improvement stick?"
         subheadline="Start with a 30-minute diagnostic conversation. No charge, no obligation."
         primaryCTA={{ label: "Start the conversation", href: "/contact" }}
-        secondaryCTA={{ label: "Explore our services", href: "/services" }}
+        secondaryCTA={{ label: "View case studies", href: "/case-studies" }}
       />
     </main>
   );

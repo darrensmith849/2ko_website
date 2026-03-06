@@ -5,10 +5,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const navLinks = [
-  { href: "/services", label: "Services" },
+  { href: "/training", label: "Training" },
+  { href: "/consulting", label: "Consulting" },
+  { href: "/services/ai-systems", label: "AI Systems" },
   { href: "/case-studies", label: "Case Studies" },
   { href: "/about", label: "About" },
-  { href: "/faq", label: "FAQ" },
 ];
 
 export default function Header() {
@@ -43,7 +44,7 @@ export default function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8" aria-label="Main navigation">
+        <nav className="hidden md:flex items-center gap-6" aria-label="Main navigation">
           {navLinks.map((link) => (
             <Link
               key={link.href}
