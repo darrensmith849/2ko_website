@@ -1,6 +1,40 @@
 import Image from "next/image";
 import { PARTNERS } from "@/lib/data/partners";
 
+function PartnerLogo({ name, src }: { name: string; src: string }) {
+  const base =
+    "h-20 md:h-24 w-auto object-contain grayscale opacity-95 brightness-110 contrast-110";
+  const wrapper = "flex items-center justify-center shrink-0";
+
+  if (src.toLowerCase().endsWith(".svg")) {
+    return (
+      <div className={wrapper} style={{ width: 320 }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={src}
+          alt={name}
+          loading="lazy"
+          className={base}
+          style={{ maxWidth: 320 }}
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div className={wrapper} style={{ width: 320 }}>
+      <Image
+        src={src}
+        alt={name}
+        width={320}
+        height={120}
+        className={base}
+        priority={false}
+      />
+    </div>
+  );
+}
+
 /**
  * Infinite right-to-left logo marquee.
  *
@@ -31,21 +65,9 @@ export default function PartnerLogos() {
         {/* Scrolling track: two copies for seamless loop */}
         <div className="flex w-max animate-marquee motion-reduce:animate-none motion-reduce:[animation-play-state:paused]">
           {[0, 1].map((copy) => (
-            <div key={copy} className="flex shrink-0 items-center gap-12 px-6">
+            <div key={copy} className="flex shrink-0 items-center gap-16 px-8">
               {PARTNERS.map((p) => (
-                <div
-                  key={`${copy}-${p.name}`}
-                  className="flex-shrink-0 flex items-center justify-center h-10 w-[120px]"
-                >
-                  <Image
-                    src={p.src}
-                    alt={p.name}
-                    width={120}
-                    height={40}
-                    className="object-contain grayscale opacity-70 brightness-150 contrast-110 transition-all duration-300"
-                    style={{ maxHeight: "40px", width: "auto" }}
-                  />
-                </div>
+                <PartnerLogo key={`${copy}-${p.name}`} name={p.name} src={p.src} />
               ))}
             </div>
           ))}
