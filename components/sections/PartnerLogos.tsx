@@ -1,42 +1,57 @@
 import Image from "next/image";
+import { PARTNERS } from "@/lib/data/partners";
 
-const partners = [
-  { name: "Anglo American", src: "/partners/anglo-american.png" },
-  { name: "Worldnet Logistics", src: "/partners/worldnet-logistics.svg" },
-  { name: "Transnet", src: "/partners/transnet.png" },
-  { name: "Toyota", src: "/partners/toyota.png" },
-  { name: "Standard Bank", src: "/partners/standard-bank.png" },
-  { name: "South African Reserve Bank", src: "/partners/south-african-reserve-bank.png" },
-  { name: "Nedbank", src: "/partners/nedbank.png" },
-  { name: "John Deere", src: "/partners/john-deere.png" },
-  { name: "Airports Company SA", src: "/partners/airports-company-sa.png" },
-  { name: "Absa", src: "/partners/absa.png" },
-  { name: "Valve", src: "/partners/valve.svg" },
-];
-
+/**
+ * Infinite right-to-left logo marquee.
+ *
+ * The track contains two identical copies of the logo list placed
+ * side-by-side. A CSS animation translates the track leftward by
+ * exactly 50 % (one copy's width), then resets — creating a seamless
+ * infinite loop with no jump.
+ *
+ * `prefers-reduced-motion` pauses the animation.
+ */
 export default function PartnerLogos() {
   return (
-    <section className="max-w-5xl mx-auto px-6 pt-6 pb-14">
+    <section className="pt-6 pb-14 overflow-hidden">
       <p className="text-center text-muted2 text-xs font-semibold uppercase tracking-widest mb-8">
         Trusted by leading organisations
       </p>
-      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-x-8 gap-y-6 items-center justify-items-center">
-        {partners.map((partner) => (
-          <div
-            key={partner.name}
-            className="relative h-10 w-full max-w-[120px] flex items-center justify-center"
-          >
-            <Image
-              src={partner.src}
-              alt={partner.name}
-              width={120}
-              height={40}
-              className="object-contain grayscale opacity-70 brightness-150 contrast-110 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
-              style={{ maxHeight: "40px", width: "auto" }}
-            />
-          </div>
-        ))}
+
+      {/* Outer mask — fades edges for a premium feel */}
+      <div
+        className="relative"
+        style={{
+          maskImage:
+            "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+          WebkitMaskImage:
+            "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+        }}
+      >
+        {/* Scrolling track: two copies for seamless loop */}
+        <div className="flex w-max animate-marquee motion-reduce:animate-none motion-reduce:[animation-play-state:paused]">
+          {[0, 1].map((copy) => (
+            <div key={copy} className="flex shrink-0 items-center gap-12 px-6">
+              {PARTNERS.map((p) => (
+                <div
+                  key={`${copy}-${p.name}`}
+                  className="flex-shrink-0 flex items-center justify-center h-10 w-[120px]"
+                >
+                  <Image
+                    src={p.src}
+                    alt={p.name}
+                    width={120}
+                    height={40}
+                    className="object-contain grayscale opacity-70 brightness-150 contrast-110 transition-all duration-300"
+                    style={{ maxHeight: "40px", width: "auto" }}
+                  />
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
+
       <p className="text-center text-muted2 text-xs mt-8">
         And many more across Africa and beyond.
       </p>
