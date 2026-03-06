@@ -27,7 +27,7 @@ function PartnerLogo({ name, src }: { name: string; src: string }) {
         alt={name}
         width={200}
         height={80}
-        className={`${base} mix-blend-lighten`}
+        className={base}
         priority={false}
       />
     </div>
