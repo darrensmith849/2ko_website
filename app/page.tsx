@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Hero from "@/components/sections/Hero";
+import PartnerLogos from "@/components/sections/PartnerLogos";
 import PartnerEngines from "@/components/sections/PartnerEngines";
 import ProofBlock from "@/components/sections/ProofBlock";
 import Stepper from "@/components/sections/Stepper";
@@ -50,19 +51,6 @@ const processSteps = [
   },
 ];
 
-const clientSectors = [
-  "Large Commercial Bank",
-  "Global Insurer",
-  "National Logistics Carrier",
-  "Industrial Manufacturer",
-  "Public Infrastructure Operator",
-  "Energy Producer",
-  "Healthcare Network",
-  "Large-Scale Retailer",
-  "Telecommunications Provider",
-  "Government Department",
-];
-
 const systemCategories = [
   {
     title: "Workflow automation",
@@ -88,7 +76,7 @@ export default function HomePage() {
       <Hero
         badge="Six Sigma Training + CI Consulting + AI Systems"
         headline="We make operational improvement permanent."
-        subheadline="2KO trains your people in Lean Six Sigma, deploys continuous improvement programmes, and builds the AI-powered management systems that stop your gains from slipping back."
+        subheadline="2KO trains your people in Lean Six Sigma, deploys continuous improvement programmes, and builds AI-powered systems that help your improvements stick — and scale."
         imageKey="homeHero"
         imageAlt="Operations leaders reviewing performance in a modern workspace"
         imagePriority
@@ -99,25 +87,11 @@ export default function HomePage() {
         ]}
       />
 
-      {/* Partner Engines — immediately below hero CTAs */}
-      <PartnerEngines />
+      {/* Partner logos — immediately below hero CTAs, above the fold */}
+      <PartnerLogos />
 
-      {/* Client sectors strip */}
-      <section className="max-w-6xl mx-auto px-6 py-10 border-t border-border">
-        <p className="text-center text-muted2 text-xs font-semibold uppercase tracking-widest mb-8">
-          Sectors we support
-        </p>
-        <div className="flex flex-wrap justify-center gap-3">
-          {clientSectors.map((sector) => (
-            <div
-              key={sector}
-              className="rounded-full border border-border bg-surface px-4 py-2 text-sm text-muted"
-            >
-              {sector}
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* Partner Engines — the 2KO group entities */}
+      <PartnerEngines />
 
       {/* Why we win */}
       <ProofBlock metrics={proofMetrics} />
