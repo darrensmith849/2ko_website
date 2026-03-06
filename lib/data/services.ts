@@ -65,7 +65,7 @@ export const services: Service[] = [
     tagline: "Systems that enforce the standard.",
     icon: "🤖",
     description:
-      "We build AI-powered management systems that monitor your operational standards, surface deviations in real time, and make it harder to slip backwards.",
+      "We build AI-powered management systems that embed your operational standards into daily workflows — so improvements hold and scale.",
     longDescription:
       "Training raises the bar. AI systems keep people at it. We design and implement custom AI-assisted management layers that sit on top of your existing processes — reading your data, surfacing anomalies, and prompting the right action from the right person at the right time.",
     bullets: [

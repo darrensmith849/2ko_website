@@ -8,7 +8,7 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata(
   "Operational Excellence",
-  "Lean Six Sigma training and live improvement projects that build real capability — and management systems that keep the gains from slipping back.",
+  "Lean Six Sigma training and live improvement projects that build real capability — and management systems that help your gains stick.",
   "/services/operational-excellence"
 );
 
