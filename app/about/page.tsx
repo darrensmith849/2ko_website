@@ -29,10 +29,10 @@ const entities = [
     href: "/accreditation",
   },
   {
-    name: "Impart",
+    name: "2KO AI Systems",
     role: "AI Systems & Technology",
     description:
-      "The technology arm of the group, building the AI-powered management systems that embed operational standards into daily workflows.",
+      "The technology capability of the group, building the AI-powered management systems that embed operational standards into daily workflows.",
     href: "/services/ai-systems",
   },
 ];

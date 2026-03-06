@@ -21,10 +21,10 @@ export const partners: Partner[] = [
     cta: { label: "Accreditation", href: "/accreditation" },
   },
   {
-    name: "Impart",
+    name: "2KO AI Systems",
     tagline: "AI Systems & Automation",
     description:
-      "The technology arm building AI-powered management systems that embed operational standards into daily workflows.",
+      "The technology capability building AI-powered management systems that embed operational standards into daily workflows.",
     cta: { label: "Build systems", href: "/services/ai-systems" },
   },
 ];
