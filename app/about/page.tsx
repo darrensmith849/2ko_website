@@ -25,7 +25,7 @@ const entities = [
     name: "Six Sigma South Africa",
     role: "Accreditation & CI Consulting",
     description:
-      "Africa's recognised authority for Six Sigma accreditation and certification, backed by international quality standards including the CSSC.",
+      "A recognised provider of Six Sigma accreditation and certification in Africa, backed by international quality standards including the CSSC.",
     href: "/accreditation",
   },
   {

@@ -17,7 +17,7 @@ export const partners: Partner[] = [
     name: "Six Sigma South Africa",
     tagline: "Accreditation & CI Consulting",
     description:
-      "Africa's recognised authority for Six Sigma accreditation and certification, backed by international quality standards.",
+      "A recognised provider of Six Sigma accreditation and certification in Africa, backed by international quality standards.",
     cta: { label: "Accreditation", href: "/accreditation" },
   },
   {

@@ -90,9 +90,9 @@ export default function AccreditationPage() {
           </h2>
           <div className="flex flex-col gap-5 text-muted text-lg leading-relaxed">
             <p>
-              The 2KO group — through Six Sigma South Africa and 2KO Africa — has established
-              itself as a leading authority for Six Sigma accreditation and certification
-              on the African continent.
+              The 2KO group — through Six Sigma South Africa and 2KO Africa — is a recognised
+              provider of Six Sigma accreditation and certification across the African
+              continent.
             </p>
             <p>
               We set the curriculum standards for our programmes, maintain alignment with

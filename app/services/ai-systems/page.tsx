@@ -7,7 +7,7 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata(
   "AI Systems",
-  "Custom AI-powered management systems that monitor your operational standards, surface deviations in real time, and make it harder to slip backwards.",
+  "Custom AI-powered management systems that embed operational standards into daily workflows — so your improvements hold and scale.",
   "/services/ai-systems"
 );
 
@@ -66,7 +66,7 @@ export default function AISystemsPage() {
       <Hero
         badge="AI Systems"
         headline="We don't automate chaos."
-        subheadline="We standardise first, then build systems. AI-powered management layers that monitor your operational standards, surface deviations in real time, and make it structurally harder to regress."
+        subheadline="We standardise first, then build systems. AI-powered management layers that embed your operational standards into workflows, surface what matters, and help your people stay at the new bar."
         imageKey="aiSystemsHero"
         imageAlt="Data-driven operations dashboard in a modern enterprise environment"
         imagePosition="center 32%"

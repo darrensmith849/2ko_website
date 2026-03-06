@@ -211,6 +211,27 @@ export default function TrainingPage() {
         </div>
       </section>
 
+      {/* Bridge to AI systems */}
+      <section className="max-w-6xl mx-auto px-6 py-16 border-t border-border">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-3xl font-semibold text-text tracking-tight mb-6">
+            Training is the start. Systems make it stick.
+          </h2>
+          <p className="text-muted text-lg leading-relaxed mb-4">
+            Belt programmes build the capability. But without a system to embed new standards
+            into daily operations, improvements tend to fade. That is why many clients pair
+            training with our AI-powered management systems — to make the new standard the
+            default, not the exception.
+          </p>
+          <Link
+            href="/services/ai-systems"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:text-accent2 transition-colors"
+          >
+            Learn about AI systems &rarr;
+          </Link>
+        </div>
+      </section>
+
       <CTABand
         headline="Ready to build capability in your team?"
         subheadline="Start with a free White Belt, or talk to us about a tailored corporate programme."
