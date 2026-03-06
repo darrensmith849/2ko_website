@@ -52,8 +52,8 @@ export default function PartnerLogos() {
         </div>
       </div>
 
-      <p className="text-center text-muted2 text-xs mt-8">
-        And many more across Africa and beyond.
+      <p className="text-center text-white/50 text-xs md:text-sm mt-8">
+        And over 5,000 more!
       </p>
     </section>
   );
