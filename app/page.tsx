@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Hero from "@/components/sections/Hero";
+import PathChooser from "@/components/sections/PathChooser";
 import PartnerLogos from "@/components/sections/PartnerLogos";
 import PartnerEngines from "@/components/sections/PartnerEngines";
 import ProofBlock from "@/components/sections/ProofBlock";
@@ -81,11 +82,9 @@ export default function HomePage() {
         imageAlt="Operations leaders reviewing performance in a modern workspace"
         imagePriority
         imagePosition="center 36%"
-        ctas={[
-          { label: "Start the conversation", href: "/contact", variant: "primary" },
-          { label: "View courses", href: "/training", variant: "outline" },
-        ]}
-      />
+      >
+        <PathChooser />
+      </Hero>
 
       {/* Partner logos — immediately below hero CTAs, above the fold */}
       <PartnerLogos />
