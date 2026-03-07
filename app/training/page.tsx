@@ -84,7 +84,7 @@ export default function TrainingPage() {
                     <span className="font-semibold text-muted">Who it&apos;s for:</span>{" "}
                     {course.forWho}
                   </p>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap items-center gap-2">
                     {course.delivery.map((d) => (
                       <span
                         key={d}
@@ -93,6 +93,18 @@ export default function TrainingPage() {
                         {d}
                       </span>
                     ))}
+                  </div>
+                  <div className="mt-5">
+                    <Link
+                      href="/contact"
+                      className={`inline-flex items-center gap-1.5 rounded-full px-5 py-2.5 text-sm font-medium transition-colors ${
+                        course.isFree
+                          ? "bg-accent text-white hover:bg-accent2"
+                          : "border border-accent/30 text-accent hover:bg-accent/10"
+                      }`}
+                    >
+                      {course.isFree ? "Enrol free" : `Enquire about ${course.level}`} &rarr;
+                    </Link>
                   </div>
                 </div>
                 <div className="lg:w-72 flex-shrink-0">
