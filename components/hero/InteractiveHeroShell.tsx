@@ -8,17 +8,6 @@ import {
   type ReactNode,
 } from "react";
 
-const NODES = [
-  { top: "12%", left: "14%", delay: "0s" },
-  { top: "18%", left: "76%", delay: "1.1s" },
-  { top: "34%", left: "26%", delay: "2.3s" },
-  { top: "42%", left: "86%", delay: "0.8s" },
-  { top: "58%", left: "18%", delay: "1.7s" },
-  { top: "63%", left: "68%", delay: "2.7s" },
-  { top: "79%", left: "38%", delay: "1.2s" },
-  { top: "84%", left: "83%", delay: "2.0s" },
-];
-
 const clamp = (value: number, min: number, max: number) =>
   Math.min(Math.max(value, min), max);
 
@@ -101,7 +90,7 @@ export default function InteractiveHeroShell({ children, className, style }: Pro
       const speed = clamp(Math.hypot(vx, vy) * 10, 0, 1.35);
       const angle = speed > 0.01 ? (Math.atan2(vy, vx) * 180) / Math.PI : 0;
       const scale = 1 + speed * 0.9;
-      const opacity = activeRef.current ? 0.95 : 0.45;
+      const opacity = activeRef.current ? 0.55 : 0.25;
 
       applyVars(current.x, current.y, angle, scale, opacity);
 
@@ -164,31 +153,16 @@ export default function InteractiveHeroShell({ children, className, style }: Pro
         />
 
 
-        {/* Nodes */}
-        {!reducedMotion &&
-          NODES.map((node, index) => (
-            <span
-              key={`${node.top}-${node.left}-${index}`}
-              className="cursor-trail-node absolute h-2 w-2 rounded-full bg-white/55"
-              style={{
-                top: node.top,
-                left: node.left,
-                animationDelay: node.delay,
-                boxShadow: "0 0 18px rgba(148,163,184,0.35)",
-              }}
-            />
-          ))}
-
         {/* Mouse-follow soft orb */}
         <div
           className="absolute h-[540px] w-[540px] rounded-full blur-3xl"
           style={{
             left: "var(--trail-x)",
             top: "var(--trail-y)",
-            opacity: "calc(var(--trail-opacity) * 0.95)",
+            opacity: "calc(var(--trail-opacity) * 0.45)",
             transform: "translate(-50%, -50%)",
             background:
-              "radial-gradient(circle, rgba(89,132,255,0.18) 0%, rgba(68,108,221,0.12) 28%, rgba(22,39,77,0.10) 48%, rgba(0,0,0,0) 72%)",
+              "radial-gradient(circle, rgba(89,132,255,0.12) 0%, rgba(68,108,221,0.07) 28%, rgba(22,39,77,0.05) 48%, rgba(0,0,0,0) 72%)",
           }}
         />
 
@@ -198,12 +172,12 @@ export default function InteractiveHeroShell({ children, className, style }: Pro
           style={{
             left: "var(--trail-x)",
             top: "var(--trail-y)",
-            opacity: "calc(var(--trail-opacity) * 0.9)",
+            opacity: "calc(var(--trail-opacity) * 0.4)",
             transform:
               "translate(-86%, -50%) rotate(var(--trail-angle)) scaleX(var(--trail-scale))",
             transformOrigin: "100% 50%",
             background:
-              "linear-gradient(90deg, rgba(103,132,255,0.00) 0%, rgba(103,132,255,0.06) 28%, rgba(123,150,255,0.16) 58%, rgba(255,255,255,0.22) 100%)",
+              "linear-gradient(90deg, rgba(103,132,255,0.00) 0%, rgba(103,132,255,0.03) 28%, rgba(123,150,255,0.08) 58%, rgba(255,255,255,0.10) 100%)",
           }}
         />
 
@@ -213,25 +187,25 @@ export default function InteractiveHeroShell({ children, className, style }: Pro
           style={{
             left: "var(--trail-x)",
             top: "var(--trail-y)",
-            opacity: "var(--trail-opacity)",
+            opacity: "calc(var(--trail-opacity) * 0.5)",
             transform: "translate(-50%, -50%)",
             background:
-              "radial-gradient(circle, rgba(255,255,255,0.28) 0%, rgba(147,178,255,0.18) 40%, rgba(0,0,0,0) 74%)",
+              "radial-gradient(circle, rgba(255,255,255,0.14) 0%, rgba(147,178,255,0.08) 40%, rgba(0,0,0,0) 74%)",
           }}
         />
 
         {/* Pointer dot */}
         <div
-          className="absolute h-4 w-4 rounded-full"
+          className="absolute h-3 w-3 rounded-full"
           style={{
             left: "var(--trail-x)",
             top: "var(--trail-y)",
-            opacity: "var(--trail-opacity)",
+            opacity: "calc(var(--trail-opacity) * 0.6)",
             transform: "translate(-50%, -50%)",
             background:
-              "radial-gradient(circle, rgba(255,255,255,0.88) 0%, rgba(196,215,255,0.75) 45%, rgba(109,146,255,0.28) 72%, rgba(0,0,0,0) 100%)",
+              "radial-gradient(circle, rgba(255,255,255,0.50) 0%, rgba(196,215,255,0.35) 45%, rgba(109,146,255,0.12) 72%, rgba(0,0,0,0) 100%)",
             boxShadow:
-              "0 0 16px rgba(255,255,255,0.18), 0 0 42px rgba(93,125,255,0.16)",
+              "0 0 10px rgba(255,255,255,0.08), 0 0 28px rgba(93,125,255,0.06)",
           }}
         />
       </div>
