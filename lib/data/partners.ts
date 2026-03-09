@@ -49,3 +49,15 @@ export const PARTNERS: PartnerLogo[] = [
   { name: "Absa", src: "/partners/absa.png" },
   { name: "Valve", src: "/partners/valve.svg" },
 ];
+
+/* ── Partner names (text-only trust strip) ── */
+
+export const PARTNER_NAMES = [
+  "Nedbank",
+  "John Deere",
+  "Sasol",
+  "Sappi",
+  "Transnet",
+  "Exxaro",
+  "Implats",
+];
