@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Hero from "@/components/sections/Hero";
 import CaseStudyCard from "@/components/sections/CaseStudyCard";
 import CTABand from "@/components/sections/CTABand";
+import CursorGlowSection from "@/components/ui/CursorGlowSection";
 import { caseStudies } from "@/lib/data/caseStudies";
 import { pageMetadata } from "@/lib/metadata";
 
@@ -14,17 +15,19 @@ export const metadata: Metadata = pageMetadata(
 export default function CaseStudiesPage() {
   return (
     <main>
-      <Hero
-        badge="Case Studies"
-        headline="Results on record."
-        subheadline="A selection of illustrative, anonymised outcomes from 2KO engagements across industries. Exact results vary by baseline, scope, and operating context."
-        imageKey="caseStudiesHero"
-        imageAlt="Operations leadership team reviewing performance outcomes"
-        imagePosition="center 34%"
-        ctas={[
-          { label: "Start your own engagement", href: "/contact", variant: "primary" },
-        ]}
-      />
+      <CursorGlowSection>
+        <Hero
+          badge="Case Studies"
+          headline="Results on record."
+          subheadline="A selection of illustrative, anonymised outcomes from 2KO engagements across industries. Exact results vary by baseline, scope, and operating context."
+          imageKey="caseStudiesHero"
+          imageAlt="Operations leadership team reviewing performance outcomes"
+          imagePosition="center 34%"
+          ctas={[
+            { label: "Start your own engagement", href: "/contact", variant: "primary" },
+          ]}
+        />
+      </CursorGlowSection>
 
       {/* Grid */}
       <section className="max-w-6xl mx-auto px-6 py-16">

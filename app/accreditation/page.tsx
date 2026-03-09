@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Hero from "@/components/sections/Hero";
 import CTABand from "@/components/sections/CTABand";
+import CursorGlowSection from "@/components/ui/CursorGlowSection";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata(
@@ -49,18 +50,20 @@ const recognitionFeatures = [
 export default function AccreditationPage() {
   return (
     <main>
-      <Hero
-        badge="Accreditation & Standards"
-        headline="Credentials that carry weight."
-        subheadline="Our Six Sigma programmes are backed by international accreditation, structured for SETA levy claims, and designed so your certification is recognised wherever your career takes you."
-        imageKey="accreditationHero"
-        imageAlt="Professional standards and accreditation documentation"
-        imagePosition="center 40%"
-        ctas={[
-          { label: "View courses", href: "/training", variant: "primary" },
-          { label: "Ask about RPL", href: "/contact", variant: "outline" },
-        ]}
-      />
+      <CursorGlowSection>
+        <Hero
+          badge="Accreditation & Standards"
+          headline="Credentials that carry weight."
+          subheadline="Our Six Sigma programmes are backed by international accreditation, structured for SETA levy claims, and designed so your certification is recognised wherever your career takes you."
+          imageKey="accreditationHero"
+          imageAlt="Professional standards and accreditation documentation"
+          imagePosition="center 40%"
+          ctas={[
+            { label: "View courses", href: "/training", variant: "primary" },
+            { label: "Ask about RPL", href: "/contact", variant: "outline" },
+          ]}
+        />
+      </CursorGlowSection>
 
       {/* Standards & accreditation */}
       <section className="max-w-6xl mx-auto px-6 py-16">

@@ -3,6 +3,7 @@ import Link from "next/link";
 import Hero from "@/components/sections/Hero";
 import ServiceCard from "@/components/sections/ServiceCard";
 import CTABand from "@/components/sections/CTABand";
+import CursorGlowSection from "@/components/ui/CursorGlowSection";
 import { services } from "@/lib/data/services";
 import { pageMetadata } from "@/lib/metadata";
 
@@ -15,17 +16,19 @@ export const metadata: Metadata = pageMetadata(
 export default function ServicesPage() {
   return (
     <main>
-      <Hero
-        badge="Our services"
-        headline="Two disciplines. One outcome."
-        subheadline="Lean Six Sigma builds the capability. AI systems enforce the standard. Together, they make improvement that sticks."
-        imageKey="servicesHero"
-        imageAlt="Consulting team in a focused strategy session"
-        imagePosition="center 34%"
-        ctas={[
-          { label: "Start the conversation", href: "/contact", variant: "primary" },
-        ]}
-      />
+      <CursorGlowSection>
+        <Hero
+          badge="Our services"
+          headline="Two disciplines. One outcome."
+          subheadline="Lean Six Sigma builds the capability. AI systems enforce the standard. Together, they make improvement that sticks."
+          imageKey="servicesHero"
+          imageAlt="Consulting team in a focused strategy session"
+          imagePosition="center 34%"
+          ctas={[
+            { label: "Start the conversation", href: "/contact", variant: "primary" },
+          ]}
+        />
+      </CursorGlowSection>
 
       {/* Services detail */}
       <section className="max-w-6xl mx-auto px-6 py-16">

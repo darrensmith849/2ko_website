@@ -3,6 +3,7 @@ import Link from "next/link";
 import Hero from "@/components/sections/Hero";
 import CTABand from "@/components/sections/CTABand";
 import Badge from "@/components/ui/Badge";
+import CursorGlowSection from "@/components/ui/CursorGlowSection";
 import { beltCourses, deliveryModes, trainingLocations } from "@/lib/data/training";
 import { pageMetadata } from "@/lib/metadata";
 
@@ -15,18 +16,20 @@ export const metadata: Metadata = pageMetadata(
 export default function TrainingPage() {
   return (
     <main>
-      <Hero
-        badge="Training & Certification"
-        headline="World-class Six Sigma training. Delivered your way."
-        subheadline="From a free introductory White Belt to advanced Black Belt leadership — our internationally accredited programmes build real capability through live projects, not just theory."
-        imageKey="trainingHero"
-        imageAlt="Professional training session in a modern classroom environment"
-        imagePosition="center 38%"
-        ctas={[
-          { label: "Start free White Belt", href: "/contact", variant: "primary" },
-          { label: "Corporate training enquiry", href: "/contact", variant: "outline" },
-        ]}
-      />
+      <CursorGlowSection>
+        <Hero
+          badge="Training & Certification"
+          headline="World-class Six Sigma training. Delivered your way."
+          subheadline="From a free introductory White Belt to advanced Black Belt leadership — our internationally accredited programmes build real capability through live projects, not just theory."
+          imageKey="trainingHero"
+          imageAlt="Professional training session in a modern classroom environment"
+          imagePosition="center 38%"
+          ctas={[
+            { label: "Start free White Belt", href: "/contact", variant: "primary" },
+            { label: "Corporate training enquiry", href: "/contact", variant: "outline" },
+          ]}
+        />
+      </CursorGlowSection>
 
       {/* Free White Belt banner */}
       <section className="max-w-6xl mx-auto px-6 py-10">

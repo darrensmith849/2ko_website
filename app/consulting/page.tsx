@@ -3,6 +3,7 @@ import Hero from "@/components/sections/Hero";
 import Stepper from "@/components/sections/Stepper";
 import CTABand from "@/components/sections/CTABand";
 import Badge from "@/components/ui/Badge";
+import CursorGlowSection from "@/components/ui/CursorGlowSection";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata(
@@ -79,18 +80,20 @@ const capabilities = [
 export default function ConsultingPage() {
   return (
     <main>
-      <Hero
-        badge="CI Consulting"
-        headline="Improvement that outlasts the consultant."
-        subheadline="We deploy continuous improvement programmes designed to produce results during the engagement and sustain them after we leave. No dependency on us — that's the point."
-        imageKey="consultingHero"
-        imageAlt="Consulting team working with client on operational improvement"
-        imagePosition="center 35%"
-        ctas={[
-          { label: "Book a diagnostic", href: "/contact", variant: "primary" },
-          { label: "See results", href: "/case-studies", variant: "outline" },
-        ]}
-      />
+      <CursorGlowSection>
+        <Hero
+          badge="CI Consulting"
+          headline="Improvement that outlasts the consultant."
+          subheadline="We deploy continuous improvement programmes designed to produce results during the engagement and sustain them after we leave. No dependency on us — that's the point."
+          imageKey="consultingHero"
+          imageAlt="Consulting team working with client on operational improvement"
+          imagePosition="center 35%"
+          ctas={[
+            { label: "Book a diagnostic", href: "/contact", variant: "primary" },
+            { label: "See results", href: "/case-studies", variant: "outline" },
+          ]}
+        />
+      </CursorGlowSection>
 
       {/* What we do */}
       <section className="max-w-6xl mx-auto px-6 py-16">

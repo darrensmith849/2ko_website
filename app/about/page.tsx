@@ -4,6 +4,7 @@ import Link from "next/link";
 import Hero from "@/components/sections/Hero";
 import CTABand from "@/components/sections/CTABand";
 import Badge from "@/components/ui/Badge";
+import CursorGlowSection from "@/components/ui/CursorGlowSection";
 import { getImage } from "@/lib/imageBank";
 import { pageMetadata } from "@/lib/metadata";
 
@@ -63,18 +64,20 @@ const values = [
 export default function AboutPage() {
   return (
     <main>
-      <Hero
-        badge="About 2KO"
-        headline="Built on process. Powered by systems."
-        subheadline="2KO helps organisations build Lean Six Sigma capability and reinforce new operating standards with practical management systems."
-        imageKey="aboutHero"
-        imageAlt="Consulting team collaborating around operational planning"
-        imagePosition="center 35%"
-        ctas={[
-          { label: "Work with us", href: "/contact", variant: "primary" },
-          { label: "See our results", href: "/case-studies", variant: "outline" },
-        ]}
-      />
+      <CursorGlowSection>
+        <Hero
+          badge="About 2KO"
+          headline="Built on process. Powered by systems."
+          subheadline="2KO helps organisations build Lean Six Sigma capability and reinforce new operating standards with practical management systems."
+          imageKey="aboutHero"
+          imageAlt="Consulting team collaborating around operational planning"
+          imagePosition="center 35%"
+          ctas={[
+            { label: "Work with us", href: "/contact", variant: "primary" },
+            { label: "See our results", href: "/case-studies", variant: "outline" },
+          ]}
+        />
+      </CursorGlowSection>
 
       {/* Story */}
       <section className="max-w-6xl mx-auto px-6 py-16">

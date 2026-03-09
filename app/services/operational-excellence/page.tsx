@@ -3,6 +3,7 @@ import Hero from "@/components/sections/Hero";
 import Stepper from "@/components/sections/Stepper";
 import CTABand from "@/components/sections/CTABand";
 import Badge from "@/components/ui/Badge";
+import CursorGlowSection from "@/components/ui/CursorGlowSection";
 import { getService } from "@/lib/data/services";
 import { pageMetadata } from "@/lib/metadata";
 
@@ -39,18 +40,20 @@ export default function OperationalExcellencePage() {
 
   return (
     <main>
-      <Hero
-        badge="Operational Excellence"
-        headline="Six Sigma, applied."
-        subheadline="We train your people to a certified standard, run live improvement projects against your real problems, and then build the management system that makes the new standard the default."
-        imageKey="operationalExcellenceHero"
-        imageAlt="Industrial operations team reviewing production quality performance"
-        imagePosition="center 38%"
-        ctas={[
-          { label: "Talk to us", href: "/contact", variant: "primary" },
-          { label: "See results", href: "/case-studies", variant: "outline" },
-        ]}
-      />
+      <CursorGlowSection>
+        <Hero
+          badge="Operational Excellence"
+          headline="Six Sigma, applied."
+          subheadline="We train your people to a certified standard, run live improvement projects against your real problems, and then build the management system that makes the new standard the default."
+          imageKey="operationalExcellenceHero"
+          imageAlt="Industrial operations team reviewing production quality performance"
+          imagePosition="center 38%"
+          ctas={[
+            { label: "Talk to us", href: "/contact", variant: "primary" },
+            { label: "See results", href: "/case-studies", variant: "outline" },
+          ]}
+        />
+      </CursorGlowSection>
 
       {/* What it is */}
       <section className="max-w-6xl mx-auto px-6 py-16">

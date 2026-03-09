@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Hero from "@/components/sections/Hero";
 import ContactForm from "./ContactForm";
+import CursorGlowSection from "@/components/ui/CursorGlowSection";
 import { getImage } from "@/lib/imageBank";
 import { pageMetadata } from "@/lib/metadata";
 
@@ -14,15 +15,17 @@ export const metadata: Metadata = pageMetadata(
 export default function ContactPage() {
   return (
     <main>
-      <Hero
-        badge="Get in touch"
-        headline="Start the conversation."
-        subheadline="Tell us your biggest operational challenge. We'll respond within one business day with an honest view of how — or whether — we can help."
-        imageKey="contactHero"
-        imageAlt="Business leaders in a focused consultation meeting"
-        imagePosition="center 33%"
-        ctas={[]}
-      />
+      <CursorGlowSection>
+        <Hero
+          badge="Get in touch"
+          headline="Start the conversation."
+          subheadline="Tell us your biggest operational challenge. We'll respond within one business day with an honest view of how — or whether — we can help."
+          imageKey="contactHero"
+          imageAlt="Business leaders in a focused consultation meeting"
+          imagePosition="center 33%"
+          ctas={[]}
+        />
+      </CursorGlowSection>
 
       <section className="max-w-6xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">

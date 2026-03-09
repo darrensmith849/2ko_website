@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Hero from "@/components/sections/Hero";
 import Stepper from "@/components/sections/Stepper";
 import CTABand from "@/components/sections/CTABand";
+import CursorGlowSection from "@/components/ui/CursorGlowSection";
 import { getService } from "@/lib/data/services";
 import { pageMetadata } from "@/lib/metadata";
 
@@ -63,18 +64,20 @@ export default function AISystemsPage() {
 
   return (
     <main>
-      <Hero
-        badge="AI Systems"
-        headline="We don't automate chaos."
-        subheadline="We standardise first, then build systems. AI-powered management layers that embed your operational standards into workflows, surface what matters, and help your people stay at the new bar."
-        imageKey="aiSystemsHero"
-        imageAlt="Data-driven operations dashboard in a modern enterprise environment"
-        imagePosition="center 32%"
-        ctas={[
-          { label: "Talk to us", href: "/contact", variant: "primary" },
-          { label: "See results", href: "/case-studies", variant: "outline" },
-        ]}
-      />
+      <CursorGlowSection>
+        <Hero
+          badge="AI Systems"
+          headline="We don't automate chaos."
+          subheadline="We standardise first, then build systems. AI-powered management layers that embed your operational standards into workflows, surface what matters, and help your people stay at the new bar."
+          imageKey="aiSystemsHero"
+          imageAlt="Data-driven operations dashboard in a modern enterprise environment"
+          imagePosition="center 32%"
+          ctas={[
+            { label: "Talk to us", href: "/contact", variant: "primary" },
+            { label: "See results", href: "/case-studies", variant: "outline" },
+          ]}
+        />
+      </CursorGlowSection>
 
       {/* Core philosophy */}
       <section className="max-w-6xl mx-auto px-6 py-16">
