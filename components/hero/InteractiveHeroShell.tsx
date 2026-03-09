@@ -215,16 +215,16 @@ export default function InteractiveHeroShell({ children, className }: Props) {
         />
 
         <div
-          className="absolute h-4 w-4 rounded-full"
+          className="absolute h-5 w-5 rounded-full"
           style={{
             left: "var(--trail-x)",
             top: "var(--trail-y)",
             opacity: "var(--trail-opacity)",
             transform: "translate(-50%, -50%)",
-            background:
-              "radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(196,215,255,0.88) 45%, rgba(109,146,255,0.35) 72%, rgba(0,0,0,0) 100%)",
+            border: "1.5px solid rgba(255,255,255,0.7)",
+            background: "transparent",
             boxShadow:
-              "0 0 16px rgba(255,255,255,0.22), 0 0 42px rgba(93,125,255,0.2)",
+              "0 0 14px rgba(255,255,255,0.18), 0 0 36px rgba(93,125,255,0.15)",
           }}
         />
 
