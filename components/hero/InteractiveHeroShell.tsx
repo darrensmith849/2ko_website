@@ -1,6 +1,6 @@
 "use client";
 
-import React, {
+import {
   useEffect,
   useRef,
   useState,
@@ -30,17 +30,12 @@ const initialVars = {
   "--trail-opacity": "0.5",
 } as CSSProperties;
 
-type InteractiveHeroShellProps = {
+type Props = {
   children: ReactNode;
   className?: string;
-  style?: CSSProperties;
 };
 
-export default function InteractiveHeroShell({
-  children,
-  className,
-  style,
-}: InteractiveHeroShellProps) {
+export default function InteractiveHeroShell({ children, className }: Props) {
   const sectionRef = useRef<HTMLElement | null>(null);
   const frameRef = useRef<number | null>(null);
 
@@ -53,9 +48,7 @@ export default function InteractiveHeroShell({
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-
     const onChange = () => setReducedMotion(media.matches);
-
     onChange();
 
     if (typeof media.addEventListener === "function") {
@@ -97,7 +90,6 @@ export default function InteractiveHeroShell({
       const target = targetRef.current;
       const previous = previousRef.current;
 
-      // smooth follow
       current.x += (target.x - current.x) * 0.1;
       current.y += (target.y - current.y) * 0.1;
 
@@ -108,7 +100,6 @@ export default function InteractiveHeroShell({
 
       const speed = clamp(Math.hypot(vx, vy) * 10, 0, 1.35);
       const angle = speed > 0.01 ? (Math.atan2(vy, vx) * 180) / Math.PI : 0;
-
       const scale = 1 + speed * 0.9;
       const opacity = activeRef.current ? 0.95 : 0.45;
 
@@ -144,7 +135,7 @@ export default function InteractiveHeroShell({
   return (
     <section
       ref={sectionRef}
-      style={{ ...initialVars, ...style }}
+      style={initialVars}
       onPointerMove={updateTargetFromPointer}
       onPointerEnter={updateTargetFromPointer}
       onPointerLeave={handlePointerLeave}
@@ -154,7 +145,6 @@ export default function InteractiveHeroShell({
       ].join(" ")}
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        {/* base gradient */}
         <div
           className="absolute inset-0"
           style={{
@@ -163,7 +153,6 @@ export default function InteractiveHeroShell({
           }}
         />
 
-        {/* soft top glow */}
         <div
           className="absolute inset-0 opacity-80"
           style={{
@@ -172,11 +161,9 @@ export default function InteractiveHeroShell({
           }}
         />
 
-        {/* grid + pattern */}
         <div className="cursor-trail-grid absolute inset-0 opacity-[0.12]" />
         <div className="cursor-trail-pattern absolute inset-0 opacity-40" />
 
-        {/* nodes */}
         {!reducedMotion &&
           NODES.map((node, index) => (
             <span
@@ -191,7 +178,6 @@ export default function InteractiveHeroShell({
             />
           ))}
 
-        {/* big orb */}
         <div
           className="absolute h-[540px] w-[540px] rounded-full blur-3xl"
           style={{
@@ -204,7 +190,6 @@ export default function InteractiveHeroShell({
           }}
         />
 
-        {/* streak */}
         <div
           className="absolute h-[34px] w-[190px] rounded-full blur-xl"
           style={{
@@ -219,7 +204,6 @@ export default function InteractiveHeroShell({
           }}
         />
 
-        {/* core glow */}
         <div
           className="absolute h-24 w-24 rounded-full blur-2xl"
           style={{
@@ -232,7 +216,6 @@ export default function InteractiveHeroShell({
           }}
         />
 
-        {/* dot */}
         <div
           className="absolute h-4 w-4 rounded-full"
           style={{
@@ -245,6 +228,27 @@ export default function InteractiveHeroShell({
             boxShadow:
               "0 0 16px rgba(255,255,255,0.22), 0 0 42px rgba(93,125,255,0.2)",
           }}
+        />
+
+        {/* horizontal line highlight */}
+        <div
+          className="absolute inset-x-[10%] top-[24%] h-px opacity-35"
+          style={{
+            background:
+              "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.18) 25%, rgba(255,255,255,0.42) 50%, rgba(255,255,255,0.18) 75%, transparent 100%)",
+          }}
+        />
+
+        {/* top-right ambient blur */}
+        <div
+          className="absolute -right-28 -top-28 h-72 w-72 rounded-full blur-3xl"
+          style={{ background: "rgba(99,129,255,0.10)" }}
+        />
+
+        {/* bottom-left ambient blur */}
+        <div
+          className="absolute -bottom-32 -left-32 h-80 w-80 rounded-full blur-3xl"
+          style={{ background: "rgba(255,255,255,0.05)" }}
         />
       </div>
 
