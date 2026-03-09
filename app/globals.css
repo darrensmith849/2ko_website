@@ -71,6 +71,31 @@ a {
   text-underline-offset: 2px;
 }
 
+/* ── Interactive hero cursor-trail ── */
+
+.cursor-trail-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 72%);
+}
+
+.cursor-trail-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 18px 18px;
+  mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, black 10%, transparent 70%);
+}
+
+.cursor-trail-node {
+  animation: cursor-trail-pulse 3.6s ease-in-out infinite;
+}
+
+@keyframes cursor-trail-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50%      { opacity: 0.75; transform: scale(1.5); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

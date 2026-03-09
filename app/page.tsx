@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Hero from "@/components/sections/Hero";
+import InteractiveHeroShell from "@/components/hero/InteractiveHeroShell";
 import PathChooser from "@/components/sections/PathChooser";
 import PartnerLogos from "@/components/sections/PartnerLogos";
 import PartnerEngines from "@/components/sections/PartnerEngines";
@@ -74,17 +75,15 @@ const systemCategories = [
 export default function HomePage() {
   return (
     <main>
-      <Hero
-        badge="Six Sigma Training + CI Consulting + AI Systems"
-        headline="We make operational improvement permanent."
-        subheadline="2KO trains your people in Lean Six Sigma, deploys continuous improvement programmes, and builds AI-powered systems that help your improvements stick — and scale."
-        imageKey="homeHero"
-        imageAlt="Operations leaders reviewing performance in a modern workspace"
-        imagePriority
-        imagePosition="center 36%"
-      >
-        <PathChooser />
-      </Hero>
+      <InteractiveHeroShell>
+        <Hero
+          badge="Six Sigma Training + CI Consulting + AI Systems"
+          headline="We make operational improvement permanent."
+          subheadline="2KO trains your people in Lean Six Sigma, deploys continuous improvement programmes, and builds AI-powered systems that help your improvements stick — and scale."
+        >
+          <PathChooser />
+        </Hero>
+      </InteractiveHeroShell>
 
       {/* Partner logos — immediately below hero CTAs, above the fold */}
       <PartnerLogos />
