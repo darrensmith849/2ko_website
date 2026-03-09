@@ -1,12 +1,23 @@
 "use client";
 
-import {
+import React, {
   useEffect,
   useRef,
   useState,
   type CSSProperties,
   type ReactNode,
 } from "react";
+
+const NODES = [
+  { top: "12%", left: "14%", delay: "0s" },
+  { top: "18%", left: "76%", delay: "1.1s" },
+  { top: "34%", left: "26%", delay: "2.3s" },
+  { top: "42%", left: "86%", delay: "0.8s" },
+  { top: "58%", left: "18%", delay: "1.7s" },
+  { top: "63%", left: "68%", delay: "2.7s" },
+  { top: "79%", left: "38%", delay: "1.2s" },
+  { top: "84%", left: "83%", delay: "2.0s" },
+];
 
 const clamp = (value: number, min: number, max: number) =>
   Math.min(Math.max(value, min), max);
@@ -19,13 +30,17 @@ const initialVars = {
   "--trail-opacity": "0.5",
 } as CSSProperties;
 
-type Props = {
+type InteractiveHeroShellProps = {
   children: ReactNode;
   className?: string;
   style?: CSSProperties;
 };
 
-export default function InteractiveHeroShell({ children, className, style }: Props) {
+export default function InteractiveHeroShell({
+  children,
+  className,
+  style,
+}: InteractiveHeroShellProps) {
   const sectionRef = useRef<HTMLElement | null>(null);
   const frameRef = useRef<number | null>(null);
 
@@ -38,6 +53,7 @@ export default function InteractiveHeroShell({ children, className, style }: Pro
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+
     const onChange = () => setReducedMotion(media.matches);
 
     onChange();
@@ -48,7 +64,9 @@ export default function InteractiveHeroShell({ children, className, style }: Pro
     }
 
     // Safari fallback
+    // @ts-expect-error legacy API
     media.addListener(onChange);
+    // @ts-expect-error legacy API
     return () => media.removeListener(onChange);
   }, []);
 
@@ -79,6 +97,7 @@ export default function InteractiveHeroShell({ children, className, style }: Pro
       const target = targetRef.current;
       const previous = previousRef.current;
 
+      // smooth follow
       current.x += (target.x - current.x) * 0.1;
       current.y += (target.y - current.y) * 0.1;
 
@@ -89,8 +108,9 @@ export default function InteractiveHeroShell({ children, className, style }: Pro
 
       const speed = clamp(Math.hypot(vx, vy) * 10, 0, 1.35);
       const angle = speed > 0.01 ? (Math.atan2(vy, vx) * 180) / Math.PI : 0;
+
       const scale = 1 + speed * 0.9;
-      const opacity = activeRef.current ? 0.55 : 0.25;
+      const opacity = activeRef.current ? 0.95 : 0.45;
 
       applyVars(current.x, current.y, angle, scale, opacity);
 
@@ -134,7 +154,7 @@ export default function InteractiveHeroShell({ children, className, style }: Pro
       ].join(" ")}
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        {/* Base gradient */}
+        {/* base gradient */}
         <div
           className="absolute inset-0"
           style={{
@@ -143,7 +163,7 @@ export default function InteractiveHeroShell({ children, className, style }: Pro
           }}
         />
 
-        {/* Soft top glow */}
+        {/* soft top glow */}
         <div
           className="absolute inset-0 opacity-80"
           style={{
@@ -152,60 +172,78 @@ export default function InteractiveHeroShell({ children, className, style }: Pro
           }}
         />
 
+        {/* grid + pattern */}
+        <div className="cursor-trail-grid absolute inset-0 opacity-[0.12]" />
+        <div className="cursor-trail-pattern absolute inset-0 opacity-40" />
 
-        {/* Mouse-follow soft orb */}
+        {/* nodes */}
+        {!reducedMotion &&
+          NODES.map((node, index) => (
+            <span
+              key={`${node.top}-${node.left}-${index}`}
+              className="cursor-trail-node absolute h-2 w-2 rounded-full bg-white/55"
+              style={{
+                top: node.top,
+                left: node.left,
+                animationDelay: node.delay,
+                boxShadow: "0 0 18px rgba(148,163,184,0.35)",
+              }}
+            />
+          ))}
+
+        {/* big orb */}
         <div
           className="absolute h-[540px] w-[540px] rounded-full blur-3xl"
           style={{
             left: "var(--trail-x)",
             top: "var(--trail-y)",
-            opacity: "calc(var(--trail-opacity) * 0.45)",
+            opacity: "calc(var(--trail-opacity) * 0.95)",
             transform: "translate(-50%, -50%)",
             background:
-              "radial-gradient(circle, rgba(89,132,255,0.12) 0%, rgba(68,108,221,0.07) 28%, rgba(22,39,77,0.05) 48%, rgba(0,0,0,0) 72%)",
+              "radial-gradient(circle, rgba(89,132,255,0.22) 0%, rgba(68,108,221,0.14) 28%, rgba(22,39,77,0.10) 48%, rgba(0,0,0,0) 72%)",
           }}
         />
 
-        {/* Directional streak */}
+        {/* streak */}
         <div
           className="absolute h-[34px] w-[190px] rounded-full blur-xl"
           style={{
             left: "var(--trail-x)",
             top: "var(--trail-y)",
-            opacity: "calc(var(--trail-opacity) * 0.4)",
+            opacity: "calc(var(--trail-opacity) * 0.9)",
             transform:
               "translate(-86%, -50%) rotate(var(--trail-angle)) scaleX(var(--trail-scale))",
             transformOrigin: "100% 50%",
             background:
-              "linear-gradient(90deg, rgba(103,132,255,0.00) 0%, rgba(103,132,255,0.03) 28%, rgba(123,150,255,0.08) 58%, rgba(255,255,255,0.10) 100%)",
+              "linear-gradient(90deg, rgba(103,132,255,0.00) 0%, rgba(103,132,255,0.07) 28%, rgba(123,150,255,0.18) 58%, rgba(255,255,255,0.28) 100%)",
           }}
         />
 
-        {/* Core glow */}
+        {/* core glow */}
         <div
           className="absolute h-24 w-24 rounded-full blur-2xl"
           style={{
             left: "var(--trail-x)",
             top: "var(--trail-y)",
-            opacity: "calc(var(--trail-opacity) * 0.5)",
+            opacity: "var(--trail-opacity)",
             transform: "translate(-50%, -50%)",
             background:
-              "radial-gradient(circle, rgba(255,255,255,0.14) 0%, rgba(147,178,255,0.08) 40%, rgba(0,0,0,0) 74%)",
+              "radial-gradient(circle, rgba(255,255,255,0.34) 0%, rgba(147,178,255,0.22) 40%, rgba(0,0,0,0) 74%)",
           }}
         />
 
-        {/* Pointer dot */}
+        {/* dot */}
         <div
-          className="absolute h-3 w-3 rounded-full"
+          className="absolute h-4 w-4 rounded-full"
           style={{
             left: "var(--trail-x)",
             top: "var(--trail-y)",
-            opacity: "calc(var(--trail-opacity) * 0.6)",
+            opacity: "var(--trail-opacity)",
             transform: "translate(-50%, -50%)",
             background:
-              "radial-gradient(circle, rgba(255,255,255,0.50) 0%, rgba(196,215,255,0.35) 45%, rgba(109,146,255,0.12) 72%, rgba(0,0,0,0) 100%)",
+              "radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(196,215,255,0.88) 45%, rgba(109,146,255,0.35) 72%, rgba(0,0,0,0) 100%)",
             boxShadow:
-              "0 0 10px rgba(255,255,255,0.08), 0 0 28px rgba(93,125,255,0.06)",
+              "0 0 16px rgba(255,255,255,0.22), 0 0 42px rgba(93,125,255,0.2)",
           }}
         />
       </div>
