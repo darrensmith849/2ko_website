@@ -96,87 +96,105 @@ a {
   }
 }
 
-/* ── Premium cursor ── */
+/* ── Premium cursor (2KO Systems style) ── */
+
+.premium-cursor-active {
+  cursor: none;
+}
 
 .premium-cursor-layer {
   position: fixed;
   inset: 0;
-  z-index: 9999;
   pointer-events: none;
-  overflow: hidden;
+  z-index: 60;
+}
+
+/* Position all elements using CSS vars */
+.premium-cursor-orb,
+.premium-cursor-streak,
+.premium-cursor-core,
+.premium-cursor-dot {
+  position: absolute;
+  left: var(--pc-x);
+  top: var(--pc-y);
+  transform: translate(-50%, -50%);
+  opacity: var(--pc-opacity);
 }
 
 /* Large soft orb */
 .premium-cursor-orb {
-  position: absolute;
   width: 520px;
   height: 520px;
-  border-radius: 50%;
-  left: var(--pc-x, 50%);
-  top: var(--pc-y, 35%);
-  transform: translate(-50%, -50%);
+  border-radius: 9999px;
+  filter: blur(64px);
+  opacity: calc(var(--pc-opacity) * 0.85);
   background: radial-gradient(
     circle,
-    rgba(22, 163, 74, 0.07) 0%,
-    rgba(22, 163, 74, 0.04) 30%,
-    rgba(22, 163, 74, 0.015) 50%,
-    transparent 72%
+    rgba(89, 132, 255, 0.18) 0%,
+    rgba(68, 108, 221, 0.12) 28%,
+    rgba(22, 39, 77, 0.10) 48%,
+    rgba(0, 0, 0, 0) 72%
   );
-  filter: blur(48px);
-  opacity: calc(var(--pc-opacity, 0) * 0.5);
 }
 
-/* Directional streak */
+/* Directional streak (uses angle + scale) */
 .premium-cursor-streak {
-  position: absolute;
-  width: 180px;
-  height: 30px;
+  width: 190px;
+  height: 34px;
   border-radius: 9999px;
-  left: var(--pc-x, 50%);
-  top: var(--pc-y, 35%);
-  transform: translate(-86%, -50%)
-    rotate(var(--pc-angle, 0deg))
-    scaleX(var(--pc-scale, 1));
+  filter: blur(18px);
+  opacity: calc(var(--pc-opacity) * 0.85);
+  transform:
+    translate(-86%, -50%)
+    rotate(var(--pc-angle))
+    scaleX(var(--pc-scale));
   transform-origin: 100% 50%;
   background: linear-gradient(
     90deg,
-    rgba(22, 163, 74, 0) 0%,
-    rgba(22, 163, 74, 0.03) 30%,
-    rgba(34, 197, 94, 0.06) 60%,
-    rgba(255, 255, 255, 0.08) 100%
+    rgba(103, 132, 255, 0.00) 0%,
+    rgba(103, 132, 255, 0.06) 28%,
+    rgba(123, 150, 255, 0.16) 58%,
+    rgba(255, 255, 255, 0.22) 100%
   );
-  filter: blur(16px);
-  opacity: calc(var(--pc-opacity, 0) * 0.45);
 }
 
 /* Core glow */
 .premium-cursor-core {
-  position: absolute;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  left: var(--pc-x, 50%);
-  top: var(--pc-y, 35%);
-  transform: translate(-50%, -50%);
+  width: 96px;
+  height: 96px;
+  border-radius: 9999px;
+  filter: blur(26px);
   background: radial-gradient(
     circle,
-    rgba(255, 255, 255, 0.10) 0%,
-    rgba(34, 197, 94, 0.06) 40%,
-    transparent 74%
+    rgba(255, 255, 255, 0.28) 0%,
+    rgba(147, 178, 255, 0.18) 40%,
+    rgba(0, 0, 0, 0) 74%
   );
-  filter: blur(20px);
-  opacity: calc(var(--pc-opacity, 0) * 0.55);
 }
 
-/* Small precise dot */
+/* Dot */
 .premium-cursor-dot {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  left: var(--pc-x, 50%);
-  top: var(--pc-y, 35%);
-  transform: translate(-50%, -50%);
-  background: rgba(255, 255, 255, 0.55);
-  opacity: var(--pc-opacity, 0);
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.88) 0%,
+    rgba(196, 215, 255, 0.75) 45%,
+    rgba(109, 146, 255, 0.28) 72%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  box-shadow:
+    0 0 16px rgba(255, 255, 255, 0.18),
+    0 0 42px rgba(93, 125, 255, 0.16);
+}
+
+/* Respect reduced motion + touch */
+@media (prefers-reduced-motion: reduce), (pointer: coarse) {
+  .premium-cursor-active {
+    cursor: auto;
+  }
+  .premium-cursor-layer {
+    display: none !important;
+  }
 }
