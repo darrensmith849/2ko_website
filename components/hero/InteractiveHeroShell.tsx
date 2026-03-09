@@ -214,17 +214,30 @@ export default function InteractiveHeroShell({ children, className }: Props) {
           }}
         />
 
+        {/* soft blurred circle — no dot */}
         <div
-          className="absolute h-5 w-5 rounded-full"
+          className="absolute h-10 w-10 rounded-full blur-md"
           style={{
             left: "var(--trail-x)",
             top: "var(--trail-y)",
             opacity: "var(--trail-opacity)",
             transform: "translate(-50%, -50%)",
-            border: "1.5px solid rgba(255,255,255,0.7)",
-            background: "transparent",
-            boxShadow:
-              "0 0 14px rgba(255,255,255,0.18), 0 0 36px rgba(93,125,255,0.15)",
+            background:
+              "radial-gradient(circle, rgba(255,255,255,0.6) 0%, rgba(170,195,255,0.3) 50%, rgba(0,0,0,0) 100%)",
+          }}
+        />
+
+        {/* light ray from cursor center */}
+        <div
+          className="absolute h-[2px] w-[280px] blur-sm"
+          style={{
+            left: "var(--trail-x)",
+            top: "var(--trail-y)",
+            opacity: "calc(var(--trail-opacity) * 0.7)",
+            transform:
+              "translate(-50%, -50%) rotate(var(--trail-angle))",
+            background:
+              "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.35) 30%, rgba(170,195,255,0.5) 50%, rgba(255,255,255,0.35) 70%, transparent 100%)",
           }}
         />
 
