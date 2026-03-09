@@ -167,7 +167,7 @@ export default function InteractiveHeroShell({ children, className }: Props) {
             opacity: "calc(var(--trail-opacity) * 0.95)",
             transform: "translate(-50%, -50%)",
             background:
-              "radial-gradient(circle, rgba(89,132,255,0.22) 0%, rgba(68,108,221,0.14) 28%, rgba(22,39,77,0.10) 48%, rgba(0,0,0,0) 72%)",
+              "radial-gradient(circle, rgba(74,222,128,0.18) 0%, rgba(34,197,94,0.10) 28%, rgba(22,101,52,0.06) 48%, rgba(0,0,0,0) 72%)",
           }}
         />
 
@@ -181,7 +181,7 @@ export default function InteractiveHeroShell({ children, className }: Props) {
               "translate(-86%, -50%) rotate(var(--trail-angle)) scaleX(var(--trail-scale))",
             transformOrigin: "100% 50%",
             background:
-              "linear-gradient(90deg, rgba(103,132,255,0.00) 0%, rgba(103,132,255,0.07) 28%, rgba(123,150,255,0.18) 58%, rgba(255,255,255,0.28) 100%)",
+              "linear-gradient(90deg, rgba(74,222,128,0.00) 0%, rgba(74,222,128,0.05) 28%, rgba(134,239,172,0.14) 58%, rgba(187,247,208,0.22) 100%)",
           }}
         />
 
@@ -193,21 +193,18 @@ export default function InteractiveHeroShell({ children, className }: Props) {
             opacity: "var(--trail-opacity)",
             transform: "translate(-50%, -50%)",
             background:
-              "radial-gradient(circle, rgba(255,255,255,0.34) 0%, rgba(147,178,255,0.22) 40%, rgba(0,0,0,0) 74%)",
+              "radial-gradient(circle, rgba(134,239,172,0.28) 0%, rgba(74,222,128,0.16) 40%, rgba(0,0,0,0) 74%)",
           }}
         />
 
         <div
-          className="absolute h-5 w-5 rounded-full"
+          className="absolute h-4 w-4 rounded-full blur-[3px]"
           style={{
             left: "var(--trail-x)",
             top: "var(--trail-y)",
-            opacity: "var(--trail-opacity)",
+            opacity: "calc(var(--trail-opacity) * 0.7)",
             transform: "translate(-50%, -50%)",
-            border: "1.5px solid rgba(34,197,94,0.75)",
-            background: "transparent",
-            boxShadow:
-              "0 0 14px rgba(34,197,94,0.25), 0 0 36px rgba(22,163,74,0.15)",
+            background: "rgba(134,239,172,0.45)",
           }}
         />
 
