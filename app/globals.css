@@ -75,25 +75,31 @@ a {
 
 .cursor-trail-grid {
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 72%);
+    linear-gradient(to right, rgba(255, 255, 255, 0.10) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.10) 1px, transparent 1px);
+  background-size: 64px 64px;
+  background-position: center;
 }
 
 .cursor-trail-pattern {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-  background-size: 18px 18px;
-  mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, black 10%, transparent 70%);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.10) 1px, transparent 1px);
+  background-size: 26px 26px;
+  background-position: center;
+}
+
+@keyframes cursor-trail-node-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.35); opacity: 0.9; }
 }
 
 .cursor-trail-node {
-  animation: cursor-trail-pulse 3.6s ease-in-out infinite;
+  animation: cursor-trail-node-pulse 3.2s ease-in-out infinite;
 }
 
-@keyframes cursor-trail-pulse {
-  0%, 100% { opacity: 0.35; transform: scale(1); }
-  50%      { opacity: 0.75; transform: scale(1.5); }
+@media (prefers-reduced-motion: reduce) {
+  .cursor-trail-node {
+    animation: none !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
