@@ -41,10 +41,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <PremiumCursor />
         <Header />
         <div className="pt-[68px]">{children}</div>
         <Footer />
+        <PremiumCursor />
       </body>
     </html>
   );
