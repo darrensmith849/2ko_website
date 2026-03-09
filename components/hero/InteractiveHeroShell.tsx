@@ -204,19 +204,10 @@ export default function InteractiveHeroShell({ children, className }: Props) {
             top: "var(--trail-y)",
             opacity: "var(--trail-opacity)",
             transform: "translate(-50%, -50%)",
-            border: "1.5px solid rgba(255,255,255,0.7)",
+            border: "1.5px solid rgba(34,197,94,0.75)",
             background: "transparent",
             boxShadow:
-              "0 0 14px rgba(255,255,255,0.18), 0 0 36px rgba(93,125,255,0.15)",
-          }}
-        />
-
-        {/* horizontal line highlight */}
-        <div
-          className="absolute inset-x-[10%] top-[24%] h-px opacity-35"
-          style={{
-            background:
-              "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.18) 25%, rgba(255,255,255,0.42) 50%, rgba(255,255,255,0.18) 75%, transparent 100%)",
+              "0 0 14px rgba(34,197,94,0.25), 0 0 36px rgba(22,163,74,0.15)",
           }}
         />
 
