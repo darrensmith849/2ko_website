@@ -95,3 +95,88 @@ a {
     scroll-behavior: auto !important;
   }
 }
+
+/* ── Premium cursor ── */
+
+.premium-cursor-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Large soft orb */
+.premium-cursor-orb {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  left: var(--pc-x, 50%);
+  top: var(--pc-y, 35%);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    rgba(22, 163, 74, 0.07) 0%,
+    rgba(22, 163, 74, 0.04) 30%,
+    rgba(22, 163, 74, 0.015) 50%,
+    transparent 72%
+  );
+  filter: blur(48px);
+  opacity: calc(var(--pc-opacity, 0) * 0.5);
+}
+
+/* Directional streak */
+.premium-cursor-streak {
+  position: absolute;
+  width: 180px;
+  height: 30px;
+  border-radius: 9999px;
+  left: var(--pc-x, 50%);
+  top: var(--pc-y, 35%);
+  transform: translate(-86%, -50%)
+    rotate(var(--pc-angle, 0deg))
+    scaleX(var(--pc-scale, 1));
+  transform-origin: 100% 50%;
+  background: linear-gradient(
+    90deg,
+    rgba(22, 163, 74, 0) 0%,
+    rgba(22, 163, 74, 0.03) 30%,
+    rgba(34, 197, 94, 0.06) 60%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+  filter: blur(16px);
+  opacity: calc(var(--pc-opacity, 0) * 0.45);
+}
+
+/* Core glow */
+.premium-cursor-core {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  left: var(--pc-x, 50%);
+  top: var(--pc-y, 35%);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.10) 0%,
+    rgba(34, 197, 94, 0.06) 40%,
+    transparent 74%
+  );
+  filter: blur(20px);
+  opacity: calc(var(--pc-opacity, 0) * 0.55);
+}
+
+/* Small precise dot */
+.premium-cursor-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  left: var(--pc-x, 50%);
+  top: var(--pc-y, 35%);
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.55);
+  opacity: var(--pc-opacity, 0);
+}
