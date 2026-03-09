@@ -163,9 +163,6 @@ export default function InteractiveHeroShell({ children, className, style }: Pro
           }}
         />
 
-        {/* Grid + subtle pattern */}
-        <div className="cursor-trail-grid absolute inset-0 opacity-[0.12]" />
-        <div className="cursor-trail-pattern absolute inset-0 opacity-40" />
 
         {/* Nodes */}
         {!reducedMotion &&
