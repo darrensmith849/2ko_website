@@ -57,9 +57,7 @@ export default function InteractiveHeroShell({ children, className }: Props) {
     }
 
     // Safari fallback
-    // @ts-expect-error legacy API
     media.addListener(onChange);
-    // @ts-expect-error legacy API
     return () => media.removeListener(onChange);
   }, []);
 
