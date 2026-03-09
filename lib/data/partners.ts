@@ -53,6 +53,9 @@ export const PARTNERS: PartnerLogo[] = [
 /* ── Partner names (text-only trust strip) ── */
 
 export const PARTNER_NAMES = [
+  "Anglo American",
+  "Toyota",
+  "Standard Bank",
   "Nedbank",
   "John Deere",
   "Sasol",
