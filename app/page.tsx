@@ -9,6 +9,9 @@ import ProofBlock from "@/components/sections/ProofBlock";
 import Stepper from "@/components/sections/Stepper";
 import CTABand from "@/components/sections/CTABand";
 import Badge from "@/components/ui/Badge";
+import TypewriterText from "@/components/ui/TypewriterText";
+import MotionWords from "@/components/ui/MotionWords";
+import RevealOnScroll from "@/components/ui/RevealOnScroll";
 import { beltCourses, deliveryModes } from "@/lib/data/training";
 import { pageMetadata } from "@/lib/metadata";
 
@@ -78,7 +81,13 @@ export default function HomePage() {
       <InteractiveHeroShell>
         <Hero
           badge="Six Sigma Training + CI Consulting + AI Systems"
-          headline="We make operational improvement permanent."
+          headline={
+            <TypewriterText
+              text="We make operational improvement permanent."
+              speed={32}
+              startDelay={600}
+            />
+          }
           subheadline="2KO trains your people in Lean Six Sigma, deploys continuous improvement programmes, and builds AI-powered systems that help your improvements stick — and scale."
           imageKey="homeHero"
           imagePriority={true}
@@ -87,52 +96,56 @@ export default function HomePage() {
         </Hero>
       </InteractiveHeroShell>
 
-      {/* Partner logos — immediately below hero CTAs, above the fold */}
       <PartnerLogos />
 
-      {/* Partner Engines — the 2KO group entities */}
       <PartnerEngines />
 
-      {/* Why we win */}
       <ProofBlock metrics={proofMetrics} />
 
-      {/* Training pathways teaser */}
+      {/* Training pathways */}
       <section className="max-w-6xl mx-auto px-6 py-16 border-t border-border">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-semibold text-text tracking-tight">
-            Training pathways
-          </h2>
-          <p className="mt-4 text-muted text-lg max-w-2xl mx-auto">
-            From free White Belt fundamentals to advanced Black Belt leadership — delivered online, virtual, or in the classroom.
-          </p>
+          <MotionWords
+            text="Training pathways"
+            as="h2"
+            className="text-3xl md:text-4xl font-semibold text-text tracking-tight"
+          />
+          <RevealOnScroll delay={200}>
+            <p className="mt-4 text-muted text-lg max-w-2xl mx-auto">
+              From free White Belt fundamentals to advanced Black Belt leadership — delivered online, virtual, or in the classroom.
+            </p>
+          </RevealOnScroll>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          {beltCourses.map((course) => (
-            <Link
-              key={course.slug}
-              href="/training"
-              className="rounded-2xl bg-surface border border-border p-5 text-center hover:border-accent/30 transition-colors group"
-            >
-              <h3 className="text-text font-semibold text-sm group-hover:text-accent transition-colors">
-                {course.level}
-              </h3>
-              <p className="text-muted2 text-xs mt-1">{course.duration}</p>
-              {course.isFree && (
-                <Badge variant="accent" className="mt-3 text-[10px]">
-                  Free
-                </Badge>
-              )}
-            </Link>
+          {beltCourses.map((course, i) => (
+            <RevealOnScroll key={course.slug} delay={i * 70}>
+              <Link
+                href="/training"
+                className="rounded-2xl bg-surface border border-border p-5 text-center hover:border-accent/30 transition-colors group block"
+              >
+                <h3 className="text-text font-semibold text-sm group-hover:text-accent transition-colors">
+                  {course.level}
+                </h3>
+                <p className="text-muted2 text-xs mt-1">{course.duration}</p>
+                {course.isFree && (
+                  <Badge variant="accent" className="mt-3 text-[10px]">
+                    Free
+                  </Badge>
+                )}
+              </Link>
+            </RevealOnScroll>
           ))}
         </div>
-        <div className="flex flex-wrap justify-center gap-4 mt-8">
-          {deliveryModes.map((dm) => (
-            <div key={dm.mode} className="flex items-center gap-2 text-sm text-muted">
-              <span className="text-accent">&#x2713;</span>
-              {dm.mode}
-            </div>
-          ))}
-        </div>
+        <RevealOnScroll delay={100}>
+          <div className="flex flex-wrap justify-center gap-4 mt-8">
+            {deliveryModes.map((dm) => (
+              <div key={dm.mode} className="flex items-center gap-2 text-sm text-muted">
+                <span className="text-accent">&#x2713;</span>
+                {dm.mode}
+              </div>
+            ))}
+          </div>
+        </RevealOnScroll>
         <div className="text-center mt-8">
           <Link
             href="/training"
@@ -143,22 +156,28 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Systems that lock-in gains */}
+      {/* Systems that lock in gains */}
       <section className="max-w-6xl mx-auto px-6 py-16 border-t border-border">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-semibold text-text tracking-tight">
-            Systems that lock in gains
-          </h2>
-          <p className="mt-4 text-muted text-lg max-w-2xl mx-auto">
-            Six Sigma defines the improvement. AI systems make it permanent by embedding standards into daily workflows.
-          </p>
+          <MotionWords
+            text="Systems that lock in gains"
+            as="h2"
+            className="text-3xl md:text-4xl font-semibold text-text tracking-tight"
+          />
+          <RevealOnScroll delay={200}>
+            <p className="mt-4 text-muted text-lg max-w-2xl mx-auto">
+              Six Sigma defines the improvement. AI systems make it permanent by embedding standards into daily workflows.
+            </p>
+          </RevealOnScroll>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {systemCategories.map((cat) => (
-            <div key={cat.title} className="rounded-2xl bg-surface border border-border p-7">
-              <h3 className="text-text font-semibold mb-2">{cat.title}</h3>
-              <p className="text-muted text-sm leading-relaxed">{cat.description}</p>
-            </div>
+          {systemCategories.map((cat, i) => (
+            <RevealOnScroll key={cat.title} delay={i * 90}>
+              <div className="rounded-2xl bg-surface border border-border p-7">
+                <h3 className="text-text font-semibold mb-2">{cat.title}</h3>
+                <p className="text-muted text-sm leading-relaxed">{cat.description}</p>
+              </div>
+            </RevealOnScroll>
           ))}
         </div>
         <div className="text-center mt-8">
@@ -171,7 +190,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* How we work */}
       <Stepper
         headline="How we work"
         subheadline="A five-phase engagement model designed to build capability and then protect it."

@@ -11,7 +11,7 @@ interface HeroCTA {
 
 interface HeroProps {
   badge?: string;
-  headline: string;
+  headline: ReactNode;
   subheadline: string;
   ctas?: HeroCTA[];
   imageKey?: string;
