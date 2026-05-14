@@ -80,6 +80,8 @@ export default function HomePage() {
           badge="Six Sigma Training + CI Consulting + AI Systems"
           headline="We make operational improvement permanent."
           subheadline="2KO trains your people in Lean Six Sigma, deploys continuous improvement programmes, and builds AI-powered systems that help your improvements stick — and scale."
+          imageKey="homeHero"
+          imagePriority={true}
         >
           <PathChooser />
         </Hero>

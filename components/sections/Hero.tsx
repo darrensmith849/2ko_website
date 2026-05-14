@@ -56,7 +56,7 @@ export default function Hero({
             className="pointer-events-none absolute inset-0"
             style={{
               background:
-                "linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(7,86,36,0.80) 100%)",
+                "linear-gradient(to bottom, rgba(0,0,0,0.38) 0%, rgba(0,0,0,0.72) 100%)",
             }}
           />
         </>
