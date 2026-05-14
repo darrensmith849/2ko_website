@@ -41,7 +41,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header />
-        <div className="pt-[68px]">{children}</div>
+        <div style={{ paddingTop: "var(--topbar-h)" }}>{children}</div>
         <Footer />
       </body>
     </html>

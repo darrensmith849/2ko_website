@@ -4,7 +4,10 @@ import { partners } from "@/lib/data/partners";
 export default function PartnerEngines() {
   return (
     <section className="max-w-6xl mx-auto px-6 pt-8 pb-12">
-      <p className="text-center text-muted2 text-xs font-semibold uppercase tracking-widest mb-6">
+      <p
+        className="text-center text-[var(--color-muted2)] text-[11px] font-semibold uppercase mb-6"
+        style={{ letterSpacing: "var(--tracking-eyebrow)" }}
+      >
         The engines behind the group
       </p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

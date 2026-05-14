@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 
 interface ServiceCardProps {
   icon: string;
@@ -19,39 +22,74 @@ export default function ServiceCard({
   href,
   accent = false,
 }: ServiceCardProps) {
+  const [hovered, setHovered] = useState(false);
+
   return (
     <div
-      className={`rounded-3xl border p-7 md:p-8 flex flex-col gap-6 transition-all duration-300 group ${
-        accent
-          ? "bg-accent/5 border-accent/25 hover:border-accent/45 hover:-translate-y-0.5"
-          : "bg-surface/92 border-border hover:border-border/60 hover:-translate-y-0.5"
-      }`}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="group relative overflow-hidden rounded-3xl border flex flex-col gap-6 p-7 md:p-8 transition-all duration-300 hover:-translate-y-0.5"
+      style={{
+        background: accent
+          ? "var(--accent-soft)"
+          : "var(--color-surface)",
+        borderColor: hovered
+          ? "var(--accent-border)"
+          : accent
+          ? "var(--accent-border)"
+          : "var(--color-border)",
+        boxShadow: hovered ? "var(--shadow-glow-accent)" : "var(--shadow-card)",
+      }}
     >
-      <div>
+      {/* Radial green wash on hover */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 transition-opacity duration-500"
+        style={{
+          opacity: hovered ? 1 : 0,
+          background:
+            "radial-gradient(120% 60% at 0% 0%, color-mix(in srgb, var(--color-accent) 8%, transparent), transparent 60%)",
+        }}
+      />
+
+      <div className="relative">
         <div className="text-3xl mb-4" aria-hidden="true">
           {icon}
         </div>
-        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted2 mb-2">
+        <p
+          className="text-[11px] font-semibold uppercase text-[var(--color-muted2)] mb-2"
+          style={{ letterSpacing: "var(--tracking-eyebrow)" }}
+        >
           {tagline}
         </p>
-        <h3 className="text-xl font-semibold text-text tracking-tight">{title}</h3>
-        <p className="mt-3 text-muted text-sm leading-relaxed">{description}</p>
+        <h3
+          className="text-[var(--color-text)] font-semibold"
+          style={{
+            fontSize: "var(--text-title)",
+            letterSpacing: "var(--tracking-tight)",
+          }}
+        >
+          {title}
+        </h3>
+        <p className="mt-3 text-[var(--color-muted)] text-sm leading-relaxed">
+          {description}
+        </p>
       </div>
-      <ul className="flex flex-col gap-2 flex-1">
+
+      <ul className="relative flex flex-col gap-2 flex-1">
         {bullets.map((b, i) => (
-          <li key={i} className="flex items-start gap-2 text-sm text-muted">
-            <span className="mt-0.5 text-accent flex-shrink-0" aria-hidden="true">
+          <li key={i} className="flex items-start gap-2 text-sm text-[var(--color-muted)]">
+            <span className="mt-0.5 text-[var(--color-accent)] flex-shrink-0" aria-hidden="true">
               ✓
             </span>
             {b}
           </li>
         ))}
       </ul>
+
       <Link
         href={href}
-        className={`text-sm font-medium transition-colors ${
-          accent ? "text-accent hover:text-accent2" : "text-muted hover:text-accent"
-        } group-hover:underline underline-offset-2`}
+        className="relative text-sm font-medium text-[var(--color-accent)] hover:text-[var(--color-accent2)] transition-colors group-hover:underline underline-offset-2"
         aria-label={`Learn more about ${title}`}
       >
         Learn more →

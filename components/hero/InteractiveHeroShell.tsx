@@ -56,7 +56,6 @@ export default function InteractiveHeroShell({ children, className }: Props) {
       return () => media.removeEventListener("change", onChange);
     }
 
-    // Safari fallback
     media.addListener(onChange);
     return () => media.removeListener(onChange);
   }, []);
@@ -133,50 +132,62 @@ export default function InteractiveHeroShell({ children, className }: Props) {
   return (
     <section
       ref={sectionRef}
-      style={initialVars}
+      style={{
+        ...initialVars,
+        background:
+          "radial-gradient(120% 100% at 50% 0%, #0c7a39 0%, var(--accent-hero-bg) 45%, var(--accent-hero-bg-2) 100%)",
+      }}
       onPointerMove={updateTargetFromPointer}
       onPointerEnter={updateTargetFromPointer}
       onPointerLeave={handlePointerLeave}
       className={[
-        "relative isolate overflow-hidden border-b border-white/10 bg-[#050913] text-white",
+        "relative isolate overflow-hidden text-white",
         className ?? "",
       ].join(" ")}
     >
+      {/* Stippled dot pattern */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-[0.10]"
+        style={{
+          backgroundImage:
+            "radial-gradient(rgba(255,255,255,0.75) 1px, transparent 1px)",
+          backgroundSize: "20px 20px",
+        }}
+      />
+
+      {/* Top-centre white highlight */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[420px]"
+        style={{
+          background:
+            "radial-gradient(70% 60% at 50% 0%, rgba(255,255,255,0.10), transparent 70%)",
+        }}
+      />
+
+      {/* Cursor-tracking glow */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(180deg, #07101d 0%, #050913 52%, #03060d 100%)",
-          }}
-        />
-
-        <div
-          className="absolute inset-0 opacity-80"
-          style={{
-            background:
-              "radial-gradient(900px 500px at 50% -12%, rgba(255,255,255,0.08), transparent 58%)",
-          }}
-        />
-
+        {/* Main glow blob */}
         <div
           className="absolute h-[540px] w-[540px] rounded-full blur-3xl"
           style={{
             left: "var(--trail-x)",
             top: "var(--trail-y)",
-            opacity: "calc(var(--trail-opacity) * 0.95)",
+            opacity: "calc(var(--trail-opacity) * 0.7)",
             transform: "translate(-50%, -50%)",
             background:
-              "radial-gradient(circle, rgba(74,222,128,0.18) 0%, rgba(34,197,94,0.10) 28%, rgba(22,101,52,0.06) 48%, rgba(0,0,0,0) 72%)",
+              "radial-gradient(circle, rgba(134,239,172,0.20) 0%, rgba(74,222,128,0.10) 28%, rgba(22,101,52,0.06) 48%, rgba(0,0,0,0) 72%)",
           }}
         />
 
+        {/* Streak */}
         <div
           className="absolute h-[34px] w-[190px] rounded-full blur-xl"
           style={{
             left: "var(--trail-x)",
             top: "var(--trail-y)",
-            opacity: "calc(var(--trail-opacity) * 0.9)",
+            opacity: "calc(var(--trail-opacity) * 0.7)",
             transform:
               "translate(-86%, -50%) rotate(var(--trail-angle)) scaleX(var(--trail-scale))",
             transformOrigin: "100% 50%",
@@ -185,6 +196,7 @@ export default function InteractiveHeroShell({ children, className }: Props) {
           }}
         />
 
+        {/* Core glow */}
         <div
           className="absolute h-24 w-24 rounded-full blur-2xl"
           style={{
@@ -193,33 +205,35 @@ export default function InteractiveHeroShell({ children, className }: Props) {
             opacity: "var(--trail-opacity)",
             transform: "translate(-50%, -50%)",
             background:
-              "radial-gradient(circle, rgba(134,239,172,0.28) 0%, rgba(74,222,128,0.16) 40%, rgba(0,0,0,0) 74%)",
+              "radial-gradient(circle, rgba(187,247,208,0.30) 0%, rgba(134,239,172,0.18) 40%, rgba(0,0,0,0) 74%)",
           }}
         />
 
-        <div
-          className="absolute h-4 w-4 rounded-full blur-[3px]"
-          style={{
-            left: "var(--trail-x)",
-            top: "var(--trail-y)",
-            opacity: "calc(var(--trail-opacity) * 0.7)",
-            transform: "translate(-50%, -50%)",
-            background: "rgba(134,239,172,0.45)",
-          }}
-        />
-
-        {/* top-right ambient blur */}
+        {/* Ambient blurs — match green canvas */}
         <div
           className="absolute -right-28 -top-28 h-72 w-72 rounded-full blur-3xl"
-          style={{ background: "rgba(99,129,255,0.10)" }}
+          style={{ background: "rgba(255,255,255,0.06)" }}
         />
-
-        {/* bottom-left ambient blur */}
         <div
           className="absolute -bottom-32 -left-32 h-80 w-80 rounded-full blur-3xl"
-          style={{ background: "rgba(255,255,255,0.05)" }}
+          style={{ background: "rgba(10,53,23,0.40)" }}
         />
       </div>
+
+      {/* Pulse nodes */}
+      {!reducedMotion &&
+        NODES.map((node, i) => (
+          <div
+            key={i}
+            aria-hidden="true"
+            className="cursor-trail-node pointer-events-none absolute h-1 w-1 rounded-full bg-white/40"
+            style={{
+              top: node.top,
+              left: node.left,
+              animationDelay: node.delay,
+            }}
+          />
+        ))}
 
       <div className="relative z-10">{children}</div>
     </section>

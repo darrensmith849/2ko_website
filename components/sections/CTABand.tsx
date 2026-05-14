@@ -15,12 +15,33 @@ export default function CTABand({
 }: CTABandProps) {
   return (
     <section className="max-w-6xl mx-auto px-6 py-24">
-      <div className="rounded-3xl border border-border/80 p-10 md:p-16 text-center bg-[linear-gradient(180deg,rgba(17,17,19,0.96),rgba(13,13,15,0.94))] shadow-[0_24px_64px_-40px_rgba(0,0,0,0.8)]">
-        <h2 className="text-3xl md:text-4xl font-semibold text-text tracking-tight leading-tight max-w-3xl mx-auto">
+      <div
+        className="rounded-3xl border p-10 md:p-16 text-center"
+        style={{
+          background: "var(--color-bg-2)",
+          borderColor: "var(--accent-border)",
+          boxShadow: "var(--shadow-card)",
+        }}
+      >
+        <h2
+          className="font-semibold text-[var(--color-text)] max-w-3xl mx-auto"
+          style={{
+            fontSize: "var(--text-display-md)",
+            letterSpacing: "var(--tracking-display)",
+            lineHeight: 1.1,
+          }}
+        >
           {headline}
         </h2>
         {subheadline && (
-          <p className="mt-5 text-base md:text-lg text-muted max-w-xl mx-auto leading-relaxed">
+          <p
+            className="mt-5 text-[var(--color-muted)] max-w-xl mx-auto"
+            style={{
+              fontSize: "clamp(15px, 1.15vw, 17px)",
+              letterSpacing: "var(--tracking-tight)",
+              lineHeight: 1.55,
+            }}
+          >
             {subheadline}
           </p>
         )}

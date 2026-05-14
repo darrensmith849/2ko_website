@@ -10,32 +10,31 @@ type CardProps = {
 };
 
 function PathCard({ kicker, title, desc, href, cta, variant }: CardProps) {
-  const base =
-    "group relative overflow-hidden rounded-2xl border bg-white/[0.03] px-6 py-6 backdrop-blur transition-all duration-200";
-  const border = "border-white/10 hover:border-white/20";
-  const glow =
+  const ctaClass =
     variant === "primary"
-      ? "shadow-[0_20px_70px_rgba(34,197,94,0.10)]"
-      : "shadow-[0_20px_70px_rgba(0,0,0,0.35)]";
-
-  const btn =
-    variant === "primary"
-      ? "inline-flex items-center justify-center rounded-full bg-green-600 px-5 py-3 text-sm font-semibold text-white hover:bg-green-500"
-      : "inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10";
+      ? "inline-flex items-center justify-center rounded-full bg-[var(--color-accent)] px-5 py-3 text-sm font-semibold text-white shadow-[0_8px_24px_-12px_rgba(10,53,23,0.6)] transition-all duration-200 hover:bg-white hover:text-[var(--accent-deep)] active:scale-[0.98]"
+      : "inline-flex items-center justify-center rounded-full border border-white/35 bg-white/10 px-5 py-3 text-sm font-semibold text-white backdrop-blur transition-all duration-200 hover:bg-white/20";
 
   return (
-    <div className={`${base} ${border} ${glow}`}>
-      {/* soft sheen */}
+    <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] px-6 py-6 backdrop-blur transition-all duration-200 hover:border-white/20 hover:bg-white/[0.09]">
+      {/* Hover sheen */}
       <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
         <div className="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
       </div>
 
-      <div className="text-xs uppercase tracking-[0.24em] text-white/55">{kicker}</div>
-      <div className="mt-2 text-xl font-semibold text-white">{title}</div>
+      <p
+        className="text-[11px] uppercase text-white/55"
+        style={{ letterSpacing: "var(--tracking-eyebrow)" }}
+      >
+        {kicker}
+      </p>
+      <p className="mt-2 text-xl font-semibold text-white" style={{ letterSpacing: "var(--tracking-tight)" }}>
+        {title}
+      </p>
       <p className="mt-2 text-sm leading-relaxed text-white/65">{desc}</p>
 
       <div className="mt-5 flex items-center gap-3">
-        <Link href={href} className={btn}>
+        <Link href={href} className={ctaClass}>
           {cta} →
         </Link>
         <span className="text-xs text-white/45">No obligation</span>
@@ -47,9 +46,12 @@ function PathCard({ kicker, title, desc, href, cta, variant }: CardProps) {
 export default function PathChooser() {
   return (
     <section className="mt-8">
-      <div className="mb-3 text-xs uppercase tracking-[0.24em] text-white/55">
+      <p
+        className="mb-3 text-[11px] uppercase text-white/55"
+        style={{ letterSpacing: "var(--tracking-eyebrow)" }}
+      >
         Choose your path
-      </div>
+      </p>
 
       <div className="grid gap-4 md:grid-cols-2">
         <PathCard
@@ -73,7 +75,7 @@ export default function PathChooser() {
       <div className="mt-4">
         <Link
           href="/contact"
-          className="text-sm text-white/65 underline decoration-white/20 underline-offset-4 hover:text-white"
+          className="text-sm text-white/65 underline decoration-white/20 underline-offset-4 hover:text-white transition-colors"
         >
           Not sure which one? Start the conversation →
         </Link>
