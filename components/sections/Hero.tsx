@@ -1,5 +1,4 @@
 import { type ReactNode } from "react";
-import Image from "next/image";
 import Button from "@/components/ui/Button";
 import { getImage } from "@/lib/imageBank";
 
@@ -27,8 +26,6 @@ export default function Hero({
   subheadline,
   ctas = [],
   imageKey,
-  imageAlt = "Business operations background",
-  imagePriority = false,
   imagePosition = "center",
   children,
 }: HeroProps) {
@@ -40,17 +37,16 @@ export default function Hero({
     >
       {imageUrl && (
         <>
-          <div className="pointer-events-none absolute inset-0">
-            <Image
-              src={imageUrl}
-              alt={imageAlt}
-              fill
-              sizes="100vw"
-              priority={imagePriority}
-              className="object-cover"
-              style={{ objectPosition: imagePosition }}
-            />
-          </div>
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0"
+            style={{
+              backgroundImage: `url(${imageUrl})`,
+              backgroundSize: "cover",
+              backgroundPosition: imagePosition,
+              backgroundRepeat: "no-repeat",
+            }}
+          />
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0"
