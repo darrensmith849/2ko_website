@@ -38,15 +38,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html:
-              "document.documentElement.classList.add('motion-ready');" +
-              "setTimeout(function(){var els=document.querySelectorAll('[data-reveal]:not(.is-visible)');for(var i=0;i<els.length;i++)els[i].classList.add('is-visible');},1500);",
-          }}
-        />
-      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

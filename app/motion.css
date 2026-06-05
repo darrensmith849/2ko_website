@@ -6,31 +6,23 @@
    prefers-reduced-motion.
    ────────────────────────────────────────────────────────── */
 
-/* ── Reveal: fade + slide-up on intersection ─────────────── */
-/* Progressive enhancement: elements are visible by default.
-   The hidden state only applies once <html> has the `motion-ready`
-   class — set by a synchronous inline script in app/layout.tsx
-   BEFORE first paint. If JS is disabled or fails to load,
-   everything stays visible. */
+/* ── Reveal: fade + slide-up ────────────────────────────── */
+/* Pure CSS animation that auto-plays on element mount. No JS
+   dependency — if the HTML loads, the animation runs. animation-
+   fill-mode: both keeps the final visible state after completion. */
+@keyframes revealIn {
+  from { opacity: 0; transform: translate3d(0, 12px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
 [data-reveal] {
-  transition:
-    opacity 700ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation: revealIn 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
   will-change: opacity, transform;
 }
-html.motion-ready [data-reveal]:not(.is-visible) {
-  opacity: 0;
-  transform: translate3d(0, 12px, 0);
-}
-[data-reveal].is-visible {
-  opacity: 1;
-  transform: translate3d(0, 0, 0);
-}
-[data-reveal][data-delay="1"] { transition-delay: 80ms; }
-[data-reveal][data-delay="2"] { transition-delay: 160ms; }
-[data-reveal][data-delay="3"] { transition-delay: 240ms; }
-[data-reveal][data-delay="4"] { transition-delay: 320ms; }
-[data-reveal][data-delay="5"] { transition-delay: 400ms; }
+[data-reveal][data-delay="1"] { animation-delay: 80ms; }
+[data-reveal][data-delay="2"] { animation-delay: 160ms; }
+[data-reveal][data-delay="3"] { animation-delay: 240ms; }
+[data-reveal][data-delay="4"] { animation-delay: 320ms; }
+[data-reveal][data-delay="5"] { animation-delay: 400ms; }
 
 /* ── Magnetic buttons / chips ────────────────────────────── */
 [data-magnetic] {
@@ -134,7 +126,7 @@ html.motion-ready [data-reveal]:not(.is-visible) {
 
 /* ── Reduced motion: kill everything decorative ─────────── */
 @media (prefers-reduced-motion: reduce) {
-  [data-reveal] { opacity: 1; transform: none; transition: none; }
+  [data-reveal] { opacity: 1; transform: none; animation: none; }
   [data-magnetic] { transform: none !important; }
   .float-a, .float-b, .float-c,
   .orb-drift-a, .orb-drift-b,
