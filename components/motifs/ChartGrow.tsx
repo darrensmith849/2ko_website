@@ -50,11 +50,11 @@ export default function ChartGrow({ className }: { className?: string }) {
           <stop offset="100%" stopColor="var(--tint)" stopOpacity="0.2" />
         </linearGradient>
         <linearGradient id="cg-panel" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="rgba(255,255,255,0.08)" />
-          <stop offset="100%" stopColor="rgba(255,255,255,0.02)" />
+          <stop offset="0%" stopColor="rgb(var(--motif-fg) / 0.08)" />
+          <stop offset="100%" stopColor="rgb(var(--motif-fg) / 0.02)" />
         </linearGradient>
         <pattern id="cg-grid" x="0" y="0" width="35" height="35" patternUnits="userSpaceOnUse">
-          <path d="M 35 0 L 0 0 0 35" fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
+          <path d="M 35 0 L 0 0 0 35" fill="none" stroke="rgb(var(--motif-fg) / 0.04)" strokeWidth="1" />
         </pattern>
       </defs>
 
@@ -64,43 +64,43 @@ export default function ChartGrow({ className }: { className?: string }) {
       {/* Header strip — DMAIC stage indicator + summary */}
       <g>
         <rect x="20" y="18" width="460" height="34" rx="8"
-              fill="url(#cg-panel)" stroke="rgba(255,255,255,0.10)" />
+              fill="url(#cg-panel)" stroke="rgb(var(--motif-fg) / 0.10)" />
         {/* DMAIC dots */}
         {["D", "M", "A", "I", "C"].map((letter, i) => {
           const isActive = i <= 3;
           return (
             <g key={letter}>
               <circle cx={36 + i * 22} cy={35} r="9"
-                      fill={isActive ? "var(--tint)" : "rgba(255,255,255,0.06)"}
-                      stroke={isActive ? "var(--tint)" : "rgba(255,255,255,0.18)"}
+                      fill={isActive ? "var(--tint)" : "rgb(var(--motif-fg) / 0.06)"}
+                      stroke={isActive ? "var(--tint)" : "rgb(var(--motif-fg) / 0.18)"}
                       opacity={isActive ? 1 : 0.7} />
               <text x={36 + i * 22} y={38.5} textAnchor="middle"
-                    fill={isActive ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.45)"}
+                    fill={isActive ? "rgb(var(--motif-fg) / 0.95)" : "rgb(var(--motif-fg) / 0.45)"}
                     fontFamily="var(--font-geist-mono, monospace)"
                     fontSize="9" fontWeight="700">{letter}</text>
             </g>
           );
         })}
-        <text x="160" y="38" fill="rgba(255,255,255,0.7)"
+        <text x="160" y="38" fill="rgb(var(--motif-fg) / 0.7)"
               fontFamily="var(--font-geist-mono, monospace)" fontSize="10"
               letterSpacing="0.16em" fontWeight="600">STAGE · IMPROVE</text>
         {/* Right summary */}
-        <text x="320" y="33" fill="rgba(255,255,255,0.55)"
+        <text x="320" y="33" fill="rgb(var(--motif-fg) / 0.55)"
               fontFamily="var(--font-geist-mono, monospace)"
               fontSize="8" letterSpacing="0.15em">σ-LEVEL</text>
         <text x="320" y="46" fill="var(--tint)"
               fontFamily="var(--font-geist-sans, sans-serif)"
               fontSize="13" fontWeight="700">5.8σ</text>
-        <text x="380" y="33" fill="rgba(255,255,255,0.55)"
+        <text x="380" y="33" fill="rgb(var(--motif-fg) / 0.55)"
               fontFamily="var(--font-geist-mono, monospace)"
               fontSize="8" letterSpacing="0.15em">DPMO</text>
-        <text x="380" y="46" fill="rgba(255,255,255,0.95)"
+        <text x="380" y="46" fill="rgb(var(--motif-fg) / 0.95)"
               fontFamily="var(--font-geist-sans, sans-serif)"
               fontSize="13" fontWeight="700">12.4</text>
-        <text x="430" y="33" fill="rgba(255,255,255,0.55)"
+        <text x="430" y="33" fill="rgb(var(--motif-fg) / 0.55)"
               fontFamily="var(--font-geist-mono, monospace)"
               fontSize="8" letterSpacing="0.15em">YIELD</text>
-        <text x="430" y="46" fill="rgba(255,255,255,0.95)"
+        <text x="430" y="46" fill="rgb(var(--motif-fg) / 0.95)"
               fontFamily="var(--font-geist-sans, sans-serif)"
               fontSize="13" fontWeight="700">99.9%</text>
       </g>
@@ -109,9 +109,9 @@ export default function ChartGrow({ className }: { className?: string }) {
       {[0, 40, 80, 120, 160, 200].map((v) => (
         <g key={v}>
           <line x1="40" x2="468" y1={FLOOR - v} y2={FLOOR - v}
-                stroke="rgba(255,255,255,0.05)" strokeDasharray="2 4" />
+                stroke="rgb(var(--motif-fg) / 0.05)" strokeDasharray="2 4" />
           <text x="30" y={FLOOR - v + 3} textAnchor="end"
-                fill="rgba(255,255,255,0.35)"
+                fill="rgb(var(--motif-fg) / 0.35)"
                 fontFamily="var(--font-geist-mono, monospace)" fontSize="8">{v}</text>
         </g>
       ))}
@@ -145,7 +145,7 @@ export default function ChartGrow({ className }: { className?: string }) {
       ))}
 
       {/* Floor with x-axis */}
-      <line x1="40" y1={FLOOR} x2="468" y2={FLOOR} stroke="rgba(255,255,255,0.25)" strokeWidth="1.2" />
+      <line x1="40" y1={FLOOR} x2="468" y2={FLOOR} stroke="rgb(var(--motif-fg) / 0.25)" strokeWidth="1.2" />
 
       {/* Sigma deviation markers — small vertical ticks above each bar */}
       {BARS.map((b, i) => {
@@ -154,7 +154,7 @@ export default function ChartGrow({ className }: { className?: string }) {
           <line key={`dev-${i}`}
                 x1={b.x + BAR_W / 2} y1={FLOOR - b.h - 8}
                 x2={b.x + BAR_W / 2} y2={FLOOR - b.h - 8 + dy}
-                stroke="rgba(255,255,255,0.5)" strokeWidth="1" />
+                stroke="rgb(var(--motif-fg) / 0.5)" strokeWidth="1" />
         );
       })}
 
@@ -196,11 +196,11 @@ export default function ChartGrow({ className }: { className?: string }) {
         <circle cx="358" cy="89" r="6" fill="var(--tint)" className="pulse-soft"
                 style={{ transformOrigin: "358px 89px" }} />
         <text x="372" y="86"
-          fill="rgba(255,255,255,0.6)"
+          fill="rgb(var(--motif-fg) / 0.6)"
           fontFamily="var(--font-geist-mono, monospace)"
           fontSize="8" letterSpacing="0.16em" fontWeight="600">CAPABILITY</text>
         <text x="372" y="100"
-          fill="rgba(255,255,255,0.95)"
+          fill="rgb(var(--motif-fg) / 0.95)"
           fontFamily="var(--font-geist-sans, sans-serif)"
           fontSize="14" fontWeight="700">Cpk 1.84</text>
       </g>
@@ -208,14 +208,14 @@ export default function ChartGrow({ className }: { className?: string }) {
       {/* Floating mini-card: defect rate */}
       <g className="float-a" style={{ transformOrigin: "110px 100px" }}>
         <rect x="40" y="76" width="116" height="44" rx="8"
-              fill="url(#cg-panel)" stroke="rgba(255,255,255,0.12)" />
-        <text x="50" y="92" fill="rgba(255,255,255,0.55)"
+              fill="url(#cg-panel)" stroke="rgb(var(--motif-fg) / 0.12)" />
+        <text x="50" y="92" fill="rgb(var(--motif-fg) / 0.55)"
               fontFamily="var(--font-geist-mono, monospace)"
               fontSize="8" letterSpacing="0.16em" fontWeight="600">DEFECTS</text>
-        <text x="50" y="112" fill="rgba(255,255,255,0.95)"
+        <text x="50" y="112" fill="rgb(var(--motif-fg) / 0.95)"
               fontFamily="var(--font-geist-sans, sans-serif)"
               fontSize="14" fontWeight="700">3.2</text>
-        <text x="74" y="112" fill="rgba(255,255,255,0.55)"
+        <text x="74" y="112" fill="rgb(var(--motif-fg) / 0.55)"
               fontFamily="var(--font-geist-mono, monospace)"
               fontSize="9">/M</text>
         <text x="118" y="112" fill="var(--tint)"
@@ -225,15 +225,15 @@ export default function ChartGrow({ className }: { className?: string }) {
 
       {/* x-axis ticks */}
       <text x="60" y={FLOOR + 16}
-        fill="rgba(255,255,255,0.45)"
+        fill="rgb(var(--motif-fg) / 0.45)"
         fontFamily="var(--font-geist-mono, monospace)"
         fontSize="9" letterSpacing="0.12em">WK 01</text>
       <text x="260" y={FLOOR + 16}
-        fill="rgba(255,255,255,0.45)"
+        fill="rgb(var(--motif-fg) / 0.45)"
         fontFamily="var(--font-geist-mono, monospace)"
         fontSize="9" letterSpacing="0.12em">WK 06</text>
       <text x="455" y={FLOOR + 16}
-        fill="rgba(255,255,255,0.45)"
+        fill="rgb(var(--motif-fg) / 0.45)"
         fontFamily="var(--font-geist-mono, monospace)"
         fontSize="9" letterSpacing="0.12em">WK 12</text>
     </svg>

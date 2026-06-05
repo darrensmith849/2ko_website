@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ThemeToggle from "@/components/chrome/ThemeToggle";
 
 const navLinks = [
   { href: "/six-sigma", label: "Six Sigma SA" },
@@ -28,9 +29,21 @@ export default function Header() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 20);
+    let rafId = 0;
+    const update = () => setScrolled((window.scrollY || 0) > 16);
+    const handler = () => {
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        update();
+        rafId = 0;
+      });
+    };
+    update();
     window.addEventListener("scroll", handler, { passive: true });
-    return () => window.removeEventListener("scroll", handler);
+    return () => {
+      window.removeEventListener("scroll", handler);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   useEffect(() => {
@@ -42,10 +55,8 @@ export default function Header() {
   return (
     <header
       data-tint={activeTint}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-background/90 backdrop-blur-xl"
-          : "bg-background/35 backdrop-blur-sm"
+      className={`mk-chrome fixed top-0 left-0 right-0 z-50${
+        scrolled ? " is-scrolled" : ""
       }`}
     >
       {/* Tinted underline — picks up the current division's --tint */}
@@ -84,7 +95,8 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex items-center gap-2.5">
+          <ThemeToggle />
           <Link
             href="/contact"
             className="px-4 py-2 text-sm font-medium rounded-full bg-accent text-white hover:bg-accent2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"

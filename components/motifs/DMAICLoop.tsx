@@ -56,13 +56,13 @@ export default function DMAICLoop({ className }: { className?: string }) {
         cy={CENTER}
         r={RADIUS - 28}
         fill="none"
-        stroke="rgba(255,255,255,0.08)"
+        stroke="rgb(var(--motif-fg) / 0.08)"
         strokeWidth="1"
       />
 
       {/* Centre badge */}
       <g>
-        <circle cx={CENTER} cy={CENTER} r="42" fill="rgba(255,255,255,0.04)" stroke="var(--tint)" strokeOpacity="0.32" />
+        <circle cx={CENTER} cy={CENTER} r="42" fill="rgb(var(--motif-fg) / 0.04)" stroke="var(--tint)" strokeOpacity="0.32" />
         <text
           x={CENTER}
           y={CENTER - 4}
@@ -79,7 +79,7 @@ export default function DMAICLoop({ className }: { className?: string }) {
           x={CENTER}
           y={CENTER + 14}
           textAnchor="middle"
-          fill="rgba(255,255,255,0.55)"
+          fill="rgb(var(--motif-fg) / 0.55)"
           fontFamily="var(--font-geist-mono, monospace)"
           fontSize="9"
           letterSpacing="0.12em"
@@ -95,7 +95,7 @@ export default function DMAICLoop({ className }: { className?: string }) {
         const y = CENTER + Math.sin(angle) * RADIUS;
         return (
           <g key={node.letter}>
-            <circle cx={x} cy={y} r="18" fill="rgba(255,255,255,0.04)" stroke="var(--tint)" strokeOpacity="0.6" />
+            <circle cx={x} cy={y} r="18" fill="rgb(var(--motif-fg) / 0.04)" stroke="var(--tint)" strokeOpacity="0.6" />
             <text
               x={x}
               y={y + 4}
@@ -111,7 +111,7 @@ export default function DMAICLoop({ className }: { className?: string }) {
               x={x}
               y={y + 36}
               textAnchor="middle"
-              fill="rgba(255,255,255,0.65)"
+              fill="rgb(var(--motif-fg) / 0.65)"
               fontFamily="var(--font-geist-sans, sans-serif)"
               fontSize="10.5"
               letterSpacing="0.08em"

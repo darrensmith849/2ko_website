@@ -2,17 +2,76 @@
 @import "./themes.css";
 @import "./motion.css";
 
-@theme {
-  /* Brand colors */
-  --color-background: #09090B;
-  --color-surface: #111113;
-  --color-surface2: #18181B;
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-accent: #16A34A;
-  --color-accent2: #22C55E;
-  --color-text: rgba(255, 255, 255, 0.92);
-  --color-muted: rgba(255, 255, 255, 0.60);
-  --color-muted2: rgba(255, 255, 255, 0.38);
+/* ──────────────────────────────────────────────────────────
+   Theme tokens
+   ──────────────────────────────────────────────────────────
+   The umbrella site is DARK-FIRST by design. Light mode is a
+   toggle for visitors who prefer it, but every reload lands
+   back in dark (matches the UK site's product decision).
+
+   `--motif-fg` is an RGB triple, not a colour — every SVG
+   motif uses `rgb(var(--motif-fg) / 0.65)` style references
+   so foreground tints flip cleanly across themes.
+   ────────────────────────────────────────────────────────── */
+
+:root,
+[data-theme="dark"] {
+  --color-background: #09090b;
+  --color-surface:    #111113;
+  --color-surface2:   #18181b;
+  --color-border:     rgba(255, 255, 255, 0.08);
+  --color-accent:     #16a34a;
+  --color-accent2:    #22c55e;
+  --color-text:       rgba(255, 255, 255, 0.92);
+  --color-muted:      rgba(255, 255, 255, 0.60);
+  --color-muted2:     rgba(255, 255, 255, 0.38);
+
+  /* Chrome (nav + footer surfaces). Frosted dark. */
+  --chrome-bg:        rgba(9, 9, 11, 0.72);
+  --chrome-border:    rgba(255, 255, 255, 0.06);
+
+  /* Motif foreground — RGB triple consumed via rgb(var() / α). */
+  --motif-fg:         255 255 255;
+  --motif-panel:      rgba(255, 255, 255, 0.04);
+  --motif-panel-2:    rgba(255, 255, 255, 0.02);
+
+  --shadow-soft:      0 1px 2px rgba(0, 0, 0, 0.4),
+                      0 4px 12px -2px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="light"] {
+  --color-background: #ffffff;
+  --color-surface:    #ffffff;
+  --color-surface2:   #f6f7f9;
+  --color-border:     rgba(10, 15, 30, 0.08);
+  --color-accent:     #16a34a;
+  --color-accent2:    #15803d;
+  --color-text:       #0a0f1e;
+  --color-muted:      #4b5563;
+  --color-muted2:     #6b7280;
+
+  --chrome-bg:        rgba(255, 255, 255, 0.78);
+  --chrome-border:    rgba(10, 15, 30, 0.08);
+
+  --motif-fg:         10 15 30;
+  --motif-panel:      rgba(10, 15, 30, 0.04);
+  --motif-panel-2:    rgba(10, 15, 30, 0.02);
+
+  --shadow-soft:      0 1px 2px rgba(10, 15, 30, 0.05),
+                      0 4px 12px -2px rgba(10, 15, 30, 0.07);
+}
+
+@theme inline {
+  /* Brand colors (Tailwind utilities resolve these as runtime CSS vars) */
+  --color-background: var(--color-background);
+  --color-surface:    var(--color-surface);
+  --color-surface2:   var(--color-surface2);
+  --color-border:     var(--color-border);
+  --color-accent:     var(--color-accent);
+  --color-accent2:    var(--color-accent2);
+  --color-text:       var(--color-text);
+  --color-muted:      var(--color-muted);
+  --color-muted2:     var(--color-muted2);
 
   /* Typography */
   --font-sans: var(--font-geist-sans);
@@ -35,17 +94,24 @@
 
 html {
   scroll-behavior: smooth;
+  background: var(--color-background);
+  color: var(--color-text);
 }
 
 body {
-  background: #09090B;
-  color: rgba(255, 255, 255, 0.92);
+  background: var(--color-background);
+  color: var(--color-text);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   letter-spacing: -0.01em;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* No transition on html/body — Tailwind v4's css-var pipeline interacts
+   badly with `transition: background-color` on variable-driven values
+   and freezes the animation at t=0. Theme flip is instant; the
+   .mk-chrome transition below handles the nav/footer fade. */
 
 ::selection {
   background: rgba(22, 163, 74, 0.4);
@@ -56,18 +122,63 @@ a {
   text-underline-offset: 2px;
 }
 
+/* ── Sigmafy-style scroll progress bar ────────────────────
+   2px fixed bar at top of viewport, accent-coloured fill
+   driven by scrollY against scrollHeight. Mirrors
+   sigmafy.co's `.mk-scroll-progress`. */
+.mk-scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 60;
+  background: transparent;
+  pointer-events: none;
+}
+.mk-scroll-progress-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--color-accent) 60%, transparent) 0%,
+    var(--color-accent) 100%
+  );
+  transform-origin: left center;
+  will-change: width;
+  transition: width 80ms linear;
+}
+
+/* ── Chrome scrolled-state (mirrors `.mk-nav.is-scrolled`) ── */
+.mk-chrome {
+  background: var(--chrome-bg);
+  border-bottom: 1px solid transparent;
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  transition:
+    background-color 240ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color    240ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow      240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.mk-chrome.is-scrolled {
+  border-bottom-color: var(--chrome-border);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+}
+
 /* ── Interactive hero cursor-trail ── */
 
 .cursor-trail-grid {
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.10) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.10) 1px, transparent 1px);
+    linear-gradient(to right, rgb(var(--motif-fg) / 0.10) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(var(--motif-fg) / 0.10) 1px, transparent 1px);
   background-size: 64px 64px;
   background-position: center;
 }
 
 .cursor-trail-pattern {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.10) 1px, transparent 1px);
+  background-image: radial-gradient(rgb(var(--motif-fg) / 0.10) 1px, transparent 1px);
   background-size: 26px 26px;
   background-position: center;
 }
@@ -111,7 +222,6 @@ a {
   z-index: 60;
 }
 
-/* Position all elements using CSS vars */
 .premium-cursor-orb,
 .premium-cursor-streak,
 .premium-cursor-core,
@@ -123,7 +233,6 @@ a {
   opacity: var(--pc-opacity);
 }
 
-/* Large soft orb */
 .premium-cursor-orb {
   width: 520px;
   height: 520px;
@@ -139,7 +248,6 @@ a {
   );
 }
 
-/* Directional streak (uses angle + scale) */
 .premium-cursor-streak {
   width: 190px;
   height: 34px;
@@ -160,7 +268,6 @@ a {
   );
 }
 
-/* Core glow */
 .premium-cursor-core {
   width: 96px;
   height: 96px;
@@ -174,12 +281,10 @@ a {
   );
 }
 
-/* Dot — hidden */
 .premium-cursor-dot {
   display: none;
 }
 
-/* Respect reduced motion + touch */
 @media (prefers-reduced-motion: reduce), (pointer: coarse) {
   .premium-cursor-active {
     cursor: auto;

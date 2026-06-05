@@ -73,7 +73,7 @@ export default function AfricaMap({ className }: { className?: string }) {
           cx={cx}
           cy={cy}
           r={1.6}
-          fill="rgba(255,255,255,0.42)"
+          fill="rgb(var(--motif-fg) / 0.42)"
         />
       ))}
 
@@ -114,7 +114,7 @@ export default function AfricaMap({ className }: { className?: string }) {
             <text
               x={c.cx + 10}
               y={c.cy + 4}
-              fill="rgba(255,255,255,0.78)"
+              fill="rgb(var(--motif-fg) / 0.78)"
               fontFamily="var(--font-geist-mono, monospace)"
               fontSize="10.5"
               letterSpacing="0.08em"

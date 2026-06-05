@@ -112,11 +112,11 @@ export default function KPIBoard({ className }: { className?: string }) {
           <stop offset="75%" stopColor="var(--tint)" stopOpacity="0" />
         </radialGradient>
         <linearGradient id="kb-tile" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="rgba(255,255,255,0.08)" />
-          <stop offset="100%" stopColor="rgba(255,255,255,0.02)" />
+          <stop offset="0%" stopColor="rgb(var(--motif-fg) / 0.08)" />
+          <stop offset="100%" stopColor="rgb(var(--motif-fg) / 0.02)" />
         </linearGradient>
         <pattern id="kb-grid" x="0" y="0" width="35" height="35" patternUnits="userSpaceOnUse">
-          <path d="M 35 0 L 0 0 0 35" fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
+          <path d="M 35 0 L 0 0 0 35" fill="none" stroke="rgb(var(--motif-fg) / 0.04)" strokeWidth="1" />
         </pattern>
       </defs>
 
@@ -126,20 +126,20 @@ export default function KPIBoard({ className }: { className?: string }) {
       {/* Header — scorecard title row */}
       <g>
         <rect x="20" y="20" width="460" height="48" rx="10"
-              fill="url(#kb-tile)" stroke="rgba(255,255,255,0.12)" />
+              fill="url(#kb-tile)" stroke="rgb(var(--motif-fg) / 0.12)" />
         <circle cx="40" cy="44" r="5" fill="var(--tint)" className="pulse-soft"
                 style={{ transformOrigin: "40px 44px" }} />
-        <text x="54" y="40" fill="rgba(255,255,255,0.55)"
+        <text x="54" y="40" fill="rgb(var(--motif-fg) / 0.55)"
               fontFamily="var(--font-geist-mono, monospace)"
               fontSize="9" letterSpacing="0.18em" fontWeight="600">CLIENT · ANON-PMG-04</text>
-        <text x="54" y="56" fill="rgba(255,255,255,0.95)"
+        <text x="54" y="56" fill="rgb(var(--motif-fg) / 0.95)"
               fontFamily="var(--font-geist-sans, sans-serif)"
               fontSize="14" fontWeight="600">12-week DMAIC engagement · 2KO Group</text>
         {/* Right-side summary chip */}
         <rect x="346" y="32" width="120" height="26" rx="13"
               fill="var(--tint)" opacity="0.18"
               stroke="var(--tint)" strokeOpacity="0.65" strokeWidth="1.2" />
-        <text x="406" y="48" textAnchor="middle" fill="rgba(255,255,255,0.98)"
+        <text x="406" y="48" textAnchor="middle" fill="rgb(var(--motif-fg) / 0.98)"
               fontFamily="var(--font-geist-sans, sans-serif)"
               fontSize="11" fontWeight="700" letterSpacing="0.06em">R 4.2M SAVED · ANNUALISED</text>
       </g>
@@ -153,14 +153,14 @@ export default function KPIBoard({ className }: { className?: string }) {
         return (
           <g key={t.label}>
             <rect x={tx} y={ty} width={TILE_W} height={TILE_H} rx="10"
-                  fill="url(#kb-tile)" stroke="rgba(255,255,255,0.12)" />
-            <text x={tx + 12} y={ty + 18} fill="rgba(255,255,255,0.6)"
+                  fill="url(#kb-tile)" stroke="rgb(var(--motif-fg) / 0.12)" />
+            <text x={tx + 12} y={ty + 18} fill="rgb(var(--motif-fg) / 0.6)"
                   fontFamily="var(--font-geist-mono, monospace)"
                   fontSize="9" letterSpacing="0.18em" fontWeight="600">{t.label}</text>
-            <text x={tx + 12} y={ty + 32} fill="rgba(255,255,255,0.35)"
+            <text x={tx + 12} y={ty + 32} fill="rgb(var(--motif-fg) / 0.35)"
                   fontFamily="var(--font-geist-mono, monospace)"
                   fontSize="8">{t.sub}</text>
-            <text x={tx + 12} y={ty + 62} fill="rgba(255,255,255,0.98)"
+            <text x={tx + 12} y={ty + 62} fill="rgb(var(--motif-fg) / 0.98)"
                   fontFamily="var(--font-geist-sans, sans-serif)"
                   fontSize="22" fontWeight="700">{t.value}</text>
             <text x={tx + TILE_W - 12} y={ty + 62} textAnchor="end"

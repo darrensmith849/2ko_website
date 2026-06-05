@@ -84,8 +84,8 @@ export default function ProcessPipeline({ className }: { className?: string }) {
           <stop offset="75%" stopColor="var(--tint)" stopOpacity="0" />
         </radialGradient>
         <linearGradient id="pp-stage" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="rgba(255,255,255,0.08)" />
-          <stop offset="100%" stopColor="rgba(255,255,255,0.02)" />
+          <stop offset="0%" stopColor="rgb(var(--motif-fg) / 0.08)" />
+          <stop offset="100%" stopColor="rgb(var(--motif-fg) / 0.02)" />
         </linearGradient>
         <linearGradient id="pp-flow" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stopColor="var(--tint)" stopOpacity="0" />
@@ -93,7 +93,7 @@ export default function ProcessPipeline({ className }: { className?: string }) {
           <stop offset="100%" stopColor="var(--tint)" stopOpacity="0" />
         </linearGradient>
         <pattern id="pp-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
+          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgb(var(--motif-fg) / 0.04)" strokeWidth="1" />
         </pattern>
       </defs>
 
@@ -103,17 +103,17 @@ export default function ProcessPipeline({ className }: { className?: string }) {
       {/* Header */}
       <g>
         <rect x="20" y="24" width="460" height="64" rx="12"
-              fill="url(#pp-stage)" stroke="rgba(255,255,255,0.12)" />
-        <text x="36" y="50" fill="rgba(255,255,255,0.55)"
+              fill="url(#pp-stage)" stroke="rgb(var(--motif-fg) / 0.12)" />
+        <text x="36" y="50" fill="rgb(var(--motif-fg) / 0.55)"
               fontFamily="var(--font-geist-mono, monospace)"
               fontSize="10" letterSpacing="0.18em" fontWeight="600">THE 2KO MODEL</text>
-        <text x="36" y="74" fill="rgba(255,255,255,0.95)"
+        <text x="36" y="74" fill="rgb(var(--motif-fg) / 0.95)"
               fontFamily="var(--font-geist-sans, sans-serif)"
               fontSize="18" fontWeight="600">From assessment to autonomy.</text>
         {/* Right summary chips */}
         <rect x="350" y="42" width="56" height="20" rx="10"
-              fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.18)" />
-        <text x="378" y="55" textAnchor="middle" fill="rgba(255,255,255,0.7)"
+              fill="rgb(var(--motif-fg) / 0.04)" stroke="rgb(var(--motif-fg) / 0.18)" />
+        <text x="378" y="55" textAnchor="middle" fill="rgb(var(--motif-fg) / 0.7)"
               fontFamily="var(--font-geist-mono, monospace)"
               fontSize="9" letterSpacing="0.14em" fontWeight="600">28 YRS</text>
         <rect x="412" y="42" width="56" height="20" rx="10"
@@ -132,9 +132,9 @@ export default function ProcessPipeline({ className }: { className?: string }) {
         return (
           <g key={`arrow-${i}`}>
             <line x1={x1} y1={y} x2={x2 - 4} y2={y}
-                  stroke="rgba(255,255,255,0.25)" strokeWidth="1.4" />
+                  stroke="rgb(var(--motif-fg) / 0.25)" strokeWidth="1.4" />
             <polyline points={`${x2 - 6},${y - 3} ${x2 - 2},${y} ${x2 - 6},${y + 3}`}
-                      fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="1.4"
+                      fill="none" stroke="rgb(var(--motif-fg) / 0.4)" strokeWidth="1.4"
                       strokeLinecap="round" strokeLinejoin="round" />
           </g>
         );
@@ -145,7 +145,7 @@ export default function ProcessPipeline({ className }: { className?: string }) {
         <line x1={START_X + 12} y1={TOP + STAGE_H + 22}
               x2={START_X + STAGES.length * STAGE_W + (STAGES.length - 1) * GAP - 12}
               y2={TOP + STAGE_H + 22}
-              stroke="rgba(255,255,255,0.10)" strokeWidth="2" strokeLinecap="round" />
+              stroke="rgb(var(--motif-fg) / 0.10)" strokeWidth="2" strokeLinecap="round" />
         <line x1={START_X + 12} y1={TOP + STAGE_H + 22}
               x2={START_X + STAGES.length * STAGE_W + (STAGES.length - 1) * GAP - 12}
               y2={TOP + STAGE_H + 22}
@@ -162,16 +162,16 @@ export default function ProcessPipeline({ className }: { className?: string }) {
           <g key={s.label}>
             <rect x={tx} y={TOP} width={STAGE_W} height={STAGE_H} rx="10"
                   fill="url(#pp-stage)"
-                  stroke={isActive ? "var(--tint)" : "rgba(255,255,255,0.14)"}
+                  stroke={isActive ? "var(--tint)" : "rgb(var(--motif-fg) / 0.14)"}
                   strokeWidth={isActive ? 1.5 : 1}
                   strokeOpacity={isActive ? 0.85 : 1} />
             {/* Code chip */}
             <rect x={tx + 10} y={TOP + 10} width="26" height="14" rx="7"
-                  fill={isActive ? "var(--tint)" : "rgba(255,255,255,0.06)"}
+                  fill={isActive ? "var(--tint)" : "rgb(var(--motif-fg) / 0.06)"}
                   opacity={isActive ? 0.95 : 1}
-                  stroke={isActive ? "var(--tint)" : "rgba(255,255,255,0.18)"} />
+                  stroke={isActive ? "var(--tint)" : "rgb(var(--motif-fg) / 0.18)"} />
             <text x={tx + 23} y={TOP + 20} textAnchor="middle"
-                  fill={isActive ? "rgba(0,0,0,0.85)" : "rgba(255,255,255,0.7)"}
+                  fill={isActive ? "rgba(0,0,0,0.85)" : "rgb(var(--motif-fg) / 0.7)"}
                   fontFamily="var(--font-geist-mono, monospace)"
                   fontSize="8" fontWeight="700" letterSpacing="0.1em">{s.code}</text>
             {/* Status dot top-right */}
@@ -183,23 +183,23 @@ export default function ProcessPipeline({ className }: { className?: string }) {
                 <circle cx={tx + STAGE_W - 14} cy={TOP + 17} r="3" fill="var(--tint)" />
               </>
             ) : (
-              <circle cx={tx + STAGE_W - 14} cy={TOP + 17} r="2.4" fill="rgba(255,255,255,0.3)" />
+              <circle cx={tx + STAGE_W - 14} cy={TOP + 17} r="2.4" fill="rgb(var(--motif-fg) / 0.3)" />
             )}
             {/* Icon block */}
             <rect x={tx + (STAGE_W - 32) / 2} y={TOP + 38} width="32" height="32" rx="8"
-                  fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.10)" />
+                  fill="rgb(var(--motif-fg) / 0.03)" stroke="rgb(var(--motif-fg) / 0.10)" />
             <StageIcon x={tx + (STAGE_W - 32) / 2 + 2} y={TOP + 40} kind={i} />
             {/* Label */}
             <text x={tx + STAGE_W / 2} y={TOP + 92} textAnchor="middle"
-                  fill="rgba(255,255,255,0.95)"
+                  fill="rgb(var(--motif-fg) / 0.95)"
                   fontFamily="var(--font-geist-sans, sans-serif)"
                   fontSize="12" fontWeight="700" letterSpacing="0.06em">{s.label}</text>
             <text x={tx + STAGE_W / 2} y={TOP + 110} textAnchor="middle"
-                  fill="rgba(255,255,255,0.45)"
+                  fill="rgb(var(--motif-fg) / 0.45)"
                   fontFamily="var(--font-geist-sans, sans-serif)"
                   fontSize="9">{s.sub}</text>
             <text x={tx + STAGE_W / 2} y={TOP + 122} textAnchor="middle"
-                  fill="rgba(255,255,255,0.35)"
+                  fill="rgb(var(--motif-fg) / 0.35)"
                   fontFamily="var(--font-geist-sans, sans-serif)"
                   fontSize="9">stage</text>
           </g>
@@ -213,10 +213,10 @@ export default function ProcessPipeline({ className }: { className?: string }) {
               stroke="var(--tint)" strokeOpacity="0.6" strokeWidth="1.4" />
         <circle cx="160" cy="122" r="5" fill="var(--tint)" className="pulse-soft"
                 style={{ transformOrigin: "160px 122px" }} />
-        <text x="174" y="118" fill="rgba(255,255,255,0.6)"
+        <text x="174" y="118" fill="rgb(var(--motif-fg) / 0.6)"
               fontFamily="var(--font-geist-mono, monospace)"
               fontSize="8" letterSpacing="0.16em" fontWeight="600">OUTCOME</text>
-        <text x="174" y="132" fill="rgba(255,255,255,0.95)"
+        <text x="174" y="132" fill="rgb(var(--motif-fg) / 0.95)"
               fontFamily="var(--font-geist-sans, sans-serif)"
               fontSize="12" fontWeight="600">Permanence over performance</text>
       </g>
@@ -224,11 +224,11 @@ export default function ProcessPipeline({ className }: { className?: string }) {
       {/* Bottom legend strip */}
       <g>
         <rect x="20" y="346" width="460" height="50" rx="10"
-              fill="url(#pp-stage)" stroke="rgba(255,255,255,0.10)" />
-        <text x="36" y="368" fill="rgba(255,255,255,0.5)"
+              fill="url(#pp-stage)" stroke="rgb(var(--motif-fg) / 0.10)" />
+        <text x="36" y="368" fill="rgb(var(--motif-fg) / 0.5)"
               fontFamily="var(--font-geist-mono, monospace)"
               fontSize="9" letterSpacing="0.18em" fontWeight="600">PRINCIPLES</text>
-        <text x="36" y="386" fill="rgba(255,255,255,0.85)"
+        <text x="36" y="386" fill="rgb(var(--motif-fg) / 0.85)"
               fontFamily="var(--font-geist-sans, sans-serif)"
               fontSize="11">Results, not reports · Method over magic · Honest scope</text>
       </g>
