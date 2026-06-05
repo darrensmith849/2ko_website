@@ -85,7 +85,7 @@ export default function SixSigmaPage() {
                 className="text-4xl font-semibold tracking-tight"
                 style={{ color: "var(--tint)" }}
               >
-                0
+                {n.value.toLocaleString()}{n.suffix}
               </dd>
               <dt className="mt-2 text-sm text-muted">{n.label}</dt>
             </div>

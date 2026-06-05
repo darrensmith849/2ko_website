@@ -77,7 +77,7 @@ export default function UmbrellaHero() {
                 data-counter-suffix={stat.suffix}
                 className="text-2xl sm:text-3xl font-semibold text-accent tracking-tight"
               >
-                0
+                {stat.value.toLocaleString()}{stat.suffix}
               </dd>
               <dt className="mt-1 text-[11px] uppercase tracking-[0.18em] text-fg/55">
                 {stat.label}

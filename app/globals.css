@@ -41,8 +41,8 @@
 
 [data-theme="light"] {
   --color-background: #ffffff;
-  --color-surface:    #ffffff;
-  --color-surface2:   #f6f7f9;
+  --color-surface:    #f7f8fa;
+  --color-surface2:   #eef0f3;
   --color-border:     rgba(10, 15, 30, 0.08);
   --color-accent:     #16a34a;
   --color-accent2:    #15803d;

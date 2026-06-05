@@ -78,6 +78,12 @@ export default function MotionRoot() {
           if (!entry.isIntersecting) continue;
           const el = entry.target as HTMLElement;
           counterObserver.unobserve(el);
+          // Only animate from-zero. If the element already shows the
+          // final value (server-rendered as a static fallback), leave
+          // it alone — saves a jarring 1,000+ → 0 → 1,000+ reset if
+          // hydration or the observer fires late.
+          const initial = (el.textContent || "").trim();
+          if (initial !== "0" && initial !== "") continue;
           const target = Number(el.dataset.counterTarget) || 0;
           const suffix = el.dataset.counterSuffix || "";
           const prefix = el.dataset.counterPrefix || "";
