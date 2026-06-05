@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
-import Hero from "@/components/sections/Hero";
+import PageHero from "@/components/sections/PageHero";
+import ProcessPipeline from "@/components/motifs/ProcessPipeline";
 import CTABand from "@/components/sections/CTABand";
 import Badge from "@/components/ui/Badge";
-import CursorGlowSection from "@/components/ui/CursorGlowSection";
-import { getImage } from "@/lib/imageBank";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata(
@@ -64,20 +62,16 @@ const values = [
 export default function AboutPage() {
   return (
     <main>
-      <CursorGlowSection>
-        <Hero
-          badge="About 2KO"
-          headline="Built on process. Powered by systems."
-          subheadline="2KO helps organisations build Lean Six Sigma capability and reinforce new operating standards with practical management systems."
-          imageKey="aboutHero"
-          imageAlt="Consulting team collaborating around operational planning"
-          imagePosition="center 35%"
-          ctas={[
-            { label: "Work with us", href: "/contact", variant: "primary" },
-            { label: "See our results", href: "/case-studies", variant: "outline" },
-          ]}
-        />
-      </CursorGlowSection>
+      <PageHero
+        eyebrow="About 2KO"
+        title="Built on process. Powered by systems."
+        subtitle="2KO helps organisations build Lean Six Sigma capability and reinforce new operating standards with practical management systems."
+        ctas={[
+          { label: "Work with us", href: "/contact" },
+          { label: "See our results", href: "/case-studies", variant: "outline" },
+        ]}
+        motif={<ProcessPipeline className="w-full max-w-lg mx-auto" />}
+      />
 
       {/* Story */}
       <section className="max-w-6xl mx-auto px-6 py-16">
@@ -105,16 +99,55 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-          <div className="relative h-72 sm:h-80 lg:h-full min-h-[20rem] rounded-3xl overflow-hidden border border-border">
-            <Image
-              src={getImage("aboutStory")}
-              alt="Team planning sustainable operational improvements on a strategy board"
-              fill
-              sizes="(max-width: 1024px) 100vw, 40vw"
-              className="object-cover"
-              style={{ objectPosition: "center 34%" }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/20" />
+          <div className="relative h-72 sm:h-80 lg:h-full min-h-[20rem] rounded-3xl overflow-hidden border border-border bg-surface p-6 flex flex-col">
+            <p className="text-[10px] uppercase tracking-[0.22em] text-muted mb-1">
+              Improvement curves
+            </p>
+            <h3 className="text-text font-semibold tracking-tight mb-5">
+              Why we design for permanence
+            </h3>
+            <svg viewBox="0 0 320 200" className="w-full flex-1" role="img" aria-label="Sustained vs faded improvement comparison">
+              <defs>
+                <linearGradient id="about-good" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="var(--color-accent, #16a34a)" stopOpacity="0.45" />
+                  <stop offset="100%" stopColor="var(--color-accent, #16a34a)" stopOpacity="0" />
+                </linearGradient>
+                <linearGradient id="about-bad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="rgba(255,255,255,0.18)" />
+                  <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+                </linearGradient>
+              </defs>
+              {/* Baseline */}
+              <line x1="20" y1="160" x2="300" y2="160" stroke="rgba(255,255,255,0.18)" strokeDasharray="3 5" />
+              <text x="20" y="178" fill="rgba(255,255,255,0.45)" fontFamily="var(--font-geist-mono, monospace)" fontSize="9" letterSpacing="0.12em">BASELINE</text>
+              {/* Faded improvement — rises then falls */}
+              <path d="M 20 160 Q 90 100 140 70 T 220 80 T 300 150"
+                    fill="none" stroke="rgba(255,255,255,0.5)" strokeWidth="2"
+                    strokeDasharray="4 3" />
+              <path d="M 20 160 Q 90 100 140 70 T 220 80 T 300 150 L 300 160 L 20 160 Z"
+                    fill="url(#about-bad)" opacity="0.5" />
+              <text x="246" y="142" fill="rgba(255,255,255,0.65)"
+                    fontFamily="var(--font-geist-sans, sans-serif)" fontSize="10" fontWeight="600">Typical</text>
+              {/* Sustained improvement — rises and HOLDS */}
+              <path d="M 20 160 Q 80 110 130 70 T 220 50 L 300 50"
+                    fill="none" stroke="var(--color-accent, #16a34a)" strokeWidth="2.6"
+                    strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M 20 160 Q 80 110 130 70 T 220 50 L 300 50 L 300 160 L 20 160 Z"
+                    fill="url(#about-good)" />
+              <circle cx="300" cy="50" r="5" fill="var(--color-accent, #16a34a)" />
+              <circle cx="300" cy="50" r="11" fill="var(--color-accent, #16a34a)" opacity="0.22" className="pulse-soft" style={{ transformOrigin: "300px 50px" }} />
+              <text x="246" y="42" fill="var(--color-accent, #16a34a)"
+                    fontFamily="var(--font-geist-sans, sans-serif)" fontSize="10" fontWeight="700">2KO model</text>
+              {/* X-axis labels */}
+              <text x="20" y="195" fill="rgba(255,255,255,0.35)" fontFamily="var(--font-geist-mono, monospace)" fontSize="8" letterSpacing="0.12em">M0</text>
+              <text x="155" y="195" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontFamily="var(--font-geist-mono, monospace)" fontSize="8" letterSpacing="0.12em">M12</text>
+              <text x="295" y="195" textAnchor="end" fill="rgba(255,255,255,0.35)" fontFamily="var(--font-geist-mono, monospace)" fontSize="8" letterSpacing="0.12em">M36</text>
+            </svg>
+            <p className="text-muted text-xs leading-relaxed mt-4">
+              Most programmes peak in year one, then erode. We design the management
+              system at the same time as the improvement — so the new standard becomes
+              the easier path to maintain.
+            </p>
           </div>
         </div>
       </section>

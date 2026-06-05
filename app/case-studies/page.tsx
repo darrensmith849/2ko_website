@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Hero from "@/components/sections/Hero";
+import PageHero from "@/components/sections/PageHero";
+import KPIBoard from "@/components/motifs/KPIBoard";
 import CaseStudyCard from "@/components/sections/CaseStudyCard";
 import CTABand from "@/components/sections/CTABand";
-import CursorGlowSection from "@/components/ui/CursorGlowSection";
 import { caseStudies } from "@/lib/data/caseStudies";
 import { pageMetadata } from "@/lib/metadata";
 
@@ -15,19 +15,16 @@ export const metadata: Metadata = pageMetadata(
 export default function CaseStudiesPage() {
   return (
     <main>
-      <CursorGlowSection>
-        <Hero
-          badge="Case Studies"
-          headline="Results on record."
-          subheadline="A selection of illustrative, anonymised outcomes from 2KO engagements across industries. Exact results vary by baseline, scope, and operating context."
-          imageKey="caseStudiesHero"
-          imageAlt="Operations leadership team reviewing performance outcomes"
-          imagePosition="center 34%"
-          ctas={[
-            { label: "Start your own engagement", href: "/contact", variant: "primary" },
-          ]}
-        />
-      </CursorGlowSection>
+      <PageHero
+        eyebrow="Case Studies"
+        title="Results on record."
+        subtitle="A selection of illustrative, anonymised outcomes from 2KO engagements across industries. Exact results vary by baseline, scope, and operating context."
+        ctas={[
+          { label: "Start your own engagement", href: "/contact" },
+          { label: "Talk to the group", href: "/contact", variant: "outline" },
+        ]}
+        motif={<KPIBoard className="w-full max-w-lg mx-auto" />}
+      />
 
       {/* Grid */}
       <section className="max-w-6xl mx-auto px-6 py-16">
