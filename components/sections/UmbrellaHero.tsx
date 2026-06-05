@@ -16,10 +16,10 @@ export default function UmbrellaHero() {
       <div>
         <div
           data-reveal
-          className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/15 bg-white/[0.04] mb-6"
+          className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-fg/15 bg-fg/[0.04] mb-6"
         >
           <span className="h-1.5 w-1.5 rounded-full bg-accent pulse-soft" />
-          <span className="text-[11px] uppercase tracking-[0.22em] text-white/75">
+          <span className="text-[11px] uppercase tracking-[0.22em] text-fg/75">
             The 2KO Group · Established 1998
           </span>
         </div>
@@ -37,7 +37,7 @@ export default function UmbrellaHero() {
         <p
           data-reveal
           data-delay="2"
-          className="mt-6 text-base sm:text-lg text-white/65 leading-relaxed max-w-xl"
+          className="mt-6 text-base sm:text-lg text-fg/65 leading-relaxed max-w-xl"
         >
           Twenty-eight years training Africa's biggest organisations to operate at a higher bar — and building the systems and platforms that keep them there. Three disciplines, one group, one outcome: improvement that holds.
         </p>
@@ -53,7 +53,7 @@ export default function UmbrellaHero() {
           <Link
             href="/contact"
             data-magnetic="10"
-            className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-medium rounded-full border border-white/15 text-white hover:bg-white/5 transition-colors"
+            className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-medium rounded-full border border-fg/15 text-white hover:bg-fg/5 transition-colors"
           >
             Start a conversation
           </Link>
@@ -63,7 +63,7 @@ export default function UmbrellaHero() {
         <dl
           data-reveal
           data-delay="4"
-          className="mt-14 grid grid-cols-3 gap-6 max-w-md border-t border-white/10 pt-6"
+          className="mt-14 grid grid-cols-3 gap-6 max-w-md border-t border-fg/10 pt-6"
         >
           {[
             { value: 1000, suffix: "+", label: "Companies" },
@@ -79,7 +79,7 @@ export default function UmbrellaHero() {
               >
                 0
               </dd>
-              <dt className="mt-1 text-[11px] uppercase tracking-[0.18em] text-white/55">
+              <dt className="mt-1 text-[11px] uppercase tracking-[0.18em] text-fg/55">
                 {stat.label}
               </dt>
             </div>

@@ -49,7 +49,7 @@ export default function SigmafyPage() {
               key={p.title}
               data-reveal
               data-delay={i + 1}
-              className="card-shimmer rounded-2xl border border-white/10 bg-white/[0.02] p-7"
+              className="card-shimmer rounded-2xl border border-fg/10 bg-fg/[0.02] p-7"
             >
               <p
                 className="text-[11px] uppercase tracking-[0.22em] mb-3"

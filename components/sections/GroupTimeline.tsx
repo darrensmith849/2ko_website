@@ -74,11 +74,11 @@ export default function GroupTimeline() {
   const progress = (activeIndex + 1) / MILESTONES.length;
 
   return (
-    <section className="relative border-t border-border bg-[#06070a]" ref={sectionRef}>
+    <section className="relative border-t border-border bg-background" ref={sectionRef}>
       <div className="max-w-6xl mx-auto px-6 py-20 sm:py-24">
         {/* Header */}
         <div className="text-center mb-16" data-reveal>
-          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-white/45 mb-4">
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-fg/45 mb-4">
             Twenty-eight years in, still improving
           </p>
           <h2 className="text-3xl md:text-4xl font-semibold text-text tracking-tight max-w-2xl mx-auto">
@@ -91,7 +91,7 @@ export default function GroupTimeline() {
           {/* Sticky year + progress rail */}
           <div className="hidden md:block">
             <div className="sticky top-32">
-              <p className="text-[11px] uppercase tracking-[0.22em] text-white/45 mb-3">
+              <p className="text-[11px] uppercase tracking-[0.22em] text-fg/45 mb-3">
                 Current
               </p>
               <div
@@ -100,7 +100,7 @@ export default function GroupTimeline() {
               >
                 {MILESTONES[activeIndex].year}
               </div>
-              <div className="mt-6 h-1 w-full rounded-full bg-white/10 overflow-hidden">
+              <div className="mt-6 h-1 w-full rounded-full bg-fg/10 overflow-hidden">
                 <div
                   className="h-full rounded-full transition-[width] duration-500"
                   style={{
@@ -109,7 +109,7 @@ export default function GroupTimeline() {
                   }}
                 />
               </div>
-              <p className="mt-3 text-[11px] uppercase tracking-[0.22em] text-white/45">
+              <p className="mt-3 text-[11px] uppercase tracking-[0.22em] text-fg/45">
                 {activeIndex + 1} / {MILESTONES.length}
               </p>
             </div>
@@ -118,7 +118,7 @@ export default function GroupTimeline() {
           {/* Milestone list */}
           <ol className="relative space-y-12 md:space-y-16">
             {/* Vertical guide line */}
-            <div aria-hidden className="absolute left-3 top-2 bottom-2 w-px bg-white/10" />
+            <div aria-hidden className="absolute left-3 top-2 bottom-2 w-px bg-fg/10" />
             {MILESTONES.map((m, i) => (
               <li
                 key={m.year}

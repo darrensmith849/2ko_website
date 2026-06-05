@@ -10,7 +10,7 @@ export default function PartnerLogos() {
   return (
     <section className="py-16">
       {/* Header */}
-      <p className="text-center text-xs font-semibold uppercase tracking-[0.25em] text-white/40 mb-10">
+      <p className="text-center text-xs font-semibold uppercase tracking-[0.25em] text-fg/40 mb-10">
         Trusted across the 2KO group by leading organisations
       </p>
 
@@ -30,7 +30,7 @@ export default function PartnerLogos() {
               {PARTNER_NAMES.map((name) => (
                 <span
                   key={`${copy}-${name}`}
-                  className="text-white/50 text-sm md:text-base font-medium tracking-wide whitespace-nowrap"
+                  className="text-fg/50 text-sm md:text-base font-medium tracking-wide whitespace-nowrap"
                 >
                   {name}
                 </span>
@@ -41,7 +41,7 @@ export default function PartnerLogos() {
       </div>
 
       {/* Footer */}
-      <p className="text-center text-white/30 text-xs md:text-sm mt-10 tracking-wide">
+      <p className="text-center text-fg/30 text-xs md:text-sm mt-10 tracking-wide">
         And over 5,000 more across the 2KO group.
       </p>
     </section>

@@ -36,7 +36,7 @@ export default function PageHero({
   stack = false,
 }: PageHeroProps) {
   return (
-    <section className="relative isolate overflow-hidden border-b border-white/10">
+    <section className="relative isolate overflow-hidden border-b border-fg/10">
       {/* Background layers */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-grid opacity-70" />
@@ -67,7 +67,7 @@ export default function PageHero({
         <div className={motif && stack ? "text-center max-w-3xl mx-auto" : ""}>
           {eyebrow && (
             <div
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-6 border bg-white/[0.03]"
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-6 border bg-fg/[0.03]"
               style={{ borderColor: "var(--tint-28)" }}
               data-reveal
             >
@@ -75,7 +75,7 @@ export default function PageHero({
                 className="h-1.5 w-1.5 rounded-full pulse-soft"
                 style={{ background: "var(--tint)" }}
               />
-              <span className="text-[11px] uppercase tracking-[0.22em] text-white/75">
+              <span className="text-[11px] uppercase tracking-[0.22em] text-fg/75">
                 {eyebrow}
               </span>
             </div>
@@ -115,7 +115,7 @@ export default function PageHero({
                     data-magnetic="8"
                     className={
                       cta.variant === "outline"
-                        ? "inline-flex items-center gap-2 px-7 py-3.5 text-base font-medium rounded-full border border-white/15 text-text hover:bg-white/5 transition-colors"
+                        ? "inline-flex items-center gap-2 px-7 py-3.5 text-base font-medium rounded-full border border-fg/15 text-text hover:bg-fg/5 transition-colors"
                         : "inline-flex items-center gap-2 px-7 py-3.5 text-base font-medium rounded-full bg-accent text-white hover:bg-accent2 transition-colors"
                     }
                   >

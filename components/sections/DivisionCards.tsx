@@ -67,7 +67,7 @@ export default function DivisionCards() {
   return (
     <section className="max-w-6xl mx-auto px-6 py-20 sm:py-24">
       <div className="text-center mb-14" data-reveal>
-        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-white/45 mb-4">
+        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-fg/45 mb-4">
           Three disciplines, one group
         </p>
         <h2 className="text-3xl md:text-4xl font-semibold text-text tracking-tight max-w-2xl mx-auto">
@@ -83,7 +83,7 @@ export default function DivisionCards() {
             data-tint={d.tint}
             data-reveal
             data-delay={i + 1}
-            className="group relative card-shimmer rounded-2xl border border-white/10 bg-white/[0.02] p-6 flex flex-col transition-colors hover:border-tint-28"
+            className="group relative card-shimmer rounded-2xl border border-fg/10 bg-fg/[0.02] p-6 flex flex-col transition-colors hover:border-tint-28"
             style={{ borderColor: undefined }}
           >
             {/* Motif preview */}

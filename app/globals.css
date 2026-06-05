@@ -73,6 +73,12 @@
   --color-muted:      var(--color-muted);
   --color-muted2:     var(--color-muted2);
 
+  /* Theme-aware foreground colour — flips white ↔ near-black per
+     theme. Used via Tailwind alpha syntax: text-fg/40, border-fg/10,
+     bg-fg/[0.02], etc. Powers every text/border/surface tint
+     across the body so the site flips cleanly with the toggle. */
+  --color-fg: rgb(var(--motif-fg));
+
   /* Typography */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);

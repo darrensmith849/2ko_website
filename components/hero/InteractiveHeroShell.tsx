@@ -133,12 +133,19 @@ export default function InteractiveHeroShell({ children, className }: Props) {
   return (
     <section
       ref={sectionRef}
+      // Hero is dark-by-design — cursor-trail effect needs the dark
+      // canvas. Locking the scope to data-theme="dark" makes every
+      // theme-aware token inside (text-fg, border-fg, motif-fg)
+      // resolve as white regardless of the site-level theme, so
+      // the hero stays readable in light mode while the rest of
+      // the page flips.
+      data-theme="dark"
       style={initialVars}
       onPointerMove={updateTargetFromPointer}
       onPointerEnter={updateTargetFromPointer}
       onPointerLeave={handlePointerLeave}
       className={[
-        "relative isolate overflow-hidden border-b border-white/10 bg-[#050913] text-white",
+        "relative isolate overflow-hidden border-b border-fg/10 bg-[#050913] text-white",
         className ?? "",
       ].join(" ")}
     >
