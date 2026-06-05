@@ -1,0 +1,139 @@
+/* ──────────────────────────────────────────────────────────
+   Motion primitives
+   ──────────────────────────────────────────────────────────
+   Vanilla CSS + a tiny TS mount hook in components/motion/.
+   No animation library. All effects respect
+   prefers-reduced-motion.
+   ────────────────────────────────────────────────────────── */
+
+/* ── Reveal: fade + slide-up on intersection ─────────────── */
+[data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 12px, 0);
+  transition:
+    opacity 700ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: opacity, transform;
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+[data-reveal][data-delay="1"] { transition-delay: 80ms; }
+[data-reveal][data-delay="2"] { transition-delay: 160ms; }
+[data-reveal][data-delay="3"] { transition-delay: 240ms; }
+[data-reveal][data-delay="4"] { transition-delay: 320ms; }
+[data-reveal][data-delay="5"] { transition-delay: 400ms; }
+
+/* ── Magnetic buttons / chips ────────────────────────────── */
+[data-magnetic] {
+  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+
+/* ── Floating cards / chrome ─────────────────────────────── */
+@keyframes float-a {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50%      { transform: translate3d(0, -6px, 0); }
+}
+@keyframes float-b {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50%      { transform: translate3d(0, -10px, 0); }
+}
+@keyframes float-c {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50%      { transform: translate3d(0, -8px, 0); }
+}
+.float-a { animation: float-a 7s ease-in-out infinite; }
+.float-b { animation: float-b 9s ease-in-out infinite; animation-delay: -1.5s; }
+.float-c { animation: float-c 11s ease-in-out infinite; animation-delay: -3s; }
+
+/* ── Drifting blurred orbs ───────────────────────────────── */
+@keyframes orb-drift-a {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50%      { transform: translate3d(20px, -16px, 0) scale(1.05); }
+}
+@keyframes orb-drift-b {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50%      { transform: translate3d(-24px, 14px, 0) scale(1.08); }
+}
+.orb-drift-a { animation: orb-drift-a 22s ease-in-out infinite; }
+.orb-drift-b { animation: orb-drift-b 28s ease-in-out infinite; }
+
+/* ── Soft opacity pulse (status dots, badges) ────────────── */
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.55; }
+  50%      { opacity: 0.95; }
+}
+.pulse-soft { animation: pulse-soft 2.8s ease-in-out infinite; }
+
+/* ── Grid background mask (hero motif backdrop) ──────────── */
+.bg-grid {
+  background-image:
+    linear-gradient(to right,  rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+  background-position: center;
+  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 30%, transparent 80%);
+          mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 30%, transparent 80%);
+}
+
+/* ── DMAIC loop (Six Sigma motif) ────────────────────────── */
+@keyframes dmaic-rotate {
+  to { transform: rotate(360deg); }
+}
+.dmaic-rotate { animation: dmaic-rotate 28s linear infinite; transform-origin: 50% 50%; }
+
+/* ── Number ticker (count-up scroll-driven) ──────────────── */
+[data-counter] {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Card hover shimmer (lifted from slabhead) ──────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+.card-shimmer { position: relative; overflow: hidden; }
+.card-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.04) 40%,
+    rgba(255, 255, 255, 0.09) 50%,
+    rgba(255, 255, 255, 0.04) 60%,
+    transparent 80%
+  );
+  background-size: 200% 100%;
+  opacity: 0;
+  transition: opacity 300ms ease;
+  pointer-events: none;
+}
+.card-shimmer:hover::after {
+  opacity: 1;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* ── Timeline progress dot ───────────────────────────────── */
+.timeline-dot {
+  box-shadow: 0 0 0 0 var(--tint-28);
+}
+.timeline-dot.is-active {
+  box-shadow: 0 0 0 6px var(--tint-12);
+}
+
+/* ── Reduced motion: kill everything decorative ─────────── */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
+  [data-magnetic] { transform: none !important; }
+  .float-a, .float-b, .float-c,
+  .orb-drift-a, .orb-drift-b,
+  .pulse-soft,
+  .dmaic-rotate,
+  .card-shimmer::after {
+    animation: none !important;
+  }
+}

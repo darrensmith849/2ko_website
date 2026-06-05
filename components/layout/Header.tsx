@@ -5,12 +5,22 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const navLinks = [
-  { href: "/training", label: "Training" },
-  { href: "/consulting", label: "Consulting" },
-  { href: "/services/ai-systems", label: "AI Systems" },
+  { href: "/six-sigma", label: "Six Sigma SA" },
+  { href: "/systems", label: "2KO Systems" },
+  { href: "/sigmafy", label: "Sigmafy" },
   { href: "/case-studies", label: "Case Studies" },
   { href: "/about", label: "About" },
 ];
+
+// Map a route prefix to its tint key — used to colour the
+// header's bottom border so the active division is signalled
+// even from the chrome.
+function tintForPath(pathname: string): string | undefined {
+  if (pathname.startsWith("/six-sigma")) return "six-sigma";
+  if (pathname.startsWith("/systems")) return "systems";
+  if (pathname.startsWith("/sigmafy")) return "sigmafy";
+  return undefined;
+}
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -27,14 +37,28 @@ export default function Header() {
     setOpen(false);
   }, [pathname]);
 
+  const activeTint = tintForPath(pathname);
+
   return (
     <header
+      data-tint={activeTint}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-background/90 backdrop-blur-xl border-b border-border"
+          ? "bg-background/90 backdrop-blur-xl"
           : "bg-background/35 backdrop-blur-sm"
       }`}
     >
+      {/* Tinted underline — picks up the current division's --tint */}
+      <div
+        aria-hidden
+        className={`pointer-events-none absolute inset-x-0 bottom-0 h-px transition-opacity ${
+          scrolled ? "opacity-100" : "opacity-60"
+        }`}
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, var(--tint-28) 30%, var(--tint-28) 70%, transparent)",
+        }}
+      />
       <div className="max-w-6xl mx-auto px-6 h-[68px] flex items-center justify-between">
         <Link
           href="/"

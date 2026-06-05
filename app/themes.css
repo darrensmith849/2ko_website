@@ -1,0 +1,98 @@
+/* ──────────────────────────────────────────────────────────
+   Tint theme layer
+   ──────────────────────────────────────────────────────────
+   `--tint` is the per-division highlight colour. It flips when
+   a `data-tint` scope is applied (typically on a route layout
+   wrapper). The 2KO brand green (`--color-accent`) stays
+   constant everywhere — that's how the parent brand bleeds
+   through every division.
+
+   Use via arbitrary values: bg-[var(--tint)], text-[var(--tint)],
+   border-[color:var(--tint)], or the helper utility classes
+   below (.bg-tint, .text-tint, etc.).
+   ────────────────────────────────────────────────────────── */
+
+:root {
+  /* Default (umbrella) — 2KO Africa green */
+  --tint: #16a34a;
+  --tint-2: #22c55e;
+  --tint-12: rgb(22 163 74 / 0.12);
+  --tint-18: rgb(22 163 74 / 0.18);
+  --tint-28: rgb(22 163 74 / 0.28);
+  --tint-glow: rgb(74 222 128 / 0.18);
+}
+
+/* Six Sigma South Africa — accreditation gold */
+[data-tint="six-sigma"] {
+  --tint: #d4a843;
+  --tint-2: #e8bc55;
+  --tint-12: rgb(212 168 67 / 0.12);
+  --tint-18: rgb(212 168 67 / 0.18);
+  --tint-28: rgb(212 168 67 / 0.28);
+  --tint-glow: rgb(232 188 85 / 0.20);
+}
+
+/* 2KO Systems — electric blue */
+[data-tint="systems"] {
+  --tint: #0ea5e9;
+  --tint-2: #38bdf8;
+  --tint-12: rgb(14 165 233 / 0.12);
+  --tint-18: rgb(14 165 233 / 0.18);
+  --tint-28: rgb(14 165 233 / 0.28);
+  --tint-glow: rgb(56 189 248 / 0.20);
+}
+
+/* Sigmafy — SaaS violet */
+[data-tint="sigmafy"] {
+  --tint: #7c3aed;
+  --tint-2: #a78bfa;
+  --tint-12: rgb(124 58 237 / 0.12);
+  --tint-18: rgb(124 58 237 / 0.18);
+  --tint-28: rgb(124 58 237 / 0.28);
+  --tint-glow: rgb(167 139 250 / 0.22);
+}
+
+/* ── Helper utility classes ────────────────────────────── */
+
+.text-tint { color: var(--tint); }
+.text-tint-2 { color: var(--tint-2); }
+.bg-tint { background-color: var(--tint); }
+.bg-tint-12 { background-color: var(--tint-12); }
+.bg-tint-18 { background-color: var(--tint-18); }
+.border-tint { border-color: var(--tint); }
+.border-tint-28 { border-color: var(--tint-28); }
+.ring-tint { --tw-ring-color: var(--tint); }
+.fill-tint { fill: var(--tint); }
+.stroke-tint { stroke: var(--tint); }
+
+/* Hover variants */
+.hover\:text-tint:hover { color: var(--tint); }
+.hover\:bg-tint:hover { background-color: var(--tint); }
+.hover\:border-tint:hover { border-color: var(--tint); }
+.hover\:border-tint-28:hover { border-color: var(--tint-28); }
+
+/* Section accents (tinted underline / gradient strips) */
+.tint-underline {
+  background: linear-gradient(90deg, transparent, var(--tint-28), transparent);
+}
+
+.tint-radial-glow {
+  background: radial-gradient(
+    ellipse 84% 52% at 50% -10%,
+    var(--tint-18) 0%,
+    transparent 72%
+  );
+}
+
+.tint-radial-soft {
+  background: radial-gradient(
+    circle at 50% 50%,
+    var(--tint-12) 0%,
+    transparent 70%
+  );
+}
+
+/* Glow effect for cards on hover */
+.tint-glow-shadow {
+  box-shadow: 0 20px 70px var(--tint-glow);
+}

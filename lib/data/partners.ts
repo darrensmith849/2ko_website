@@ -61,6 +61,7 @@ export const PARTNER_NAMES = [
   "Sasol",
   "Sappi",
   "Transnet",
-  "Exxaro",
-  "Implats",
+  "Vodacom",
+  "Unilever",
+  "Clientele Insurance",
 ];

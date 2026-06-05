@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "./themes.css";
+@import "./motion.css";
 
 @theme {
   /* Brand colors */
@@ -17,7 +19,7 @@
   --font-mono: var(--font-geist-mono);
 
   /* Animations */
-  --animate-marquee: marquee 30s linear infinite;
+  --animate-marquee: marquee 45s linear infinite;
 }
 
 @keyframes marquee {
