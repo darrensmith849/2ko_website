@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 
-// Canonical URL for the umbrella site. Currently the Vercel deployment.
-// When 2ko.co.za is pointed at this project, change this back to that domain.
-export const siteUrl = "https://2kowebsite.vercel.app";
+export const siteUrl = "https://2ko.co.za";
 
 export const defaultMetadata: Metadata = {
   metadataBase: new URL(siteUrl),

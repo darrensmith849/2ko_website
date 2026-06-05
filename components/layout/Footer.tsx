@@ -21,8 +21,8 @@ const group: FooterLink[] = [
 
 const visitSites: FooterLink[] = [
   { href: "https://sixsigmasouthafrica.co.za", label: "sixsigmasouthafrica.co.za", external: true },
-  { href: "https://2kosystems.vercel.app",     label: "2kosystems.vercel.app",     external: true },
-  { href: "https://sigmafynew.vercel.app",     label: "sigmafynew.vercel.app",     external: true },
+  { href: "https://2kosystems.co.za",          label: "2kosystems.co.za",          external: true },
+  { href: "https://sigmafy.com",               label: "sigmafy.com",               external: true },
 ];
 
 function LinkItem({ link }: { link: FooterLink }) {
