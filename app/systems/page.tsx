@@ -36,7 +36,7 @@ export default function SystemsPage() {
         title="Operations software. Built for the way you actually work."
         subtitle="We design and build the operational layer your business already has — but in software instead of WhatsApp threads. Audit, scope, prototype, build, optimise."
         ctas={[
-          { label: "Visit 2KO Systems", href: "https://2kosystems.co.za", external: true },
+          { label: "Visit 2KO Systems", href: "https://www.2kosystems.com", external: true },
           { label: "Talk to the group", href: "/contact", variant: "outline" },
         ]}
         motif={<ConsoleMesh className="w-full max-w-lg mx-auto" />}
@@ -69,7 +69,7 @@ export default function SystemsPage() {
       <CTABand
         headline="The operating layer your team is missing."
         subheadline="Start with a Systems Opportunity Audit — we map the workflow that pays for the build."
-        primaryCTA={{ label: "Visit 2KO Systems", href: "https://2kosystems.co.za" }}
+        primaryCTA={{ label: "Visit 2KO Systems", href: "https://www.2kosystems.com" }}
         secondaryCTA={{ label: "Talk to the group", href: "/contact" }}
       />
     </main>
