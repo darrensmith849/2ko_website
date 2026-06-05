@@ -81,7 +81,7 @@ export default function ContactForm() {
         <p className="text-muted text-sm leading-relaxed">{state.message}</p>
         <button
           onClick={() => setState({ status: "idle", message: "" })}
-          className="mt-6 text-sm text-accent hover:text-accent2 transition-colors underline underline-offset-2"
+          className="mt-6 text-sm text-accent hover:text-accent2 transition-[box-shadow,transform] underline underline-offset-2"
         >
           Send another message
         </button>
@@ -90,7 +90,7 @@ export default function ContactForm() {
   }
 
   const fieldClass =
-    "w-full px-4 py-3 rounded-xl bg-surface border border-border text-text placeholder:text-muted2 text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors";
+    "w-full px-4 py-3 rounded-xl bg-surface border border-border text-text placeholder:text-muted2 text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-[box-shadow,transform]";
   const labelClass = "block text-sm font-medium text-muted mb-1.5";
 
   return (

@@ -56,7 +56,7 @@ export default function SixSigmaPage() {
               key={p.title}
               data-reveal
               data-delay={i + 1}
-              className="card-shimmer rounded-2xl border border-fg/10 bg-fg/[0.02] p-7"
+              className="card-shimmer rounded-2xl border border-border bg-surface p-7"
             >
               <p
                 className="text-[11px] uppercase tracking-[0.22em] mb-3"

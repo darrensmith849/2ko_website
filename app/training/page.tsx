@@ -45,7 +45,7 @@ export default function TrainingPage() {
           </div>
           <Link
             href="/contact"
-            className="flex-shrink-0 px-6 py-3 text-sm font-medium rounded-full bg-accent text-white hover:bg-accent2 transition-colors"
+            className="flex-shrink-0 px-6 py-3 text-sm font-medium rounded-full bg-accent text-white hover:bg-accent2 transition-[box-shadow,transform]"
           >
             Enrol free
           </Link>
@@ -67,7 +67,7 @@ export default function TrainingPage() {
           {beltCourses.map((course) => (
             <div
               key={course.slug}
-              className="rounded-2xl bg-surface border border-border p-8 hover:border-accent/30 transition-colors"
+              className="rounded-2xl bg-surface border border-border p-8 hover:border-accent/30 transition-[box-shadow,transform]"
             >
               <div className="flex flex-col lg:flex-row lg:items-start gap-6">
                 <div className="flex-1">
@@ -100,7 +100,7 @@ export default function TrainingPage() {
                   <div className="mt-5">
                     <Link
                       href="/contact"
-                      className={`inline-flex items-center gap-1.5 rounded-full px-5 py-2.5 text-sm font-medium transition-colors ${
+                      className={`inline-flex items-center gap-1.5 rounded-full px-5 py-2.5 text-sm font-medium transition-[box-shadow,transform] ${
                         course.isFree
                           ? "bg-accent text-white hover:bg-accent2"
                           : "border border-accent/30 text-accent hover:bg-accent/10"
@@ -175,7 +175,7 @@ export default function TrainingPage() {
           </p>
           <Link
             href="/accreditation"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:text-accent2 transition-colors"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:text-accent2 transition-[box-shadow,transform]"
           >
             Learn about accreditation &rarr;
           </Link>
@@ -240,7 +240,7 @@ export default function TrainingPage() {
           </p>
           <Link
             href="/services/ai-systems"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:text-accent2 transition-colors"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:text-accent2 transition-[box-shadow,transform]"
           >
             Learn about AI systems &rarr;
           </Link>

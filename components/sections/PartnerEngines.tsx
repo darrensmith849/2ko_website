@@ -11,7 +11,7 @@ export default function PartnerEngines() {
         {partners.map((partner) => (
           <div
             key={partner.name}
-            className="rounded-2xl bg-surface border border-border p-6 flex flex-col gap-3 hover:border-accent/30 transition-colors"
+            className="rounded-2xl bg-surface border border-border p-6 flex flex-col gap-3 hover:border-accent/30 transition-[box-shadow,transform]"
           >
             <div>
               <h3 className="text-text font-semibold text-base">
@@ -26,7 +26,7 @@ export default function PartnerEngines() {
             </p>
             <Link
               href={partner.cta.href}
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:text-accent2 transition-colors mt-1"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:text-accent2 transition-[box-shadow,transform] mt-1"
             >
               {partner.cta.label}
               <span aria-hidden="true">&rarr;</span>

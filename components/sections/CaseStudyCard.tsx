@@ -24,7 +24,7 @@ export default function CaseStudyCard({
   tags = [],
 }: CaseStudyCardProps) {
   return (
-    <article className="rounded-2xl bg-surface border border-border p-7 flex flex-col gap-5 hover:border-accent/30 transition-colors">
+    <article className="rounded-2xl bg-surface border border-border p-7 flex flex-col gap-5 hover:border-accent/30 transition-[box-shadow,transform]">
       <div className="flex items-start justify-between gap-3">
         <div>
           <Badge variant="muted">{industry}</Badge>

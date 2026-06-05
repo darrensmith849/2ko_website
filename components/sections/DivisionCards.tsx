@@ -83,11 +83,17 @@ export default function DivisionCards() {
             data-tint={d.tint}
             data-reveal
             data-delay={i + 1}
-            className="group relative card-shimmer rounded-2xl border border-fg/10 bg-fg/[0.02] p-6 flex flex-col transition-colors hover:border-tint-28"
+            className="group relative card-shimmer rounded-2xl border border-border bg-surface p-6 flex flex-col transition-[box-shadow,transform] hover:border-tint-28"
+            data-card-shadow
             style={{ borderColor: undefined }}
           >
-            {/* Motif preview */}
-            <div className="relative aspect-[5/4] mb-5 rounded-xl overflow-hidden bg-black/30 border border-white/[0.06]">
+            {/* Motif preview — locked to dark scope so the bespoke
+                dashboards stay on their signature dark canvas in
+                both light and dark site themes. */}
+            <div
+              data-theme="dark"
+              className="relative aspect-[5/4] mb-5 rounded-xl overflow-hidden bg-[#0a0c12] border border-white/[0.08]"
+            >
               <div className="absolute inset-0 tint-radial-soft" />
               <div className="relative h-full w-full flex items-center justify-center p-4">
                 {d.motif}

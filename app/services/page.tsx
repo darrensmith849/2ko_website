@@ -79,9 +79,9 @@ export default function ServicesPage() {
             <Link
               key={item.title}
               href={item.href}
-              className="rounded-2xl bg-surface border border-border p-7 hover:border-accent/30 transition-colors group"
+              className="rounded-2xl bg-surface border border-border p-7 hover:border-accent/30 transition-[box-shadow,transform] group"
             >
-              <h3 className="text-text font-semibold group-hover:text-accent transition-colors">{item.title}</h3>
+              <h3 className="text-text font-semibold group-hover:text-accent transition-[box-shadow,transform]">{item.title}</h3>
               <p className="text-muted text-sm leading-relaxed mt-2">{item.description}</p>
               <span className="inline-flex items-center gap-1 text-sm font-medium text-accent mt-4">
                 Learn more &rarr;
