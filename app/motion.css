@@ -7,13 +7,20 @@
    ────────────────────────────────────────────────────────── */
 
 /* ── Reveal: fade + slide-up on intersection ─────────────── */
+/* Progressive enhancement: elements are visible by default.
+   The hidden state only applies once <html> has the `motion-ready`
+   class — set by a synchronous inline script in app/layout.tsx
+   BEFORE first paint. If JS is disabled or fails to load,
+   everything stays visible. */
 [data-reveal] {
-  opacity: 0;
-  transform: translate3d(0, 12px, 0);
   transition:
     opacity 700ms cubic-bezier(0.2, 0.8, 0.2, 1),
     transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
   will-change: opacity, transform;
+}
+html.motion-ready [data-reveal]:not(.is-visible) {
+  opacity: 0;
+  transform: translate3d(0, 12px, 0);
 }
 [data-reveal].is-visible {
   opacity: 1;
