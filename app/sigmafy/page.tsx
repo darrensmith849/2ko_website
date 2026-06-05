@@ -36,7 +36,7 @@ export default function SigmafyPage() {
         title="The workspace that runs Six Sigma."
         subtitle="DMAIC projects, control charts, training cohorts, AI evaluation, certificates — all in the platform the 2KO Group built because nothing else did the job."
         ctas={[
-          { label: "Visit Sigmafy", href: "https://sigmafy.com", external: true },
+          { label: "Visit Sigmafy", href: "https://sigmafynew.vercel.app", external: true },
           { label: "Talk to the group", href: "/contact", variant: "outline" },
         ]}
         motif={<ChartGrow className="w-full max-w-xl mx-auto" />}
@@ -69,7 +69,7 @@ export default function SigmafyPage() {
       <CTABand
         headline="Run improvement like a product."
         subheadline="Sigmafy is currently in pilot with selected enterprise customers."
-        primaryCTA={{ label: "Visit Sigmafy", href: "https://sigmafy.com" }}
+        primaryCTA={{ label: "Visit Sigmafy", href: "https://sigmafynew.vercel.app" }}
         secondaryCTA={{ label: "Talk to the group", href: "/contact" }}
       />
     </main>
