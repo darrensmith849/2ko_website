@@ -157,6 +157,11 @@ a {
 
 /* ── Chrome scrolled-state (mirrors `.mk-nav.is-scrolled`) ── */
 .mk-chrome {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50; /* below the 2px .mk-scroll-progress (60) which has pointer-events:none, so it sits visually on top without blocking clicks */
   background: var(--chrome-bg);
   border-bottom: 1px solid transparent;
   backdrop-filter: blur(18px) saturate(180%);
