@@ -39,7 +39,7 @@ export default function SixSigmaPage() {
     <main>
       <PageHero
         eyebrow="Training & Accreditation"
-        title="Six Sigma, taught from scars."
+        title="Six Sigma, taught from experience."
         subtitle="Africa's CSSC-accredited Lean and Six Sigma training body. Our trainers have run the real improvement programmes they teach about — fifteen years of practitioner experience in the room."
         ctas={[
           { label: "Visit Six Sigma SA", href: "https://sixsigmasouthafrica.co.za", external: true },
