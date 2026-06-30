@@ -84,8 +84,8 @@ export default function ProcessPipeline({ className }: { className?: string }) {
           <stop offset="75%" stopColor="var(--tint)" stopOpacity="0" />
         </radialGradient>
         <linearGradient id="pp-stage" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="rgb(var(--motif-fg) / 0.08)" />
-          <stop offset="100%" stopColor="rgb(var(--motif-fg) / 0.02)" />
+          <stop offset="0%" stopColor="var(--color-surface2)" />
+          <stop offset="100%" stopColor="var(--color-surface)" />
         </linearGradient>
         <linearGradient id="pp-flow" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stopColor="var(--tint)" stopOpacity="0" />

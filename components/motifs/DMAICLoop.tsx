@@ -62,7 +62,7 @@ export default function DMAICLoop({ className }: { className?: string }) {
 
       {/* Centre badge */}
       <g>
-        <circle cx={CENTER} cy={CENTER} r="42" fill="rgb(var(--motif-fg) / 0.04)" stroke="var(--tint)" strokeOpacity="0.32" />
+        <circle cx={CENTER} cy={CENTER} r="42" fill="var(--color-surface)" stroke="var(--tint)" strokeOpacity="0.32" />
         <text
           x={CENTER}
           y={CENTER - 4}
@@ -95,7 +95,7 @@ export default function DMAICLoop({ className }: { className?: string }) {
         const y = CENTER + Math.sin(angle) * RADIUS;
         return (
           <g key={node.letter}>
-            <circle cx={x} cy={y} r="18" fill="rgb(var(--motif-fg) / 0.04)" stroke="var(--tint)" strokeOpacity="0.6" />
+            <circle cx={x} cy={y} r="18" fill="var(--color-surface)" stroke="var(--tint)" strokeOpacity="0.6" />
             <text
               x={x}
               y={y + 4}
