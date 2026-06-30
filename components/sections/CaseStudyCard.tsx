@@ -61,9 +61,6 @@ export default function CaseStudyCard({
             Illustrative outcome
           </dt>
           <dd className="text-text font-medium leading-relaxed">{result}</dd>
-          <p className="mt-2 text-xs text-muted2">
-            Anonymised example. Final outcomes depend on baseline conditions and rollout quality.
-          </p>
         </div>
       </dl>
     </article>

@@ -43,17 +43,6 @@ export default function CaseStudiesPage() {
         </div>
       </section>
 
-      {/* Note */}
-      <section className="max-w-6xl mx-auto px-6 pb-8">
-        <div className="rounded-xl bg-surface border border-border p-6 text-center">
-          <p className="text-muted text-sm leading-relaxed max-w-2xl mx-auto">
-            Client identities are anonymised unless written consent to name them has been provided.
-            Numeric outcomes on this page are illustrative summaries from anonymised engagements
-            and should be treated as directional examples rather than guaranteed results.
-          </p>
-        </div>
-      </section>
-
       <CTABand
         headline="Want results like these in your organisation?"
         subheadline="Book a 30-minute diagnostic call to explore what&apos;s possible."
