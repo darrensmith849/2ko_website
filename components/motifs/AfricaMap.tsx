@@ -1,51 +1,97 @@
 /**
  * AfricaMap — umbrella hero motif.
  *
- * A stylised continent of Africa rendered as a constellation of
- * dots, with six "operating cities" pulsing as live points. Reads
- * `currentColor` for the active points and `var(--tint)` for the
- * connecting arcs — so it works in any division scope.
+ * A stylised Africa rendered as a *filled* constellation of dots, with
+ * six "operating cities" pulsing as live points joined by route arcs.
+ * Reads `var(--tint)` for the active points + arcs and `var(--motif-fg)`
+ * for the land dots — so it works in any division scope.
  *
- * No external assets. SVG only.
+ * The dot field is generated from horizontal silhouette spans, so the
+ * continent reads clearly (denser centre, fading edges) instead of the
+ * flat grid it used to be. No external assets. SVG only.
  */
-type City = { name: string; cx: number; cy: number; label?: "JHB" | "CPT" | "PTA" | "NBO" | "LUS" | "DAR" };
+type City = { name: string; cx: number; cy: number; label: "JHB" | "CPT" | "PTA" | "NBO" | "LUS" | "DAR" };
 
 const CITIES: City[] = [
-  { name: "Johannesburg", cx: 340, cy: 410, label: "JHB" },
-  { name: "Cape Town",    cx: 300, cy: 500, label: "CPT" },
-  { name: "Pretoria",     cx: 348, cy: 400, label: "PTA" },
-  { name: "Nairobi",      cx: 430, cy: 270, label: "NBO" },
-  { name: "Lusaka",       cx: 360, cy: 360, label: "LUS" },
-  { name: "Dar es Salaam",cx: 440, cy: 295, label: "DAR" },
+  { name: "Nairobi",       cx: 430, cy: 275, label: "NBO" },
+  { name: "Dar es Salaam", cx: 452, cy: 300, label: "DAR" },
+  { name: "Lusaka",        cx: 362, cy: 358, label: "LUS" },
+  { name: "Pretoria",      cx: 356, cy: 402, label: "PTA" },
+  { name: "Johannesburg",  cx: 348, cy: 417, label: "JHB" },
+  { name: "Cape Town",     cx: 338, cy: 498, label: "CPT" },
 ];
 
-// Sparse dot grid approximating the continent silhouette.
-// (Kept compact — a stylised, not literal, geography.)
-const DOTS = [
-  // North coast / Sahel band
-  [240, 120], [280, 110], [320, 110], [360, 115], [400, 120], [440, 125], [480, 135],
-  // Sahara mass
-  [230, 160], [270, 150], [310, 150], [350, 155], [390, 160], [430, 165], [470, 170], [510, 180],
-  // Sahel south edge
-  [220, 200], [260, 195], [300, 195], [340, 200], [380, 205], [420, 210], [460, 215], [500, 220],
-  // Horn of Africa
-  [470, 240], [500, 245], [520, 235],
-  // Equatorial band
-  [240, 240], [280, 240], [320, 245], [360, 250], [400, 255], [440, 260],
-  // Central
-  [260, 280], [300, 285], [340, 295], [380, 300], [420, 305], [460, 305],
-  // Southern central
-  [280, 320], [320, 330], [360, 340], [400, 345], [440, 345],
-  // Southern Africa upper
-  [300, 360], [340, 370], [380, 380], [420, 380],
-  // Southern Africa lower
-  [310, 400], [350, 415], [390, 420], [420, 415],
-  // South tip
-  [320, 445], [360, 460], [390, 460],
-  // Cape
-  [310, 490], [340, 500], [365, 495],
-  // Madagascar
-  [490, 380], [505, 400], [515, 425], [510, 450],
+// Africa silhouette as horizontal spans: [y, [[xL,xR], ...]].
+// A second range on a row is the Horn of Africa jutting east.
+const SPANS: Array<[number, Array<[number, number]>]> = [
+  [ 86, [[258, 438]]],
+  [108, [[228, 474]]],
+  [130, [[206, 500]]],
+  [152, [[191, 520]]],
+  [174, [[186, 534]]],
+  [196, [[186, 512], [520, 560]]],
+  [218, [[196, 470], [498, 562]]],
+  [240, [[214, 460], [488, 544]]],
+  [262, [[234, 474]]],
+  [284, [[250, 470]]],
+  [306, [[260, 466]]],
+  [328, [[270, 460]]],
+  [350, [[280, 454]]],
+  [372, [[288, 448]]],
+  [394, [[298, 441]]],
+  [416, [[305, 432]]],
+  [438, [[314, 421]]],
+  [460, [[322, 409]]],
+  [482, [[330, 399]]],
+  [504, [[339, 389]]],
+  [524, [[349, 379]]],
+];
+
+// Madagascar — a separate island cluster off the south-east coast.
+const MADAGASCAR: Array<[number, number]> = [
+  [512, 356], [524, 376], [530, 398], [528, 420], [519, 442],
+];
+
+const STEP = 23;
+const FOCUS_X = 372;
+const FOCUS_Y = 318;
+
+const clamp = (v: number, lo: number, hi: number) => Math.min(Math.max(v, lo), hi);
+
+type Dot = { x: number; y: number; o: number };
+
+// Deterministic hash → small organic jitter (no Math.random, so the
+// server and client render identically and React doesn't re-hydrate).
+const hash = (a: number, b: number) => {
+  const s = Math.sin(a * 91.17 + b * 47.53) * 43758.5453;
+  return s - Math.floor(s);
+};
+
+const DOTS: Dot[] = (() => {
+  const out: Dot[] = [];
+  const push = (x: number, y: number) => {
+    const X = x + (hash(x, y) - 0.5) * 7;
+    const Y = y + (hash(y, x) - 0.5) * 7;
+    const d = Math.hypot(X - FOCUS_X, Y - FOCUS_Y);
+    out.push({ x: X, y: Y, o: clamp(0.5 - d / 760, 0.13, 0.5) });
+  };
+  for (const [y, ranges] of SPANS) {
+    for (const [xL, xR] of ranges) {
+      const span = xR - xL;
+      const n = Math.max(1, Math.round(span / STEP));
+      for (let k = 0; k <= n; k++) push(xL + (span * k) / n, y);
+    }
+  }
+  for (const [x, y] of MADAGASCAR) push(x, y);
+  return out;
+})();
+
+const ROUTES = [
+  "M 348 417 Q 398 352 430 275", // JHB → NBO (spine)
+  "M 338 498 Q 344 455 348 417", // CPT → JHB
+  "M 348 417 Q 352 388 362 358", // JHB → LUS
+  "M 430 275 Q 444 286 452 300", // NBO → DAR
+  "M 362 358 Q 400 318 430 275", // LUS → NBO
 ];
 
 export default function AfricaMap({ className }: { className?: string }) {
@@ -57,71 +103,52 @@ export default function AfricaMap({ className }: { className?: string }) {
       className={className}
       style={{ color: "var(--tint)" }}
     >
-      {/* Soft tint glow behind the continent */}
       <defs>
         <radialGradient id="africa-glow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="var(--tint)" stopOpacity="0.18" />
-          <stop offset="60%" stopColor="var(--tint)" stopOpacity="0" />
+          <stop offset="0%" stopColor="var(--tint)" stopOpacity="0.16" />
+          <stop offset="62%" stopColor="var(--tint)" stopOpacity="0" />
         </radialGradient>
       </defs>
-      <circle cx="370" cy="310" r="260" fill="url(#africa-glow)" />
+      <circle cx="372" cy="316" r="272" fill="url(#africa-glow)" />
 
-      {/* Continent dots */}
-      {DOTS.map(([cx, cy], i) => (
-        <circle
-          key={`d-${i}`}
-          cx={cx}
-          cy={cy}
-          r={1.6}
-          fill="rgb(var(--motif-fg) / 0.42)"
-        />
-      ))}
-
-      {/* Connecting arcs between operating cities */}
-      <g
-        stroke="var(--tint)"
-        strokeOpacity="0.55"
-        strokeWidth="0.8"
-        fill="none"
-        strokeLinecap="round"
-      >
-        <path d="M 340 410 Q 380 360 430 270" />
-        <path d="M 300 500 Q 320 460 340 410" />
-        <path d="M 340 410 Q 350 385 360 360" />
-        <path d="M 430 270 Q 435 285 440 295" />
-        <path d="M 360 360 Q 395 335 430 270" />
+      {/* Land — generated dot silhouette of Africa */}
+      <g fill="rgb(var(--motif-fg))">
+        {DOTS.map((d, i) => (
+          <circle key={`d-${i}`} cx={d.x} cy={d.y} r={1.8} fillOpacity={d.o} />
+        ))}
       </g>
 
-      {/* Cities (active points) */}
+      {/* Route arcs between operating cities */}
+      <g stroke="var(--tint)" strokeOpacity="0.6" strokeWidth="1" fill="none" strokeLinecap="round">
+        {ROUTES.map((d, i) => (
+          <path key={`r-${i}`} d={d} />
+        ))}
+      </g>
+
+      {/* Operating cities (active points) */}
       {CITIES.map((c) => (
         <g key={c.name}>
           <circle
             cx={c.cx}
             cy={c.cy}
-            r={9}
+            r={11}
             fill="var(--tint)"
-            opacity={0.18}
+            opacity={0.16}
             className="pulse-soft"
             style={{ transformOrigin: `${c.cx}px ${c.cy}px` }}
           />
-          <circle
-            cx={c.cx}
-            cy={c.cy}
-            r={3.4}
-            fill="var(--tint)"
-          />
-          {c.label && (
-            <text
-              x={c.cx + 10}
-              y={c.cy + 4}
-              fill="rgb(var(--motif-fg) / 0.78)"
-              fontFamily="var(--font-geist-mono, monospace)"
-              fontSize="10.5"
-              letterSpacing="0.08em"
-            >
-              {c.label}
-            </text>
-          )}
+          <circle cx={c.cx} cy={c.cy} r={5.2} fill="none" stroke="var(--tint)" strokeOpacity={0.45} strokeWidth={1} />
+          <circle cx={c.cx} cy={c.cy} r={3.4} fill="var(--tint)" />
+          <text
+            x={c.cx + 11}
+            y={c.cy + 4}
+            fill="rgb(var(--motif-fg) / 0.82)"
+            fontFamily="var(--font-geist-mono, monospace)"
+            fontSize="10.5"
+            letterSpacing="0.08em"
+          >
+            {c.label}
+          </text>
         </g>
       ))}
     </svg>

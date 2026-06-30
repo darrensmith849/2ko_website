@@ -51,8 +51,9 @@ export default function ConsoleMesh({ className }: { className?: string }) {
           <stop offset="75%" stopColor="var(--tint)" stopOpacity="0" />
         </radialGradient>
         <linearGradient id="cm-panel" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="rgb(var(--motif-fg) / 0.08)" />
-          <stop offset="100%" stopColor="rgb(var(--motif-fg) / 0.02)" />
+          {/* Opaque surface so the mesh edges/grid behind never show THROUGH the floating cards. */}
+          <stop offset="0%" stopColor="var(--color-surface2)" />
+          <stop offset="100%" stopColor="var(--color-surface)" />
         </linearGradient>
         <linearGradient id="cm-bar" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="var(--tint)" stopOpacity="1" />

@@ -112,8 +112,8 @@ export default function KPIBoard({ className }: { className?: string }) {
           <stop offset="75%" stopColor="var(--tint)" stopOpacity="0" />
         </radialGradient>
         <linearGradient id="kb-tile" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="rgb(var(--motif-fg) / 0.08)" />
-          <stop offset="100%" stopColor="rgb(var(--motif-fg) / 0.02)" />
+          <stop offset="0%" stopColor="var(--color-surface2)" />
+          <stop offset="100%" stopColor="var(--color-surface)" />
         </linearGradient>
         <pattern id="kb-grid" x="0" y="0" width="35" height="35" patternUnits="userSpaceOnUse">
           <path d="M 35 0 L 0 0 0 35" fill="none" stroke="rgb(var(--motif-fg) / 0.04)" strokeWidth="1" />
