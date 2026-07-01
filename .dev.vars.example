@@ -1,0 +1,9 @@
+# Local dev/preview vars for `npm run preview` (Cloudflare Workers runtime).
+# Copy to `.dev.vars` (gitignored). Real production values are set as Worker
+# secrets in Cloudflare (`wrangler secret put RESEND_API_KEY`), never committed.
+NEXTJS_ENV=development
+
+# Contact form (app/api/contact/route.ts) — optional locally:
+# RESEND_API_KEY=
+# RESEND_FROM="2KO Website <noreply@2ko.co.za>"
+# CONTACT_TO_EMAIL=info@2ko.co.za
