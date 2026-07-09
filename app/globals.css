@@ -92,6 +92,21 @@
   100% { transform: translateX(-50%); }
 }
 
+/* ── Partner logo marquee treatment ───────────────────────
+   Client logos render as a monochrome trust strip. Light mode
+   darkens them to charcoal (mirrors sixsigmasouthafrica.co.za);
+   dark mode flattens them to a light grey so they stay legible
+   against the near-black background. */
+.partner-logo {
+  filter: grayscale(1) brightness(0.55) contrast(1.05);
+  opacity: 0.85;
+}
+
+[data-theme="dark"] .partner-logo {
+  filter: grayscale(1) brightness(0) invert(0.82);
+  opacity: 0.72;
+}
+
 *,
 *::before,
 *::after {

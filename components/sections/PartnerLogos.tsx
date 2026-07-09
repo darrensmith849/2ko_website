@@ -1,20 +1,32 @@
-import { PARTNER_NAMES } from "@/lib/data/partners";
+import { PARTNERS } from "@/lib/data/partners";
 
 /**
- * Text-only partner marquee.
+ * Partner logo marquee.
  *
- * Infinite right-to-left scrolling inside a centred max-width container
- * with left/right edge fades — matching 2KO Systems.
+ * Infinite right-to-left scroll of client logos rendered as images in
+ * a monochrome (grayscale) treatment, with a green overline + subtitle
+ * and left/right edge fades. Mirrors the "Trusted by" strip on
+ * sixsigmasouthafrica.co.za.
+ *
+ * The `.partner-logo` class (see globals.css) darkens the logos to
+ * charcoal in light mode and lightens them in dark mode so they stay
+ * legible against the near-black background.
  */
 export default function PartnerLogos() {
   return (
-    <section className="py-16">
-      {/* Header */}
-      <p className="text-center text-xs font-semibold uppercase tracking-[0.25em] text-fg/40 mb-10">
-        Trusted across the 2KO group by leading organisations
-      </p>
+    <section className="py-16 md:py-20">
+      {/* Header — green overline + subtitle, centred */}
+      <div className="mb-12 text-center px-6">
+        <p className="inline-flex items-center gap-3 text-[13px] font-semibold uppercase tracking-[0.14em] text-accent">
+          <span className="h-px w-8 bg-current opacity-60" aria-hidden />
+          Trusted across the 2KO group
+        </p>
+        <p className="mt-3 text-[15px] text-fg/50">
+          And over 5,000 more organisations across the continent
+        </p>
+      </div>
 
-      {/* Centred container with fade mask */}
+      {/* Marquee — centred container with edge fade mask */}
       <div
         className="max-w-6xl mx-auto px-6 overflow-hidden"
         style={{
@@ -26,24 +38,29 @@ export default function PartnerLogos() {
       >
         <div className="flex w-max animate-marquee motion-reduce:animate-none">
           {[0, 1].map((copy) => (
-            <div key={copy} className="flex shrink-0 items-center gap-12 md:gap-16 px-6 md:px-8">
-              {PARTNER_NAMES.map((name) => (
-                <span
-                  key={`${copy}-${name}`}
-                  className="text-fg/50 text-sm md:text-base font-medium tracking-wide whitespace-nowrap"
+            <div
+              key={copy}
+              className="flex shrink-0 items-center gap-16 px-8"
+              aria-hidden={copy === 1 ? true : undefined}
+            >
+              {PARTNERS.map((partner) => (
+                <div
+                  key={`${copy}-${partner.name}`}
+                  className="flex h-20 shrink-0 items-center md:h-24"
                 >
-                  {name}
-                </span>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={partner.src}
+                    alt={partner.name}
+                    loading="lazy"
+                    className="partner-logo h-full w-auto max-w-[168px] object-contain"
+                  />
+                </div>
               ))}
             </div>
           ))}
         </div>
       </div>
-
-      {/* Footer */}
-      <p className="text-center text-fg/30 text-xs md:text-sm mt-10 tracking-wide">
-        And over 5,000 more across the 2KO group.
-      </p>
     </section>
   );
 }
