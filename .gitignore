@@ -29,5 +29,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# opennext / cloudflare (build output + local wrangler state/secrets)
+.open-next/
+.wrangler/
+.dev.vars
+
 # claude code
 .claude/

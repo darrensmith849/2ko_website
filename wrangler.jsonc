@@ -1,0 +1,23 @@
+/**
+ * Cloudflare Worker config — built by `@opennextjs/cloudflare`.
+ *
+ * Deploys via:   npx opennextjs-cloudflare build && npx opennextjs-cloudflare deploy
+ * Local preview: npx opennextjs-cloudflare build && npx wrangler dev
+ *
+ * Secrets (set via `wrangler secret put <NAME>`, not in this file):
+ *   - BREVO_API_KEY  (used by app/api/contact route)
+ */
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "2ko-website",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-03-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "binding": "ASSETS",
+    "directory": ".open-next/assets"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
