@@ -58,6 +58,7 @@ export default function AccreditationPage() {
           imageKey="accreditationHero"
           imageAlt="Professional standards and accreditation documentation"
           imagePosition="center 40%"
+          imagePriority
           ctas={[
             { label: "View courses", href: "/training", variant: "primary" },
             { label: "Ask about RPL", href: "/contact", variant: "outline" },

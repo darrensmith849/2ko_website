@@ -27,7 +27,7 @@ export default function UmbrellaHero() {
         <h1
           data-reveal
           data-delay="1"
-          className="text-4xl sm:text-5xl md:text-[3.6rem] font-semibold tracking-tight leading-[1.04] text-white"
+          className="text-4xl sm:text-5xl md:text-[3.6rem] font-semibold tracking-tight leading-[1.04] text-text"
         >
           Operational excellence,
           <br />
@@ -53,7 +53,7 @@ export default function UmbrellaHero() {
           <Link
             href="/contact"
             data-magnetic="10"
-            className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-medium rounded-full border border-fg/15 text-white hover:bg-fg/5 transition-colors"
+            className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-medium rounded-full border border-fg/15 text-text hover:bg-fg/5 transition-colors"
           >
             Start a conversation
           </Link>

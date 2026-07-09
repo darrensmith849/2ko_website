@@ -24,6 +24,7 @@ export default function ServicesPage() {
           imageKey="servicesHero"
           imageAlt="Consulting team in a focused strategy session"
           imagePosition="center 34%"
+          imagePriority
           ctas={[
             { label: "Start the conversation", href: "/contact", variant: "primary" },
           ]}

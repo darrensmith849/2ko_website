@@ -24,6 +24,7 @@ export default function TrainingPage() {
           imageKey="trainingHero"
           imageAlt="Professional training session in a modern classroom environment"
           imagePosition="center 38%"
+          imagePriority
           ctas={[
             { label: "Start free White Belt", href: "/contact", variant: "primary" },
             { label: "Corporate training enquiry", href: "/contact", variant: "outline" },

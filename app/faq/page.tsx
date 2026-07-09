@@ -23,6 +23,7 @@ export default function FAQPage() {
           imageKey="faqHero"
           imageAlt="Consulting discussion in a modern collaborative workspace"
           imagePosition="center 35%"
+          imagePriority
           ctas={[]}
         />
       </CursorGlowSection>

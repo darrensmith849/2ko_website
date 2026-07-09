@@ -38,25 +38,32 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="dark" suppressHydrationWarning>
+    <html lang="en" data-theme="light" suppressHydrationWarning>
       <head>
         {/* Pre-paint script — apply data-theme BEFORE first paint so
-            no flash. Umbrella is dark-first, so default is dark; we
-            only read a session marker (theme is intentionally NOT
-            persisted across reloads per product decision). */}
+            no flash. Default is light on every load; the toggle can
+            flip to dark for the current session only (theme is
+            intentionally NOT persisted across reloads). */}
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "(function(){try{document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();",
+              "(function(){try{document.documentElement.setAttribute('data-theme','light');}catch(e){}})();",
           }}
         />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* Skip-to-content link for keyboard / screen-reader users. */}
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-md focus:bg-accent focus:text-white focus:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+        >
+          Skip to main content
+        </a>
         <ScrollProgressBar />
         <Header />
-        <div className="pt-[68px]">{children}</div>
+        <div id="main" className="pt-[68px]">{children}</div>
         <Footer />
         <MotionRoot />
       </body>

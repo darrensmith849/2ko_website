@@ -133,38 +133,25 @@ export default function InteractiveHeroShell({ children, className }: Props) {
   return (
     <section
       ref={sectionRef}
-      // Hero is dark-by-design — cursor-trail effect needs the dark
-      // canvas. Locking the scope to data-theme="dark" makes every
-      // theme-aware token inside (text-fg, border-fg, motif-fg)
-      // resolve as white regardless of the site-level theme, so
-      // the hero stays readable in light mode while the rest of
-      // the page flips.
-      data-theme="dark"
+      // Hero adopts the site theme (light/dark). Dark mode keeps the
+      // original deep-navy canvas with white vignette; light mode uses
+      // a soft off-white canvas with a faint cool tint. The cursor-
+      // trail green-glow layers below work on both themes. CSS for the
+      // canvas / vignette / ambient blurs lives in app/globals.css
+      // under `.hero-canvas-*` and `.hero-ambient-*`.
       style={initialVars}
       onPointerMove={updateTargetFromPointer}
       onPointerEnter={updateTargetFromPointer}
       onPointerLeave={handlePointerLeave}
       className={[
-        "relative isolate overflow-hidden border-b border-fg/10 bg-[#050913] text-white",
+        "relative isolate overflow-hidden border-b border-fg/10 text-text",
         className ?? "",
       ].join(" ")}
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(180deg, #07101d 0%, #050913 52%, #03060d 100%)",
-          }}
-        />
+        <div className="absolute inset-0 hero-canvas-base" />
 
-        <div
-          className="absolute inset-0 opacity-80"
-          style={{
-            background:
-              "radial-gradient(900px 500px at 50% -12%, rgba(255,255,255,0.08), transparent 58%)",
-          }}
-        />
+        <div className="absolute inset-0 opacity-80 hero-canvas-vignette" />
 
         <div
           className="absolute h-[540px] w-[540px] rounded-full blur-3xl"
@@ -216,16 +203,10 @@ export default function InteractiveHeroShell({ children, className }: Props) {
         />
 
         {/* top-right ambient blur */}
-        <div
-          className="absolute -right-28 -top-28 h-72 w-72 rounded-full blur-3xl"
-          style={{ background: "rgba(99,129,255,0.10)" }}
-        />
+        <div className="absolute -right-28 -top-28 h-72 w-72 rounded-full blur-3xl hero-ambient-tr" />
 
         {/* bottom-left ambient blur */}
-        <div
-          className="absolute -bottom-32 -left-32 h-80 w-80 rounded-full blur-3xl"
-          style={{ background: "rgba(255,255,255,0.05)" }}
-        />
+        <div className="absolute -bottom-32 -left-32 h-80 w-80 rounded-full blur-3xl hero-ambient-bl" />
       </div>
 
       <div className="relative z-10">{children}</div>

@@ -48,6 +48,7 @@ export default function OperationalExcellencePage() {
           imageKey="operationalExcellenceHero"
           imageAlt="Industrial operations team reviewing production quality performance"
           imagePosition="center 38%"
+          imagePriority
           ctas={[
             { label: "Talk to us", href: "/contact", variant: "primary" },
             { label: "See results", href: "/case-studies", variant: "outline" },

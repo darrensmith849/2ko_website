@@ -37,6 +37,11 @@ export default function Hero({
 
   return (
     <section
+      // When the hero has an image background, scope it to data-theme="dark"
+      // so all theme tokens (text-text, text-muted, border-border) resolve
+      // to their light/dim values — matches the dark-overlay image showcase
+      // regardless of the site-wide theme.
+      data-theme={imageUrl ? "dark" : undefined}
       className={`relative overflow-hidden border-b border-border/60 ${
         imageUrl ? "min-h-[56vh] sm:min-h-[60vh]" : ""
       }`}
@@ -48,15 +53,20 @@ export default function Hero({
               src={imageUrl}
               alt={imageAlt}
               fill
-              sizes="100vw"
+              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 100vw, 1920px"
               priority={imagePriority}
+              fetchPriority={imagePriority ? "high" : undefined}
               className="object-cover"
               style={{ objectPosition: imagePosition }}
             />
           </div>
+          {/* Image overlay: stays dark in both themes — the image-backed
+              hero is a dark showcase strip with white text, so the gradient
+              must NOT fade to --background (which flips to white in light
+              mode and washes out the subheadline). */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/80 via-black/65 to-background/95"
+            className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/85"
           />
         </>
       )}

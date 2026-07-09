@@ -7,20 +7,19 @@ type Theme = "light" | "dark";
 /**
  * ThemeToggle
  * ───────────
- * Flips `data-theme` on `<html>` between "dark" (default) and
- * "light". The umbrella is dark-first by design, so every page
- * reload lands back in dark — the toggle is for the current
- * session only and the choice is deliberately NOT persisted.
- * (Same product decision as the Six Sigma UK site.)
+ * Flips `data-theme` on `<html>` between "light" (default) and
+ * "dark". Every page reload lands back in light mode — the toggle
+ * is for the current session only and the choice is deliberately
+ * NOT persisted.
  *
  * Mounted in app/layout.tsx via Header.
  */
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>("dark");
+  const [theme, setTheme] = useState<Theme>("light");
 
   useEffect(() => {
     const current =
-      (document.documentElement.getAttribute("data-theme") as Theme) || "dark";
+      (document.documentElement.getAttribute("data-theme") as Theme) || "light";
     setTheme(current);
   }, []);
 

@@ -4,6 +4,9 @@ import { siteUrl } from "@/lib/metadata";
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     { url: "/", priority: 1.0, changeFrequency: "monthly" as const },
+    { url: "/six-sigma", priority: 0.9, changeFrequency: "monthly" as const },
+    { url: "/systems", priority: 0.9, changeFrequency: "monthly" as const },
+    { url: "/sigmafy", priority: 0.9, changeFrequency: "monthly" as const },
     { url: "/training", priority: 0.9, changeFrequency: "monthly" as const },
     { url: "/consulting", priority: 0.9, changeFrequency: "monthly" as const },
     { url: "/accreditation", priority: 0.8, changeFrequency: "monthly" as const },

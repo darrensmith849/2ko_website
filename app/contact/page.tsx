@@ -23,6 +23,7 @@ export default function ContactPage() {
           imageKey="contactHero"
           imageAlt="Business leaders in a focused consultation meeting"
           imagePosition="center 33%"
+          imagePriority
           ctas={[]}
         />
       </CursorGlowSection>
@@ -39,7 +40,7 @@ export default function ContactPage() {
             <div className="relative h-56 sm:h-64 rounded-3xl overflow-hidden border border-border">
               <Image
                 src={getImage("contactSection")}
-                alt="Consulting conversation in a modern office setting"
+                alt="Two consultants reviewing performance results in a modern office"
                 fill
                 sizes="(max-width: 1024px) 100vw, 42vw"
                 className="object-cover"

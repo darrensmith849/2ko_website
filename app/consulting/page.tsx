@@ -88,6 +88,7 @@ export default function ConsultingPage() {
           imageKey="consultingHero"
           imageAlt="Consulting team working with client on operational improvement"
           imagePosition="center 35%"
+          imagePriority
           ctas={[
             { label: "Book a diagnostic", href: "/contact", variant: "primary" },
             { label: "See results", href: "/case-studies", variant: "outline" },

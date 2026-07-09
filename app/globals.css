@@ -193,6 +193,41 @@ a {
   -webkit-backdrop-filter: blur(22px) saturate(180%);
 }
 
+/* ── Home hero canvas (theme-aware) ──────────────────────────
+   Dark mode: deep navy gradient with subtle white top-vignette
+   Light mode: off-white gradient with a faint cool tint — the
+   green cursor-trail glow still reads clearly on this base.
+   The cursor-trail blur layers (green radials) work on both
+   themes; only the canvas + vignette + ambient accent blurs flip. */
+
+.hero-canvas-base {
+  background: linear-gradient(180deg, #07101d 0%, #050913 52%, #03060d 100%);
+}
+[data-theme="light"] .hero-canvas-base {
+  background: linear-gradient(180deg, #ffffff 0%, #f7f9fb 52%, #eef2f6 100%);
+}
+
+.hero-canvas-vignette {
+  background: radial-gradient(900px 500px at 50% -12%, rgba(255, 255, 255, 0.08), transparent 58%);
+}
+[data-theme="light"] .hero-canvas-vignette {
+  background: radial-gradient(900px 500px at 50% -12%, rgba(10, 15, 30, 0.04), transparent 58%);
+}
+
+.hero-ambient-tr {
+  background: rgba(99, 129, 255, 0.10);
+}
+[data-theme="light"] .hero-ambient-tr {
+  background: rgba(34, 197, 94, 0.10);
+}
+
+.hero-ambient-bl {
+  background: rgba(255, 255, 255, 0.05);
+}
+[data-theme="light"] .hero-ambient-bl {
+  background: rgba(10, 15, 30, 0.04);
+}
+
 /* ── Interactive hero cursor-trail ── */
 
 .cursor-trail-grid {

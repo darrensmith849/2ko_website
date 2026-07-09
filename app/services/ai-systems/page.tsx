@@ -72,6 +72,7 @@ export default function AISystemsPage() {
           imageKey="aiSystemsHero"
           imageAlt="Data-driven operations dashboard in a modern enterprise environment"
           imagePosition="center 32%"
+          imagePriority
           ctas={[
             { label: "Talk to us", href: "/contact", variant: "primary" },
             { label: "See results", href: "/case-studies", variant: "outline" },
