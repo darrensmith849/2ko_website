@@ -23,5 +23,12 @@
   },
   "send_email": [
     { "name": "EMAIL" }
+  ],
+  // The old hand-deployed outreach tool kept its data in an OutreachStore
+  // Durable Object. The tool is retired (16 Nov 2026), so this deletes the
+  // class and its stored data; the code for it was never on main.
+  "migrations": [
+    { "tag": "v1", "new_sqlite_classes": ["OutreachStore"] },
+    { "tag": "v2", "deleted_classes": ["OutreachStore"] }
   ]
 }
