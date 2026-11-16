@@ -4,8 +4,9 @@
  * Deploys via:   npx opennextjs-cloudflare build && npx opennextjs-cloudflare deploy
  * Local preview: npx opennextjs-cloudflare build && npx wrangler dev
  *
- * Secrets (set via `wrangler secret put <NAME>`, not in this file):
- *   - BREVO_API_KEY  (used by app/api/contact route)
+ * Contact form email goes out through Cloudflare Email Sending via the
+ * `send_email` binding EMAIL (used by app/api/contact). 2ko.co.za is
+ * onboarded for Email Sending, so no API key or secret is needed.
  */
 {
   "$schema": "node_modules/wrangler/config-schema.json",
@@ -19,5 +20,8 @@
   },
   "observability": {
     "enabled": true
-  }
+  },
+  "send_email": [
+    { "name": "EMAIL" }
+  ]
 }

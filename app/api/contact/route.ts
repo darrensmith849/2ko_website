@@ -1,23 +1,42 @@
+import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { NextRequest, NextResponse } from "next/server";
 
 /**
- * Contact form handler — Brevo (Transactional Email API).
+ * Contact form handler — Cloudflare Email Sending.
  *
- * Uses raw `fetch` against `https://api.brevo.com/v3/smtp/email` so this
- * route is portable to any runtime (Node, edge, Cloudflare Workers /
- * Pages Functions). No SDK dependency.
+ * Sends through the Workers `send_email` binding named EMAIL (declared in
+ * wrangler.jsonc). 2ko.co.za is onboarded for Email Sending, so no API key
+ * or secret is needed.
  *
- * Env vars (set in your hosting platform — Cloudflare Pages / Workers):
- *   BREVO_API_KEY     (required)  — https://app.brevo.com/settings/keys/api
- *   CONTACT_TO_EMAIL  (optional)  — defaults to "info@2ko.co.za"
- *   BREVO_FROM_EMAIL  (optional)  — defaults to "noreply@2ko.co.za"
- *                                    (must be a verified sender in Brevo)
- *   BREVO_FROM_NAME   (optional)  — defaults to "2KO Website"
+ * Optional env vars (set in the Worker's vars):
+ *   CONTACT_TO_EMAIL  — defaults to "info@2ko.co.za"
+ *   CONTACT_FROM_EMAIL — defaults to "noreply@2ko.co.za"
+ *   CONTACT_FROM_NAME — defaults to "2KO Website"
  */
 
 // Runs inside the Cloudflare Worker via @opennextjs/cloudflare — no
 // explicit `runtime = "edge"` needed (and declaring it actually breaks
-// the OpenNext bundler). Uses only fetch + Web APIs so it's portable.
+// the OpenNext bundler).
+
+interface EmailBinding {
+  send(message: {
+    to: string | string[];
+    from: { email: string; name?: string };
+    replyTo?: string;
+    subject: string;
+    html: string;
+    text: string;
+  }): Promise<unknown>;
+}
+
+async function getEmailBinding(): Promise<EmailBinding | undefined> {
+  try {
+    const { env } = await getCloudflareContext({ async: true });
+    return (env as unknown as { EMAIL?: EmailBinding }).EMAIL;
+  } catch {
+    return undefined;
+  }
+}
 
 interface ContactBody {
   name: string;
@@ -142,8 +161,10 @@ export async function POST(req: NextRequest) {
   const safeEnquiryType = normalizedEnquiryType ? escapeHtml(normalizedEnquiryType) : "";
   const safeChallenge = escapeHtml(normalizedChallenge);
 
-  if (!process.env.BREVO_API_KEY) {
-    console.warn("[Contact] BREVO_API_KEY not set");
+  const emailBinding = await getEmailBinding();
+
+  if (!emailBinding) {
+    console.warn("[Contact] EMAIL send_email binding not available");
 
     if (process.env.NODE_ENV === "production") {
       return NextResponse.json(
@@ -155,15 +176,15 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // In dev with no key: pretend success so the front-end UX works.
+    // In dev without the binding: pretend success so the front-end UX works.
     return NextResponse.json({
       message: "Message received. We'll be in touch within one business day.",
     });
   }
 
   const toEmail = process.env.CONTACT_TO_EMAIL ?? "info@2ko.co.za";
-  const fromEmail = process.env.BREVO_FROM_EMAIL ?? "noreply@2ko.co.za";
-  const fromName = process.env.BREVO_FROM_NAME ?? "2KO Website";
+  const fromEmail = process.env.CONTACT_FROM_EMAIL ?? "noreply@2ko.co.za";
+  const fromName = process.env.CONTACT_FROM_NAME ?? "2KO Website";
 
   const textBody = [
     "New contact enquiry",
@@ -214,33 +235,17 @@ export async function POST(req: NextRequest) {
     </div>
   `;
 
-  // Brevo Transactional Email API
-  // Docs: https://developers.brevo.com/reference/sendtransacemail
-  const brevoRes = await fetch("https://api.brevo.com/v3/smtp/email", {
-    method: "POST",
-    headers: {
-      accept: "application/json",
-      "content-type": "application/json",
-      "api-key": process.env.BREVO_API_KEY,
-    },
-    body: JSON.stringify({
-      sender: { name: fromName, email: fromEmail },
-      to: [{ email: toEmail }],
-      replyTo: { email: normalizedEmail, name: headerSafeName },
+  try {
+    await emailBinding.send({
+      to: toEmail,
+      from: { email: fromEmail, name: fromName },
+      replyTo: normalizedEmail,
       subject: `New enquiry from ${headerSafeName}${headerSafeOrg ? ` (${headerSafeOrg})` : ""}`,
-      textContent: textBody,
-      htmlContent: htmlBody,
-    }),
-  });
-
-  if (!brevoRes.ok) {
-    let detail: unknown = null;
-    try {
-      detail = await brevoRes.json();
-    } catch {
-      detail = await brevoRes.text().catch(() => null);
-    }
-    console.error("[Contact] Brevo error:", brevoRes.status, detail);
+      html: htmlBody,
+      text: textBody,
+    });
+  } catch (error) {
+    console.error("[Contact] Email Sending error:", error);
     return NextResponse.json(
       { error: "Failed to send message. Please email info@2ko.co.za directly." },
       { status: 500 }
